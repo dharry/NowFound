@@ -1,0 +1,19 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model SearchViewModel
+@inject IStringLocalizer<SearchResource> L
+
+@* インクリメンタルサーチ用 Partial View（HTML断片） *@
+<partial name="_SearchResults" model="Model" />
+
+<div id="save-query-fields" data-incremental-swap="query-fields">
+    <partial name="_QueryFields" model="Model" />
+</div>
+
+@if (Model.CurrentSaved is not null)
+{
+    <partial name="_SavedBanner" model="Model" />
+}
+
+<button type="button" id="save-open" disabled="@(!Model.HasQuery)"
+        title="@(Model.HasQuery ? L["Search.Save.TitleEnabled"] : L["Search.Save.TitleDisabled"])" hidden></button>

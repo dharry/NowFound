@@ -1,0 +1,72 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Application.Users
+@using NowFound.Web.Resources
+@inject IStringLocalizer<SettingsResource> L
+@model ActiveDirectoryViewModel
+@{
+    ViewData["Title"] = L["Settings.Ad.Title"].Value;
+}
+<h1>@L["Settings.Ad.Title"]</h1>
+<p class="muted">@L["Settings.Ad.Note"]</p>
+<div class="card">
+    @if (TempData["Message"] is string message)
+    {
+        <p class="notice" role="status">@message</p>
+    }
+    <form asp-action="ActiveDirectory" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <div class="field">
+            <label><input asp-for="Enabled" /> @L["Settings.Ad.Enabled"]</label>
+        </div>
+        <div class="field">
+            <label asp-for="Server">@L["Settings.Ad.Server"]</label>
+            <input asp-for="Server" type="text" maxlength="@ActiveDirectorySettings.ServerMaxLength" autocomplete="off" spellcheck="false" />
+            <p class="muted">@L["Settings.Ad.ServerNote"]</p>
+        </div>
+        <div class="field">
+            <label asp-for="Security">@L["Settings.Ad.Security"]</label>
+            <select asp-for="Security" data-ad-security>
+                <option value="@DirectorySecurity.None" selected="@(Model.Security == DirectorySecurity.None)" data-port="@ActiveDirectorySettings.DefaultPort(DirectorySecurity.None)">@L["Settings.Ad.Security.None"]</option>
+                <option value="@DirectorySecurity.Ssl" selected="@(Model.Security == DirectorySecurity.Ssl)" data-port="@ActiveDirectorySettings.DefaultPort(DirectorySecurity.Ssl)">@L["Settings.Ad.Security.Ssl"]</option>
+                <option value="@DirectorySecurity.StartTls" selected="@(Model.Security == DirectorySecurity.StartTls)" data-port="@ActiveDirectorySettings.DefaultPort(DirectorySecurity.StartTls)">@L["Settings.Ad.Security.StartTls"]</option>
+            </select>
+            <p class="muted">@L["Settings.Ad.SecurityNote"]</p>
+        </div>
+        <div class="field">
+            <label asp-for="Port">@L["Settings.Ad.Port"]</label>
+            <input asp-for="Port" type="number" min="@ActiveDirectorySettings.PortMin" max="@ActiveDirectorySettings.PortMax" required data-ad-port />
+        </div>
+        <div class="field">
+            <label asp-for="Domain">@L["Settings.Ad.Domain"]</label>
+            <input asp-for="Domain" type="text" maxlength="@ActiveDirectorySettings.DomainMaxLength" autocomplete="off" spellcheck="false" />
+            <p class="muted">@L["Settings.Ad.DomainNote"]</p>
+        </div>
+        <h2 class="section-gap">@L["Settings.Ad.Lookup.Title"]</h2>
+        <p class="muted">@L["Settings.Ad.Lookup.Note"]</p>
+        <div class="field">
+            <label asp-for="BindUser">@L["Settings.Ad.BindUser"]</label>
+            <input asp-for="BindUser" type="text" maxlength="@ActiveDirectorySettings.BindUserMaxLength" autocomplete="off" spellcheck="false" />
+            <p class="muted">@L["Settings.Ad.BindUserNote"]</p>
+        </div>
+        <div class="field">
+            <label asp-for="BindPassword">@L["Settings.Ad.BindPassword"]</label>
+            <input asp-for="BindPassword" type="password" value="" autocomplete="new-password"
+                   placeholder="@(Model.HasBindPassword ? L["Settings.Ad.BindPasswordSet"].Value : string.Empty)" />
+            <p class="muted">@L["Settings.Ad.BindPasswordNote"]</p>
+        </div>
+        <div class="field">
+            <label asp-for="SearchBase">@L["Settings.Ad.SearchBase"]</label>
+            <input asp-for="SearchBase" type="text" maxlength="@ActiveDirectorySettings.SearchBaseMaxLength" autocomplete="off" spellcheck="false" />
+            <p class="muted">@L["Settings.Ad.SearchBaseNote"]</p>
+        </div>
+        <div class="field">
+            <button type="button" class="secondary" data-check-url="@Url.Action("ActiveDirectoryTest")"
+                    data-check-fields="Server,Port,Security,Domain,BindUser,BindPassword,SearchBase"
+                    data-check-result="#ad-test-result" data-check-running="@L["Settings.Ad.Test.Running"]"
+                    data-check-error="@L["Settings.Ad.Test.Error"]">@L["Settings.Ad.Test.Button"]</button>
+            <p id="ad-test-result" class="notice" role="status" aria-live="polite" hidden></p>
+        </div>
+        <button type="submit">@L["Settings.Save"]</button>
+        <a asp-action="Index">@L["Settings.Policy.Back"]</a>
+    </form>
+</div>

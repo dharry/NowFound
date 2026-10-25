@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Error.Heading" xml:space="preserve">
+    <value>エラーが発生しました。</value>
+  </data>
+  <data name="Error.Message" xml:space="preserve">
+    <value>リクエストの処理中にエラーが発生しました。</value>
+  </data>
+  <data name="Error.RequestId" xml:space="preserve">
+    <value>リクエスト ID:</value>
+  </data>
+  <data name="Error.Title" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="Header.Logout" xml:space="preserve">
+    <value>ログアウト</value>
+  </data>
+  <data name="Language.Label" xml:space="preserve">
+    <value>表示言語</value>
+  </data>
+  <data name="List.All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="List.Columns" xml:space="preserve">
+    <value>表示する列</value>
+  </data>
+  <data name="List.Clear" xml:space="preserve">
+    <value>クリア</value>
+  </data>
+  <data name="List.Count" xml:space="preserve">
+    <value>{0} 件</value>
+  </data>
+  <data name="List.Keyword" xml:space="preserve">
+    <value>キーワード</value>
+  </data>
+  <data name="List.Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="List.SortBy" xml:space="preserve">
+    <value>「{0}」で並べ替え</value>
+  </data>
+  <data name="Footer.NeverUpdated" xml:space="preserve">
+    <value>未実行</value>
+  </data>
+  <data name="Footer.Text" xml:space="preserve">
+    <value>Powered by NowFound（稼働ホスト: {0} / ファイル情報の更新: {1}）</value>
+  </data>
+  <data name="Nav.Folders" xml:space="preserve">
+    <value>検索対象フォルダ</value>
+  </data>
+  <data name="Nav.Global" xml:space="preserve">
+    <value>グローバルナビゲーション</value>
+  </data>
+  <data name="Nav.Groups" xml:space="preserve">
+    <value>グループ管理</value>
+  </data>
+  <data name="Nav.Information" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="Nav.Logs" xml:space="preserve">
+    <value>操作ログ</value>
+  </data>
+  <data name="Nav.Preferences" xml:space="preserve">
+    <value>ユーザー設定</value>
+  </data>
+  <data name="Nav.SavedSearches" xml:space="preserve">
+    <value>保存した検索</value>
+  </data>
+  <data name="Nav.Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Nav.Settings" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Nav.Toggle" xml:space="preserve">
+    <value>メニューの開閉</value>
+  </data>
+  <data name="Nav.Users" xml:space="preserve">
+    <value>ユーザー管理</value>
+  </data>
+  <data name="Pager.Label" xml:space="preserve">
+    <value>ページ移動</value>
+  </data>
+  <data name="Pager.Next" xml:space="preserve">
+    <value>次へ</value>
+  </data>
+  <data name="Pager.Previous" xml:space="preserve">
+    <value>前へ</value>
+  </data>
+  <data name="Privacy.Body" xml:space="preserve">
+    <value>このページにサイトのプライバシーポリシーを記載します。</value>
+  </data>
+  <data name="Privacy.Title" xml:space="preserve">
+    <value>プライバシーポリシー</value>
+  </data>
+  <data name="Password.Hint" xml:space="preserve">
+    <value>パスワードは {0} 文字以上で入力してください。</value>
+  </data>
+  <data name="Password.Hint.Complexity" xml:space="preserve">
+    <value>英大文字・英小文字・数字・記号のうち {0} 種類以上を含めてください。</value>
+  </data>
+  <data name="List.RangeSummary" xml:space="preserve">
+    <value>{0} 件中 {1}～{2} 件</value>
+  </data>
+  <data name="List.PageSize" xml:space="preserve">
+    <value>表示件数: {0} 件</value>
+  </data>
+  <data name="List.PageSize.Title" xml:space="preserve">
+    <value>表示件数はユーザー設定で変更できます</value>
+  </data>
+  <data name="List.AdminPageSize.Title" xml:space="preserve">
+    <value>表示件数はシステム設定で変更できます</value>
+  </data>
+  <data name="Pager.ItemsUnit" xml:space="preserve">
+    <value>件</value>
+  </data>
+</root>

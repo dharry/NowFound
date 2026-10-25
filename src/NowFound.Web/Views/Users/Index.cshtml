@@ -1,0 +1,96 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<UsersResource> L
+@inject IStringLocalizer<CommonResource> C
+@model ListPage<NowFound.Application.Users.UserSummary, UsersQueryModel>
+@{
+    ViewData["Title"] = L["Users.Title"].Value;
+    var pager = PagerModel.From(Model.Result, p => Url.Action("Index", Model.Query.ToRouteValues(p)));
+
+    // 表示/非表示を切り替えられる列（アカウントは常に表示する）。
+    IReadOnlyList<(string Key, string Label)> columns =
+    [
+        ("mail", L["Users.Col.MailAddress"].Value),
+        ("description", L["Users.Col.Description"].Value),
+        ("auth", L["Users.Col.AuthSource"].Value),
+        ("role", L["Users.Col.Role"].Value),
+        ("mustchange", L["Users.Col.MustChange"].Value),
+        ("status", L["Users.Col.Status"].Value),
+        ("expires", L["Users.Col.ExpiresOn"].Value),
+    ];
+}
+<h1>@L["Users.Title"]</h1>
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+<p><a class="button" asp-action="Create">@L["Users.Add"]</a></p>
+<form method="get" asp-action="Index" class="card">
+    <div class="log-filter">
+        <label>@C["List.Keyword"]
+            <input type="text" name="Q" value="@Model.Query.Q" placeholder="@L["Users.Filter.Placeholder"]" />
+        </label>
+        <label>@L["Users.Filter.Role"]
+            <select name="Role">
+                <option value="">@C["List.All"]</option>
+                <option value="admin" selected="@(Model.Query.Role == "admin")">@L["Users.Role.Admin"]</option>
+                <option value="user" selected="@(Model.Query.Role == "user")">@L["Users.Role.User"]</option>
+            </select>
+        </label>
+        <partial name="_SortHidden" model="(ListQueryModel)Model.Query" />
+        <button type="submit">@C["List.Search"]</button>
+        <a class="button secondary" asp-action="Index" role="button">@C["List.Clear"]</a>
+    </div>
+</form>
+<div class="results-toolbar">
+    <span class="summary">
+        @if (Model.Result.TotalCount == 0)
+        {
+            <span>@C["List.Count", 0]</span>
+        }
+        else
+        {
+            <span>@C["List.RangeSummary", Model.Result.TotalCount.ToString("N0"), pager.StartItem.ToString("N0"), pager.EndItem.ToString("N0")]</span>
+            <span class="page-size-info">
+                (<a asp-controller="Settings" asp-action="Index" asp-fragment="AdminListPageSize" title="@C["List.AdminPageSize.Title"]">@C["List.PageSize", Model.Result.PageSize]</a>)
+            </span>
+        }
+    </span>
+    <partial name="_Pager" model="pager" />
+    <partial name="_ColumnMenu" model='new ColumnMenuModel("user-table", columns)' />
+</div>
+<table id="user-table">
+    <thead>
+        <tr>
+            @{ var h1 = Model.Query.SortLink(Url, L["Users.Col.Email"].Value, UserSortKeys.Email, UserSortKeys.Email); }<th aria-sort="@h1.AriaSort"><partial name="_SortLink" model="h1" /></th>
+            <th data-col="mail">@L["Users.Col.MailAddress"]</th>
+            <th data-col="description">@L["Users.Col.Description"]</th>
+            <th data-col="auth">@L["Users.Col.AuthSource"]</th>
+            @{ var h2 = Model.Query.SortLink(Url, L["Users.Col.Role"].Value, UserSortKeys.Role, UserSortKeys.Email); }<th data-col="role" aria-sort="@h2.AriaSort"><partial name="_SortLink" model="h2" /></th>
+            @{ var h3 = Model.Query.SortLink(Url, L["Users.Col.MustChange"].Value, UserSortKeys.MustChange, UserSortKeys.Email); }<th data-col="mustchange" aria-sort="@h3.AriaSort"><partial name="_SortLink" model="h3" /></th>
+            <th data-col="status">@L["Users.Col.Status"]</th>
+            <th data-col="expires">@L["Users.Col.ExpiresOn"]</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model.Result.Items)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td data-col="mail">@user.MailAddress</td>
+            <td data-col="description">@user.Description</td>
+            <td data-col="auth">@L[user.AuthSource == NowFound.Domain.AuthSources.ActiveDirectory ? "Users.Auth.ActiveDirectory" : "Users.Auth.Local"]</td>
+            <td data-col="role">@(user.IsAdmin ? L["Users.Role.Admin"].Value : L["Users.Role.User"].Value)</td>
+            <td data-col="mustchange">@(user.MustChangePassword ? L["Users.MustChange.Yes"].Value : "-")</td>
+            <td data-col="status">
+                @{ var status = AccountStatusRules.Evaluate(user.IsEnabled, user.ExpiresOn, AccountClock.Today); }
+                @(status switch { AccountStatus.Disabled => L["Users.Status.Disabled"].Value, AccountStatus.Expired => L["Users.Status.Expired"].Value, _ => L["Users.Status.Active"].Value })@(user.IsLockedOut ? " / " + L["Users.Status.Locked"].Value : string.Empty)
+            </td>
+            <td data-col="expires">@(user.ExpiresOn?.ToString("yyyy-MM-dd") ?? "-")</td>
+            <td><a class="button" asp-action="Edit" asp-route-id="@user.Id">@L["Users.Edit.Link"]</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+<partial name="_Pager" model="pager" />

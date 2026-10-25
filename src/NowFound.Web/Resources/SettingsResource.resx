@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Settings.AdminListPageSize" xml:space="preserve">
+    <value>管理画面の一覧のページサイズ</value>
+  </data>
+  <data name="Settings.AdminListPageSizeNote" xml:space="preserve">
+    <value>ユーザー管理・グループ管理・検索対象フォルダの一覧の 1 ページあたりの件数です。</value>
+  </data>
+  <data name="Settings.Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="Settings.Configure" xml:space="preserve">
+    <value>設定する</value>
+  </data>
+  <data name="Settings.Exclude.BuiltIn" xml:space="preserve">
+    <value>現在は組み込みの既定（macOS・Windows・Office・Vim・Emacs・NFS/Samba の一時ファイルなど）を使っています。</value>
+  </data>
+  <data name="Settings.Exclude.Customized" xml:space="preserve">
+    <value>現在は設定を変更済みです。</value>
+  </data>
+  <data name="Settings.Exclude.Existing" xml:space="preserve">
+    <value>すでに登録してあるフォルダの設定は変わりません。</value>
+  </data>
+  <data name="Settings.Exclude.Help1" xml:space="preserve">
+    <value>名前に対して {0}（任意の文字列）と {1}（1 文字）が使えます。大文字小文字は区別しません。</value>
+  </data>
+  <data name="Settings.Exclude.Help2" xml:space="preserve">
+    <value>末尾に {0} を付けるとフォルダだけが対象です（例: {1}）。</value>
+  </data>
+  <data name="Settings.Exclude.Help3" xml:space="preserve">
+    <value>{0} で始まる行もパターンとして扱います（Emacs の {1} のため、コメントは書けません）。</value>
+  </data>
+  <data name="Settings.Exclude.Help4" xml:space="preserve">
+    <value>最大 {0} 個、全体で {1} 文字までです。</value>
+  </data>
+  <data name="Settings.Exclude.Intro" xml:space="preserve">
+    <value>検索対象フォルダを新しく追加するときに、除外パターンの入力欄へ最初から入れておく内容です。</value>
+  </data>
+  <data name="Settings.Exclude.Patterns" xml:space="preserve">
+    <value>除外パターン（1 行に 1 つ）</value>
+  </data>
+  <data name="Settings.Exclude.Reset" xml:space="preserve">
+    <value>組み込みの既定に戻す</value>
+  </data>
+  <data name="Settings.Exclude.ResetConfirm" xml:space="preserve">
+    <value>編集した内容を破棄して、組み込みの既定に戻します。よろしいですか？</value>
+  </data>
+  <data name="Settings.Exclude.ResetDone" xml:space="preserve">
+    <value>組み込みの既定に戻しました。</value>
+  </data>
+  <data name="Settings.Exclude.Saved" xml:space="preserve">
+    <value>保存しました。これから追加するフォルダの入力欄に反映されます（登録済みのフォルダは変わりません）。</value>
+  </data>
+  <data name="Settings.Exclude.Title" xml:space="preserve">
+    <value>既定の除外パターン</value>
+  </data>
+  <data name="Settings.ExcludeCard.Note" xml:space="preserve">
+    <value>検索対象フォルダを新しく追加するときに、除外パターンの入力欄へ最初から入れておく内容を設定します。</value>
+  </data>
+  <data name="Settings.ExcludeCard.Title" xml:space="preserve">
+    <value>既定の除外パターン</value>
+  </data>
+  <data name="Settings.Kinds.Add" xml:space="preserve">
+    <value>種類を追加</value>
+  </data>
+  <data name="Settings.Kinds.Col.Extensions" xml:space="preserve">
+    <value>拡張子</value>
+  </data>
+  <data name="Settings.Kinds.Col.Icon" xml:space="preserve">
+    <value>アイコン</value>
+  </data>
+  <data name="Settings.Kinds.Col.Name" xml:space="preserve">
+    <value>名前（マウスを載せたときに表示）</value>
+  </data>
+  <data name="Settings.Kinds.Customized" xml:space="preserve">
+    <value>現在は設定を変更済みです。</value>
+  </data>
+  <data name="Settings.Kinds.Intro" xml:space="preserve">
+    <value>検索結果の「名前」に付くアイコンと、その対象の拡張子を設定します。</value>
+  </data>
+  <data name="Settings.Kinds.Note1" xml:space="preserve">
+    <value>1 つの拡張子は 1 つの種類にだけ指定できます。拡張子は大文字小文字を区別しません。</value>
+  </data>
+  <data name="Settings.Kinds.Note2" xml:space="preserve">
+    <value>どの種類にも当てはまらないファイルは「ファイル」のアイコンになります。</value>
+  </data>
+  <data name="Settings.Kinds.Note3" xml:space="preserve">
+    <value>アイコンには絵文字（Windows では Win + . で入力できます）か、2〜3 文字の短い文字も使えます。</value>
+  </data>
+  <data name="Settings.Kinds.Reset" xml:space="preserve">
+    <value>標準の設定に戻す</value>
+  </data>
+  <data name="Settings.Kinds.ResetConfirm" xml:space="preserve">
+    <value>編集した内容をすべて破棄して、標準の設定に戻します。よろしいですか？</value>
+  </data>
+  <data name="Settings.Kinds.ResetDone" xml:space="preserve">
+    <value>既定の設定に戻しました。</value>
+  </data>
+  <data name="Settings.Kinds.Row.ChipFolder" xml:space="preserve">
+    <value>フォルダ</value>
+  </data>
+  <data name="Settings.Kinds.Row.ChipOther" xml:space="preserve">
+    <value>上記以外のすべて</value>
+  </data>
+  <data name="Settings.Kinds.Row.Extensions" xml:space="preserve">
+    <value>拡張子</value>
+  </data>
+  <data name="Settings.Kinds.Row.ExtensionsPlaceholder" xml:space="preserve">
+    <value>例: txt, log, conf（カンマ・空白・改行で区切る。ドットは不要）</value>
+  </data>
+  <data name="Settings.Kinds.Row.Icon" xml:space="preserve">
+    <value>アイコン</value>
+  </data>
+  <data name="Settings.Kinds.Row.Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="Settings.Kinds.Row.NoExtensions" xml:space="preserve">
+    <value>拡張子は指定できません（アイコンと名前のみ変更できます）</value>
+  </data>
+  <data name="Settings.Kinds.Row.Remove" xml:space="preserve">
+    <value>この種類を削除</value>
+  </data>
+  <data name="Settings.Kinds.Saved" xml:space="preserve">
+    <value>保存しました。検索結果のアイコンに反映されます。</value>
+  </data>
+  <data name="Settings.Kinds.Scope" xml:space="preserve">
+    <value>ここで保存した内容は、すべてのユーザーの検索結果に反映されます。</value>
+  </data>
+  <data name="Settings.Kinds.Standard" xml:space="preserve">
+    <value>現在は標準の設定を使っています。</value>
+  </data>
+  <data name="Settings.Kinds.Title" xml:space="preserve">
+    <value>ファイルの種類とアイコン</value>
+  </data>
+  <data name="Settings.KindsCard.Note" xml:space="preserve">
+    <value>検索結果の名前欄に付くアイコンと、その対象になる拡張子を設定します。</value>
+  </data>
+  <data name="Settings.KindsCard.Title" xml:space="preserve">
+    <value>ファイルの種類とアイコン</value>
+  </data>
+  <data name="Settings.LogPageSize" xml:space="preserve">
+    <value>操作ログのページサイズ</value>
+  </data>
+  <data name="Settings.LogPageSizeNote" xml:space="preserve">
+    <value>操作ログ一覧の 1 ページあたりの件数です。検索結果のページサイズとは別に設定します。</value>
+  </data>
+  <data name="Settings.PageSize" xml:space="preserve">
+    <value>検索結果のページサイズ（既定値）</value>
+  </data>
+  <data name="Settings.PageSizeNote" xml:space="preserve">
+    <value>ユーザーが個別に設定していない場合に使われます。</value>
+  </data>
+  <data name="Settings.Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Settings.Saved" xml:space="preserve">
+    <value>保存しました。</value>
+  </data>
+  <data name="Settings.Title" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Settings.PolicyCard.Title" xml:space="preserve">
+    <value>アカウントポリシー</value>
+  </data>
+  <data name="Settings.PolicyCard.Note" xml:space="preserve">
+    <value>パスワードの最小文字数・複雑性と、ログイン失敗時のロック回数を設定します。</value>
+  </data>
+  <data name="Settings.Policy.Title" xml:space="preserve">
+    <value>アカウントポリシー</value>
+  </data>
+  <data name="Settings.Policy.Note" xml:space="preserve">
+    <value>すべてのユーザーに適用されます。パスワードの規則は、次にパスワードを設定・変更するときから適用されます（既存のパスワードはそのまま使えます）。</value>
+  </data>
+  <data name="Settings.Policy.MinLength" xml:space="preserve">
+    <value>パスワードの最小文字数</value>
+  </data>
+  <data name="Settings.Policy.MinLengthNote" xml:space="preserve">
+    <value>{0}～{1} 文字で指定します。</value>
+  </data>
+  <data name="Settings.Policy.Complexity" xml:space="preserve">
+    <value>パスワードに複雑性を求める</value>
+  </data>
+  <data name="Settings.Policy.ComplexityNote" xml:space="preserve">
+    <value>英大文字・英小文字・数字・記号のうち {0} 種類以上を含める必要があります。</value>
+  </data>
+  <data name="Settings.Policy.MaxFailed" xml:space="preserve">
+    <value>ログイン失敗でロックするまでの回数</value>
+  </data>
+  <data name="Settings.Policy.MaxFailedNote" xml:space="preserve">
+    <value>0～{0} 回で指定します。0 はロックしません。ロックされたアカウントは {1} 分後に自動で解除されます。管理者はユーザーの編集画面でいつでも解除できます。</value>
+  </data>
+  <data name="Settings.Policy.Back" xml:space="preserve">
+    <value>戻る</value>
+  </data>
+  <data name="Settings.Policy.MaxAge" xml:space="preserve">
+    <value>パスワードの有効日数</value>
+  </data>
+  <data name="Settings.Policy.MaxAgeNote" xml:space="preserve">
+    <value>0～{0} 日で指定します。0 は無期限です。設定した日数を過ぎると、次のアクセスでパスワードの変更が求められます。既存のユーザーは、設定を変えた日ではなく、最後にパスワードを設定した日から数えます。</value>
+  </data>
+  <data name="Settings.Policy.History" xml:space="preserve">
+    <value>再利用を禁止するパスワードの数</value>
+  </data>
+  <data name="Settings.Policy.HistoryNote" xml:space="preserve">
+    <value>0～{0} 件で指定します。0 は禁止しません。現在のパスワードを含む直近の件数と同じパスワードには変更できません。</value>
+  </data>
+  <data name="Settings.Incremental.Title" xml:space="preserve">
+    <value>インクリメンタルサーチ</value>
+  </data>
+  <data name="Settings.Incremental.Note" xml:space="preserve">
+    <value>検索欄に入力するだけで、Enter を押さずに結果を自動で更新します。検索の負荷が高いときは、無効にするか、開始文字数と待ち時間を大きくしてください。</value>
+  </data>
+  <data name="Settings.Incremental.Enabled" xml:space="preserve">
+    <value>インクリメンタルサーチを使う</value>
+  </data>
+  <data name="Settings.Incremental.MinChars" xml:space="preserve">
+    <value>開始する入力文字数</value>
+  </data>
+  <data name="Settings.Incremental.MinCharsNote" xml:space="preserve">
+    <value>この文字数以上を入力すると検索を始めます（{0}～{1}）。</value>
+  </data>
+  <data name="Settings.Incremental.DelayMs" xml:space="preserve">
+    <value>待ち時間（ミリ秒）</value>
+  </data>
+  <data name="Settings.Incremental.DelayMsNote" xml:space="preserve">
+    <value>最後の入力からこの時間が経つと検索を始めます（{0}～{1}）。</value>
+  </data>
+  <data name="Settings.AdCard.Title" xml:space="preserve">
+    <value>ActiveDirectory 認証</value>
+  </data>
+  <data name="Settings.AdCard.Note" xml:space="preserve">
+    <value>ログイン画面に「ActiveDirectory」タブを追加し、ドメインのユーザー名とパスワードでログインできるようにします。</value>
+  </data>
+  <data name="Settings.Ad.Title" xml:space="preserve">
+    <value>ActiveDirectory 認証</value>
+  </data>
+  <data name="Settings.Ad.Note" xml:space="preserve">
+    <value>ActiveDirectory のユーザーは、ユーザー管理で事前に登録した人だけがログインできます。パスワードは ActiveDirectory で検証し、NowFound には保存しません。</value>
+  </data>
+  <data name="Settings.Ad.Enabled" xml:space="preserve">
+    <value>ActiveDirectory 認証を使う</value>
+  </data>
+  <data name="Settings.Ad.Server" xml:space="preserve">
+    <value>サーバー</value>
+  </data>
+  <data name="Settings.Ad.ServerNote" xml:space="preserve">
+    <value>ドメインコントローラーのホスト名または IP アドレス（例: dc01.corp.example.com）。</value>
+  </data>
+  <data name="Settings.Ad.Security" xml:space="preserve">
+    <value>接続の保護</value>
+  </data>
+  <data name="Settings.Ad.Security.None" xml:space="preserve">
+    <value>なし（LDAP / 389）</value>
+  </data>
+  <data name="Settings.Ad.Security.Ssl" xml:space="preserve">
+    <value>LDAPS（636）</value>
+  </data>
+  <data name="Settings.Ad.Security.StartTls" xml:space="preserve">
+    <value>StartTLS（389）</value>
+  </data>
+  <data name="Settings.Ad.SecurityNote" xml:space="preserve">
+    <value>パスワードを平文で送らないため、「なし」は検証環境以外では使わないでください。証明書はサーバーの OS が信頼している必要があります。</value>
+  </data>
+  <data name="Settings.Ad.Port" xml:space="preserve">
+    <value>ポート</value>
+  </data>
+  <data name="Settings.Ad.Domain" xml:space="preserve">
+    <value>ドメイン（UPN サフィックス）</value>
+  </data>
+  <data name="Settings.Ad.DomainNote" xml:space="preserve">
+    <value>ユーザー名に付けて「ユーザー名@ドメイン」で認証します（例: corp.example.com）。</value>
+  </data>
+  <data name="Settings.Ad.Lookup.Title" xml:space="preserve">
+    <value>ユーザーの存在確認（任意）</value>
+  </data>
+  <data name="Settings.Ad.Lookup.Note" xml:space="preserve">
+    <value>ユーザー追加画面の「ユーザーの存在確認」で、ActiveDirectory にユーザーがいるかを調べるためのアカウントです。ディレクトリを検索できる読み取り専用のアカウントを指定してください。ログインには使いません。</value>
+  </data>
+  <data name="Settings.Ad.BindUser" xml:space="preserve">
+    <value>確認用アカウント</value>
+  </data>
+  <data name="Settings.Ad.BindUserNote" xml:space="preserve">
+    <value>ユーザー名（ドメインを補います）、user@corp.example.com、または DN。空にすると存在確認は使えません。</value>
+  </data>
+  <data name="Settings.Ad.BindPassword" xml:space="preserve">
+    <value>確認用アカウントのパスワード</value>
+  </data>
+  <data name="Settings.Ad.BindPasswordSet" xml:space="preserve">
+    <value>設定済み（変更するときだけ入力）</value>
+  </data>
+  <data name="Settings.Ad.BindPasswordNote" xml:space="preserve">
+    <value>暗号化して保存し、画面には表示しません。確認用アカウントを空にして保存すると、保存済みのパスワードも削除します。</value>
+  </data>
+  <data name="Settings.Ad.SearchBase" xml:space="preserve">
+    <value>検索の起点（DN）</value>
+  </data>
+  <data name="Settings.Ad.SearchBaseNote" xml:space="preserve">
+    <value>空ならドメインから求めます（corp.example.com → DC=corp,DC=example,DC=com）。特定の OU だけを対象にするときに指定します。</value>
+  </data>
+  <data name="Settings.Ad.Test.Button" xml:space="preserve">
+    <value>接続確認</value>
+  </data>
+  <data name="Settings.Ad.Test.Running" xml:space="preserve">
+    <value>確認しています…</value>
+  </data>
+  <data name="Settings.Ad.Test.Error" xml:space="preserve">
+    <value>確認を実行できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="Settings.TransferCard.Title" xml:space="preserve">
+    <value>設定のエクスポート／インポート</value>
+  </data>
+  <data name="Settings.TransferCard.Note" xml:space="preserve">
+    <value>検索対象フォルダ・システム設定・ファイルの種類を JSON ファイルで書き出し・取り込みします（テスト環境からの移行など）。</value>
+  </data>
+  <data name="Transfer.Title" xml:space="preserve">
+    <value>設定のエクスポート／インポート</value>
+  </data>
+  <data name="Transfer.Note" xml:space="preserve">
+    <value>環境間で設定を移すための機能です。データベース（main.db）ごと移行する場合は不要です。取り込みは全件を検証してから反映し、1 件でも不正があれば何も変更しません。</value>
+  </data>
+  <data name="Transfer.Folders.Title" xml:space="preserve">
+    <value>検索対象フォルダ</value>
+  </data>
+  <data name="Transfer.Folders.Note" xml:space="preserve">
+    <value>名前・パス・除外設定・共有設定を対象にします。パスが同じフォルダは更新し、無いフォルダは追加します（ファイルに無いフォルダは削除しません）。グループへの割り当ては含みません。</value>
+  </data>
+  <data name="Transfer.System.Title" xml:space="preserve">
+    <value>システム設定</value>
+  </data>
+  <data name="Transfer.System.Note" xml:space="preserve">
+    <value>ページサイズ・インクリメンタルサーチ・既定の除外パターン・アカウントポリシー・ActiveDirectory 設定を対象にします。確認用アカウントのパスワードは書き出されません。取り込み後に、ActiveDirectory 設定で確認用アカウントのパスワードを再設定してください。</value>
+  </data>
+  <data name="Transfer.Export" xml:space="preserve">
+    <value>エクスポート</value>
+  </data>
+  <data name="Transfer.Import" xml:space="preserve">
+    <value>インポート</value>
+  </data>
+  <data name="Transfer.File" xml:space="preserve">
+    <value>JSON ファイル</value>
+  </data>
+  <data name="Transfer.FoldersImported" xml:space="preserve">
+    <value>検索対象フォルダを取り込みました（追加 {0} 件、更新 {1} 件）。</value>
+  </data>
+  <data name="Transfer.SystemImported" xml:space="preserve">
+    <value>システム設定を取り込みました。</value>
+  </data>
+  <data name="Transfer.BindPasswordNeeded" xml:space="preserve">
+    <value>確認用アカウントのパスワードは取り込まれません。ActiveDirectory 設定で、確認用アカウントのパスワードを再設定してください。</value>
+  </data>
+  <data name="Transfer.FileKinds.Title" xml:space="preserve">
+    <value>ファイルの種類</value>
+  </data>
+  <data name="Transfer.FileKinds.Note" xml:space="preserve">
+    <value>検索結果に出すアイコン・名前・拡張子の設定を対象にします。取り込むと全体を置き換えます（現在の設定は残りません）。</value>
+  </data>
+  <data name="Transfer.FileKindsImported" xml:space="preserve">
+    <value>ファイルの種類の設定を取り込みました。</value>
+  </data>
+  <data name="Settings.Export.Title" xml:space="preserve">
+    <value>検索結果のエクスポート</value>
+  </data>
+  <data name="Settings.Export.Note" xml:space="preserve">
+    <value>検索結果を CSV / TSV でダウンロードする機能の設定です。</value>
+  </data>
+  <data name="Settings.Export.AllowAllUsers" xml:space="preserve">
+    <value>一般ユーザーにもエクスポートを許可する</value>
+  </data>
+  <data name="Settings.Export.AllowAllUsersNote" xml:space="preserve">
+    <value>オフのときは管理者だけが使えます。</value>
+  </data>
+  <data name="Settings.Export.MaxRows" xml:space="preserve">
+    <value>書き出す最大行数</value>
+  </data>
+  <data name="Settings.Export.MaxRowsNote" xml:space="preserve">
+    <value>この件数を超える分は書き出されません（{0}～{1}）。</value>
+  </data>
+</root>

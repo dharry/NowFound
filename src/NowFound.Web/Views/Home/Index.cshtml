@@ -1,0 +1,167 @@
+@using NowFound.Application.Search
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model SearchViewModel
+@inject IStringLocalizer<SearchResource> L
+@inject NowFound.Web.Services.IMessageTranslator Translator
+@{
+    ViewData["Title"] = L["Search.Title"].Value;
+    var detailOpen = Model.Conditions.Count > 1 || Model.Operator == SearchOperator.Or;
+    var scopeName = Model.FolderId is null
+        ? null
+        : NowFound.Web.Services.FolderScopeLabel.Build(Model.Folders.FirstOrDefault(f => f.Id == Model.FolderId), Model.FolderPath);
+
+    var isAdmin = User.IsInRole("Admin");
+    var showSavedPane = Model.CurrentSaved is not null;
+    var primaryRow = new ConditionRowModel("0", Model.Conditions[0], false);
+    var templateRow = new ConditionRowModel("__INDEX__", new SearchCondition(), true);
+}
+<div class="search-page" id="search-page">
+    <form method="get" asp-action="Index" id="search-form" class="searchbar"
+          data-incremental="@Model.Incremental.Enabled.ToString().ToLowerInvariant()"
+          data-incremental-min="@Model.Incremental.MinChars"
+          data-incremental-delay="@Model.Incremental.DelayMs"
+          data-incremental-header="@NowFound.Web.Controllers.HomeController.IncrementalHeader">
+        <input type="hidden" name="FolderId" value="@Model.FolderId" />
+        <input type="hidden" name="FolderPath" value="@Model.FolderPath" />
+        <input type="hidden" name="Sort" value="@Model.Sort" />
+        <input type="hidden" name="Desc" value="@Model.Desc.ToString().ToLowerInvariant()" />
+        @if (Model.Saved is { } savedId)
+        {
+            <input type="hidden" name="Saved" value="@savedId" />
+        }
+
+        <div class="searchbar-main">
+            <button type="button" class="secondary" id="tree-toggle" aria-controls="tree-panel" aria-expanded="true">@L["Search.SidePanel"]</button>
+            <div class="primary" id="primary-condition">
+                <partial name="_ConditionRow" model="primaryRow" />
+            </div>
+            <button type="submit">@L["Search.Submit"]</button>
+            <button type="button" class="secondary" id="detail-toggle" aria-controls="detail-panel" aria-expanded="@detailOpen.ToString().ToLowerInvariant()">@L["Search.DetailToggle"]</button>
+            <button type="button" class="secondary" id="save-open" aria-haspopup="dialog" disabled="@(!Model.HasQuery)"
+                    title="@(Model.HasQuery ? L["Search.Save.TitleEnabled"] : L["Search.Save.TitleDisabled"])">@L["Search.Save.Button"]</button>
+        </div>
+
+        <div class="detail" id="detail-panel" hidden="@(!detailOpen)">
+            <div class="field inline">
+                <label for="Operator">@L["Search.Operator.Label"]</label>
+                <select id="Operator" name="Operator">
+                    <option value="And" selected="@(Model.Operator == SearchOperator.And)">@L["Search.Operator.And"]</option>
+                    <option value="Or" selected="@(Model.Operator == SearchOperator.Or)">@L["Search.Operator.Or"]</option>
+                </select>
+            </div>
+            <div id="extra-conditions">
+                @for (var i = 1; i < Model.Conditions.Count; i++)
+                {
+                    var extraRow = new ConditionRowModel(i.ToString(), Model.Conditions[i], true);
+                    <partial name="_ConditionRow" model="extraRow" />
+                }
+            </div>
+            <button type="button" class="secondary" id="add-condition">@L["Search.AddCondition"]</button>
+        </div>
+    </form>
+
+    <partial name="_Flash" />
+
+    <partial name="_SavedBanner" model="Model" />
+
+    @if (Model.FolderUnavailable)
+    {
+        <p class="validation-summary" role="alert">@L["Search.FolderUnavailable"]</p>
+    }
+
+    @if (scopeName is not null)
+    {
+        <p class="scope">
+            @L["Search.Scope.Label"] <strong>@scopeName</strong>
+            <a href="@Url.Action("Index", "Home", Model.ToRouteValues(1, clearFolder: true))" data-clear-folder="true">@L["Search.Scope.Clear"]</a>
+        </p>
+    }
+
+    <div class="search-body">
+        <aside class="tree" id="tree-panel" aria-label="@L["Search.Tree.Label"]">
+            <div class="tabs" role="tablist">
+                <button type="button" role="tab" class="tab" id="tab-folders" aria-controls="pane-folders" aria-selected="@((!showSavedPane).ToString().ToLowerInvariant())">@L["Search.Tab.Folders"]</button>
+                <button type="button" role="tab" class="tab" id="tab-saved" aria-controls="pane-saved" aria-selected="@showSavedPane.ToString().ToLowerInvariant()">@L["Search.Tab.Saved"]</button>
+            </div>
+            <div id="pane-folders" role="tabpanel" aria-labelledby="tab-folders" hidden="@showSavedPane">
+            <ul id="folder-tree" data-url="@Url.Action("SubFolders", "Home")">
+                <li><a href="@Url.Action("Index", "Home", Model.ToRouteValues(1, clearFolder: true))" class="@(Model.FolderId is null ? "current" : null)" data-clear-folder="true">@L["Search.Tree.All"]</a></li>
+                @foreach (var folder in Model.Folders)
+                {
+                    <li data-folder-id="@folder.Id" data-path="@folder.Path">
+                        <button type="button" class="toggle" aria-expanded="false" aria-label="@L["Search.Tree.Expand"]">▸</button>
+                        <a href="@Url.Action("Index", "Home", Model.ToRouteValues(1, folderId: folder.Id, folderPath: ""))"
+                           data-folder-id="@folder.Id" data-folder-path=""
+                           class="@(Model.FolderId == folder.Id && string.IsNullOrEmpty(Model.FolderPath) ? "current" : null)">@folder.Name</a>
+                    </li>
+                }
+            </ul>
+            @if (Model.Folders.Count == 0)
+            {
+                <p class="muted">@L["Search.Tree.NoFolders"]</p>
+            }
+            </div>
+            <div id="pane-saved" role="tabpanel" aria-labelledby="tab-saved" hidden="@(!showSavedPane)">
+                <ul class="saved-list">
+                    @foreach (var item in Model.SavedSearches)
+                    {
+                        <li>
+                            <a asp-controller="SavedSearches" asp-action="Run" asp-route-id="@item.Id"
+                               class="@(Model.CurrentSaved?.Id == item.Id ? "current" : null)" title="@item.Description">@(item.IsPinned ? "📌 " : "")@item.Name</a>
+                            @if (item.IsPublic)
+                            {
+                                <span class="chip">@L["Search.Public"]</span>
+                            }
+                        </li>
+                    }
+                </ul>
+                @if (Model.SavedSearches.Count == 0)
+                {
+                    <p class="muted">@L["Search.Saved.None"]</p>
+                }
+                <p><a asp-controller="SavedSearches" asp-action="Index">@L["Search.Saved.ManageLink"]</a></p>
+            </div>
+        </aside>
+
+        <partial name="_SearchResults" model="Model" />
+    </div>
+</div>
+
+<dialog id="save-dialog" class="dialog" aria-labelledby="save-dialog-title">
+    <form asp-controller="SavedSearches" asp-action="Create" method="post">
+        <h2 id="save-dialog-title">@L["Search.Dialog.Title"]</h2>
+        <p class="muted">@L["Search.Dialog.Intro"]</p>
+        <div id="save-query-fields" data-incremental-swap="query-fields">
+            <partial name="_QueryFields" model="Model" />
+        </div>
+        <div class="field">
+            <label for="save-name">@L["Search.Dialog.Name"]</label>
+            <input id="save-name" name="Name" type="text" maxlength="100" required value="@Model.CurrentSaved?.Name" />
+        </div>
+        <div class="field">
+            <label for="save-description">@L["Search.Dialog.Description"]</label>
+            <input id="save-description" name="Description" type="text" maxlength="500" />
+        </div>
+        <fieldset class="field">
+            <legend>@L["Search.Dialog.Visibility"]</legend>
+            <label class="check"><input type="radio" name="IsPublic" value="false" checked /> @L["Search.Dialog.PrivateSelf"]</label>
+            <label class="check"><input type="radio" name="IsPublic" value="true" disabled="@(!isAdmin)" /> @L["Search.Dialog.PublicAll"]</label>
+            @if (!isAdmin)
+            {
+                <p class="muted">@L["Search.Dialog.AdminOnly"]</p>
+            }
+        </fieldset>
+        <div class="field">
+            <label class="check"><input type="checkbox" name="IsPinned" value="true" /> @L["Search.Dialog.Pin"]</label>
+        </div>
+        <div class="dialog-actions">
+            <button type="button" class="text" data-close>@L["Search.Dialog.Cancel"]</button>
+            <button type="submit">@L["Search.Dialog.Submit"]</button>
+        </div>
+    </form>
+</dialog>
+
+<template id="condition-template">
+    <partial name="_ConditionRow" model="templateRow" />
+</template>

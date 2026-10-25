@@ -1,0 +1,24 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model PagerModel
+@inject IStringLocalizer<CommonResource> L
+@if (Model.IsVisible)
+{
+    <nav class="pager" aria-label="@L["Pager.Label"]">
+        @if (Model.Page > 1 && Model.PreviousUrl is not null)
+        {
+            <a href="@Model.PreviousUrl">@L["Pager.Previous"]</a>
+        }
+        <span class="pager-status">
+            <span>@Model.Page / @Model.TotalPages</span>
+            @if (Model.TotalCount > 0)
+            {
+                <span class="pager-range">(@Model.StartItem–@Model.EndItem / @Model.TotalCount.ToString("N0") @L["Pager.ItemsUnit"])</span>
+            }
+        </span>
+        @if (Model.Page < Model.TotalPages && Model.NextUrl is not null)
+        {
+            <a href="@Model.NextUrl">@L["Pager.Next"]</a>
+        }
+    </nav>
+}

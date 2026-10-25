@@ -1,0 +1,50 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model SavedSearchEditViewModel
+@inject IStringLocalizer<SavedSearchesResource> L
+@{
+    ViewData["Title"] = L["SavedSearches.Edit.Title"].Value;
+}
+<h1>@L["SavedSearches.Edit.Title"]</h1>
+<div class="card">
+    <form asp-action="Save" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="field">
+            <label asp-for="Name">@L["SavedSearches.Edit.Name"]</label>
+            <input asp-for="Name" type="text" maxlength="100" required />
+        </div>
+        <div class="field">
+            <label asp-for="Description">@L["SavedSearches.Edit.Description"]</label>
+            <input asp-for="Description" type="text" maxlength="500" />
+        </div>
+        <fieldset class="field">
+            <legend>@L["SavedSearches.Edit.Visibility"]</legend>
+            <label class="check">
+                <input type="radio" name="IsPublic" value="false" checked="@(!Model.IsPublic)" disabled="@(!Model.CanMakePrivate)" />
+                @L["SavedSearches.Edit.PrivateOwner"]
+            </label>
+            <label class="check">
+                <input type="radio" name="IsPublic" value="true" checked="@Model.IsPublic" disabled="@(!Model.CanPublish)" />
+                @L["SavedSearches.Edit.PublicAll"]
+            </label>
+            @if (!Model.CanPublish)
+            {
+                <p class="muted">@L["SavedSearches.Edit.AdminOnly"]</p>
+            }
+            else if (!Model.CanMakePrivate)
+            {
+                <p class="muted">@L["SavedSearches.Edit.OnlyOwnerMakesPrivate", Model.OwnerEmail]</p>
+            }
+        </fieldset>
+        <div class="field">
+            <label class="check">
+                <input type="checkbox" name="IsPinned" value="true" checked="@Model.IsPinned" />
+                @L["SavedSearches.Edit.Pin"]
+            </label>
+        </div>
+        <p class="muted">@L["SavedSearches.Edit.Hint"]</p>
+        <button type="submit">@L["SavedSearches.Edit.Submit"]</button>
+        <a asp-action="Index">@L["SavedSearches.Edit.Cancel"]</a>
+    </form>
+</div>

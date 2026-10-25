@@ -1,0 +1,22 @@
+@using NowFound.Application.Search
+@model SearchViewModel
+@* 現在表示している（実行済みの）検索条件を、保存フォームへそのまま渡す hidden 項目。 *@
+<input type="hidden" name="Operator" value="@Model.Operator" />
+<input type="hidden" name="FolderId" value="@Model.FolderId" />
+<input type="hidden" name="FolderPath" value="@Model.FolderPath" />
+<input type="hidden" name="Sort" value="@Model.Sort" />
+<input type="hidden" name="Desc" value="@Model.Desc.ToString().ToLowerInvariant()" />
+@{
+    var index = 0;
+}
+@foreach (var condition in Model.Conditions.Where(c => !c.IsEmpty))
+{
+    <input type="hidden" name="Conditions[@index].Field" value="@condition.Field" />
+    <input type="hidden" name="Conditions[@index].Text" value="@condition.Text" />
+    <input type="hidden" name="Conditions[@index].From" value="@condition.From?.ToString("yyyy-MM-dd")" />
+    <input type="hidden" name="Conditions[@index].To" value="@condition.To?.ToString("yyyy-MM-dd")" />
+    <input type="hidden" name="Conditions[@index].SizeComparison" value="@condition.SizeComparison" />
+    <input type="hidden" name="Conditions[@index].SizeValue" value="@condition.SizeValue?.ToString(System.Globalization.CultureInfo.InvariantCulture)" />
+    <input type="hidden" name="Conditions[@index].SizeUnit" value="@condition.SizeUnit" />
+    index++;
+}

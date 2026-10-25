@@ -1,0 +1,17 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model ColumnMenuModel
+@inject IStringLocalizer<CommonResource> C
+@* 表示する列のメニュー。選択はブラウザに記憶する（site.js が data-col-table で表と結び付ける）。 *@
+<details class="col-menu">
+    <summary>@C["List.Columns"]</summary>
+    <div class="col-menu-body">
+        @foreach (var (key, label) in Model.Columns)
+        {
+            <label class="check">
+                <input type="checkbox" data-col-table="@Model.TableId" data-col-toggle="@key" />
+                @label
+            </label>
+        }
+    </div>
+</details>

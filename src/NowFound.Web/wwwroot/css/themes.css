@@ -1,0 +1,275 @@
+/*
+ * テーマ定義。Material Design 3 のカラーロールに対応するトークンを、テーマごとに定義する。
+ *   - html[data-theme] で画面全体に適用される（ユーザー設定で切り替え）。
+ *   - 任意の要素に data-theme を付けると、その要素の中だけ別テーマになる（テーマ選択のプレビューで利用）。
+ *   - table-header / on-table-header は表の見出し行の色（テーマの色を強く出す）。
+ *   - 色は #rrggbb のみ使う（コントラスト検証のテストが読み取るため）。
+ *   - 新しいテーマは NowFound.Domain の AppThemes にも追加すること（テストが両者の整合を検証する）。
+ */
+
+/* ---- Visual Studio 系 ---- */
+
+/* 明るい（既定） */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --md-bg: #f3f3f3;
+  --md-surface: #ffffff;
+  --md-surface-container: #f0f1f4;
+  --md-surface-container-high: #e6e8ec;
+  --md-on-surface: #1f1f1f;
+  --md-on-surface-variant: #4f4f4f;
+  --md-outline: #79797f;
+  --md-outline-variant: #d0d2d8;
+  --md-primary: #005fb7;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #d3e3fd;
+  --md-on-primary-container: #001d4a;
+  --md-table-header: #005fb7;
+  --md-on-table-header: #ffffff;
+  --md-secondary-container: #e1e3e8;
+  --md-on-secondary-container: #1c1f24;
+  --md-error: #b3261e;
+  --md-on-error: #ffffff;
+  --md-success: #1b6e3a;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}
+
+/* 濃色 */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --md-bg: #1f1f1f;
+  --md-surface: #252526;
+  --md-surface-container: #2d2d30;
+  --md-surface-container-high: #37373d;
+  --md-on-surface: #e6e6e6;
+  --md-on-surface-variant: #b0b0b0;
+  --md-outline: #8c8c8c;
+  --md-outline-variant: #3f3f46;
+  --md-primary: #4fa6ff;
+  --md-on-primary: #00213f;
+  --md-primary-container: #00418a;
+  --md-on-primary-container: #d6e6ff;
+  --md-table-header: #0e639c;
+  --md-on-table-header: #ffffff;
+  --md-secondary-container: #37373d;
+  --md-on-secondary-container: #e6e6e6;
+  --md-error: #ff8a80;
+  --md-on-error: #4a0a06;
+  --md-success: #6fd08c;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}
+
+/* 青 */
+[data-theme="blue"] {
+  color-scheme: light;
+  --md-bg: #dde6f3;
+  --md-surface: #f6f8fc;
+  --md-surface-container: #cdd9ee;
+  --md-surface-container-high: #bccbe6;
+  --md-on-surface: #1b2a41;
+  --md-on-surface-variant: #46566f;
+  --md-outline: #6f7f99;
+  --md-outline-variant: #b3c3df;
+  --md-primary: #2152a6;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #c4d6f3;
+  --md-on-primary-container: #0b2a5c;
+  --md-table-header: #2152a6;
+  --md-on-table-header: #ffffff;
+  --md-secondary-container: #b9cbe8;
+  --md-on-secondary-container: #13294d;
+  --md-error: #b3261e;
+  --md-on-error: #ffffff;
+  --md-success: #1b6e3a;
+  --md-scrim: #000000;
+  --md-shadow: #0b2a5c;
+}
+
+/* ---- Vim カラースキーム系 ---- */
+
+/* solarized (dark) */
+[data-theme="solarized"] {
+  color-scheme: dark;
+  --md-bg: #002b36;
+  --md-surface: #073642;
+  --md-surface-container: #0a3e4b;
+  --md-surface-container-high: #12505e;
+  --md-on-surface: #eee8d5;
+  --md-on-surface-variant: #a3b1b1;
+  --md-outline: #7a9097;
+  --md-outline-variant: #1c5360;
+  --md-primary: #35b8ae;
+  --md-on-primary: #002b36;
+  --md-primary-container: #135b69;
+  --md-on-primary-container: #eee8d5;
+  --md-table-header: #1a7d85;
+  --md-on-table-header: #ffffff;
+  --md-secondary-container: #135b69;
+  --md-on-secondary-container: #eee8d5;
+  --md-error: #ff6b68;
+  --md-on-error: #002b36;
+  --md-success: #a3b800;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}
+
+/* desert（Vim 同梱。背景 #333333 / 前景 #ffffff、キーワードの khaki #f0e68c を主色に） */
+[data-theme="desert"] {
+  color-scheme: dark;
+  --md-bg: #292929;
+  --md-surface: #333333;
+  --md-surface-container: #3d3d3d;
+  --md-surface-container-high: #4d4d4d;
+  --md-on-surface: #ffffff;
+  --md-on-surface-variant: #c2bfa5;
+  --md-outline: #8a8a80;
+  --md-outline-variant: #4d4d4d;
+  --md-primary: #f0e68c;
+  --md-on-primary: #333333;
+  --md-primary-container: #556b2f;
+  --md-on-primary-container: #f0e68c;
+  --md-table-header: #f0e68c;
+  --md-on-table-header: #333333;
+  --md-secondary-container: #4d4d4d;
+  --md-on-secondary-container: #ffffff;
+  --md-error: #ff8080;
+  --md-on-error: #333333;
+  --md-success: #89fb98;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}
+
+/* hybrid（w0ng/vim-hybrid。背景 #1d1f21 / 前景 #c5c8c6、青 #81a2be） */
+[data-theme="hybrid"] {
+  color-scheme: dark;
+  --md-bg: #1d1f21;
+  --md-surface: #282a2e;
+  --md-surface-container: #2f3237;
+  --md-surface-container-high: #373b41;
+  --md-on-surface: #c5c8c6;
+  --md-on-surface-variant: #a0a5a8;
+  --md-outline: #707880;
+  --md-outline-variant: #3d4147;
+  --md-primary: #81a2be;
+  --md-on-primary: #1d1f21;
+  --md-primary-container: #3a4a5a;
+  --md-on-primary-container: #dbe7f2;
+  --md-table-header: #81a2be;
+  --md-on-table-header: #1d1f21;
+  --md-secondary-container: #373b41;
+  --md-on-secondary-container: #c5c8c6;
+  --md-error: #dd7777;
+  --md-on-error: #1d1f21;
+  --md-success: #b5bd68;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}
+
+/* ---- チャットツール系 ---- */
+
+/* Slack 風（アウベルジーヌの紫を主色に） */
+[data-theme="slack"] {
+  color-scheme: light;
+  --md-bg: #f8f8f8;
+  --md-surface: #ffffff;
+  --md-surface-container: #f1ebf2;
+  --md-surface-container-high: #e6dce8;
+  --md-on-surface: #1d1c1d;
+  --md-on-surface-variant: #5e5d60;
+  --md-outline: #868686;
+  --md-outline-variant: #ddd5de;
+  --md-primary: #611f69;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #e8d6ea;
+  --md-on-primary-container: #3f0e40;
+  --md-table-header: #611f69;
+  --md-on-table-header: #ffffff;
+  --md-secondary-container: #ebe6eb;
+  --md-on-secondary-container: #1d1c1d;
+  --md-error: #c8174f;
+  --md-on-error: #ffffff;
+  --md-success: #007a5a;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}
+
+/* Facebook 風（青 #0866ff 系、淡いグレーの背景） */
+[data-theme="facebook"] {
+  color-scheme: light;
+  --md-bg: #f0f2f5;
+  --md-surface: #ffffff;
+  --md-surface-container: #e4e6eb;
+  --md-surface-container-high: #d8dadf;
+  --md-on-surface: #050505;
+  --md-on-surface-variant: #55585d;
+  --md-outline: #7a7d82;
+  --md-outline-variant: #ced0d4;
+  --md-primary: #0b5ed7;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #e7f3ff;
+  --md-on-primary-container: #0a3d91;
+  --md-table-header: #0b5ed7;
+  --md-on-table-header: #ffffff;
+  --md-secondary-container: #e4e6eb;
+  --md-on-secondary-container: #050505;
+  --md-error: #c9102f;
+  --md-on-error: #ffffff;
+  --md-success: #1a7f37;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}
+
+/* Microsoft Teams 風（紫 #5b5fc7 系） */
+[data-theme="teams"] {
+  color-scheme: light;
+  --md-bg: #f5f5f5;
+  --md-surface: #ffffff;
+  --md-surface-container: #f0f0f0;
+  --md-surface-container-high: #e0e0e0;
+  --md-on-surface: #242424;
+  --md-on-surface-variant: #5c5c5c;
+  --md-outline: #7a7a7a;
+  --md-outline-variant: #d1d1d1;
+  --md-primary: #5b5fc7;
+  --md-on-primary: #ffffff;
+  --md-primary-container: #e8ebfa;
+  --md-on-primary-container: #33357a;
+  --md-table-header: #5b5fc7;
+  --md-on-table-header: #ffffff;
+  --md-secondary-container: #e0e0e0;
+  --md-on-secondary-container: #242424;
+  --md-error: #c4314b;
+  --md-on-error: #ffffff;
+  --md-success: #107c10;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}
+
+/* Discord 風（ブランプル #5865f2 系のダーク） */
+[data-theme="discord"] {
+  color-scheme: dark;
+  --md-bg: #1e1f22;
+  --md-surface: #313338;
+  --md-surface-container: #2b2d31;
+  --md-surface-container-high: #383a40;
+  --md-on-surface: #f2f3f5;
+  --md-on-surface-variant: #b5bac1;
+  --md-outline: #80848e;
+  --md-outline-variant: #3f4147;
+  --md-primary: #aab0fb;
+  --md-on-primary: #1e2090;
+  --md-primary-container: #5865f2;
+  --md-on-primary-container: #ffffff;
+  --md-table-header: #5865f2;
+  --md-on-table-header: #ffffff;
+  --md-secondary-container: #404249;
+  --md-on-secondary-container: #f2f3f5;
+  --md-error: #ff8a8c;
+  --md-on-error: #4a0a0c;
+  --md-success: #57f287;
+  --md-scrim: #000000;
+  --md-shadow: #000000;
+}

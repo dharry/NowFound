@@ -1,0 +1,44 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<SettingsResource> L
+@model AccountPolicyViewModel
+@{
+    ViewData["Title"] = L["Settings.Policy.Title"].Value;
+}
+<h1>@L["Settings.Policy.Title"]</h1>
+<p class="muted">@L["Settings.Policy.Note"]</p>
+<div class="card">
+    @if (TempData["Message"] is string message)
+    {
+        <p class="notice" role="status">@message</p>
+    }
+    <form asp-action="AccountPolicy" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <div class="field">
+            <label asp-for="PasswordMinLength">@L["Settings.Policy.MinLength"]</label>
+            <input asp-for="PasswordMinLength" type="number" min="@AccountPolicy.MinLengthMin" max="@AccountPolicy.MinLengthMax" required />
+            <p class="muted">@L["Settings.Policy.MinLengthNote", AccountPolicy.MinLengthMin, AccountPolicy.MinLengthMax]</p>
+        </div>
+        <div class="field">
+            <label><input asp-for="RequireComplexity" /> @L["Settings.Policy.Complexity"]</label>
+            <p class="muted">@L["Settings.Policy.ComplexityNote", AccountPolicy.MinCategories]</p>
+        </div>
+        <div class="field">
+            <label asp-for="MaxFailedAttempts">@L["Settings.Policy.MaxFailed"]</label>
+            <input asp-for="MaxFailedAttempts" type="number" min="0" max="@AccountPolicy.MaxFailedAttemptsMax" required />
+            <p class="muted">@L["Settings.Policy.MaxFailedNote", AccountPolicy.MaxFailedAttemptsMax, AccountPolicy.LockoutDuration.TotalMinutes]</p>
+        </div>
+        <div class="field">
+            <label asp-for="PasswordMaxAgeDays">@L["Settings.Policy.MaxAge"]</label>
+            <input asp-for="PasswordMaxAgeDays" type="number" min="0" max="@AccountPolicy.MaxAgeDaysMax" required />
+            <p class="muted">@L["Settings.Policy.MaxAgeNote", AccountPolicy.MaxAgeDaysMax]</p>
+        </div>
+        <div class="field">
+            <label asp-for="PasswordHistoryCount">@L["Settings.Policy.History"]</label>
+            <input asp-for="PasswordHistoryCount" type="number" min="0" max="@AccountPolicy.HistoryCountMax" required />
+            <p class="muted">@L["Settings.Policy.HistoryNote", AccountPolicy.HistoryCountMax]</p>
+        </div>
+        <button type="submit">@L["Settings.Save"]</button>
+        <a asp-action="Index">@L["Settings.Policy.Back"]</a>
+    </form>
+</div>

@@ -1,0 +1,97 @@
+@using System.Globalization
+@using System.Text.Json
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@using NowFound.Web.Security
+@inject IStringLocalizer<CommonResource> L
+@inject IStringLocalizer<JsResource> JsL
+@inject NowFound.Application.Information.IFooterInfoService FooterInfo
+@{
+    // JavaScript が使う文言（JsResource の全キー）は、現在の言語のものを JSON で埋め込む。
+    var jsStrings = JsonSerializer.Serialize(JsL.GetAllStrings().ToDictionary(s => s.Name, s => s.Value));
+    var theme = ThemeHelper.Resolve(Context);
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+    string Active(string c, string? a = null) =>
+        string.Equals(controller, c, StringComparison.OrdinalIgnoreCase)
+        && (a is null || string.Equals(action, a, StringComparison.OrdinalIgnoreCase))
+            ? "drawer-item active"
+            : "drawer-item";
+}
+<!DOCTYPE html>
+<html lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName" data-theme="@theme">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NowFound</title>
+    <link rel="icon" type="image/png" sizes="512x512" href="~/favicon.png" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/themes.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* 描画前にナビの開閉状態を復元してチラつきを防ぐ（保存できない環境では既定値）。コメントは HTML に出さない。 *@
+    <script>
+        (function () {
+            var collapsed = window.innerWidth < 840;
+            try {
+                var saved = window.localStorage.getItem('nav-collapsed');
+                if (saved !== null && window.innerWidth >= 840) { collapsed = saved === '1'; }
+            } catch (e) { collapsed = window.innerWidth < 840; }
+            if (collapsed) { document.documentElement.classList.add('nav-collapsed'); }
+        }());
+    </script>
+</head>
+<body>
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <header class="app-bar">
+        <button type="button" id="nav-toggle" class="nav-toggle" aria-controls="global-nav" aria-expanded="true" aria-label="@L["Nav.Toggle"]">
+            <span></span><span></span><span></span>
+        </button>
+        <a class="app-title" asp-controller="Home" asp-action="Index">NowFound</a>
+        <span class="spacer"></span>
+        <span class="user-chip" title="@User.Identity!.Name">@User.Identity!.Name</span>
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            <button type="submit" class="text">@L["Header.Logout"]</button>
+        </form>
+    </header>
+    <div class="scrim" id="nav-scrim"></div>
+    <div class="app">
+        <nav class="drawer" id="global-nav" aria-label="@L["Nav.Global"]">
+            <ul>
+                <li><a class="@Active("Home")" asp-controller="Home" asp-action="Index">@L["Nav.Search"]</a></li>
+                <li><a class="@Active("SavedSearches")" asp-controller="SavedSearches" asp-action="Index">@L["Nav.SavedSearches"]</a></li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li><div class="drawer-divider" role="separator"></div></li>
+                    <li><a class="@Active("Users")" asp-controller="Users" asp-action="Index">@L["Nav.Users"]</a></li>
+                    <li><a class="@Active("Groups")" asp-controller="Groups" asp-action="Index">@L["Nav.Groups"]</a></li>
+                    <li><a class="@Active("Folders")" asp-controller="Folders" asp-action="Index">@L["Nav.Folders"]</a></li>
+                    <li><a class="@Active("Logs")" asp-controller="Logs" asp-action="Index">@L["Nav.Logs"]</a></li>
+                    <li><a class="@Active("Settings")" asp-controller="Settings" asp-action="Index">@L["Nav.Settings"]</a></li>
+                }
+                <li><div class="drawer-divider" role="separator"></div></li>
+                <li><a class="@Active("Account", "Preferences")" asp-controller="Account" asp-action="Preferences">@L["Nav.Preferences"]</a></li>
+                <li><a class="@Active("Information")" asp-controller="Information" asp-action="Index">@L["Nav.Information"]</a></li>
+            </ul>
+        </nav>
+        <main class="content">
+            @RenderBody()
+            @{
+                var footer = await FooterInfo.GetAsync(Context.RequestAborted);
+                var updated = footer.FilesUpdatedUtc is { } utc
+                    ? DateTime.SpecifyKind(utc, DateTimeKind.Utc).ToLocalTime().ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture)
+                    : L["Footer.NeverUpdated"].Value;
+            }
+            <footer class="app-footer">@L["Footer.Text", footer.MachineName, updated]</footer>
+        </main>
+    </div>
+}
+else
+{
+    <main class="centered">@RenderBody()</main>
+}
+<script type="application/json" id="i18n-data">@Html.Raw(jsStrings)</script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

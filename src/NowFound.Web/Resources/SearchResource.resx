@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Search.AddCondition" xml:space="preserve">
+    <value>条件を追加</value>
+  </data>
+  <data name="Search.Column.Actions" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Search.Column.Created" xml:space="preserve">
+    <value>作成日時</value>
+  </data>
+  <data name="Search.Column.Extension" xml:space="preserve">
+    <value>拡張子</value>
+  </data>
+  <data name="Search.Column.Folder" xml:space="preserve">
+    <value>フォルダ</value>
+  </data>
+  <data name="Search.Column.Modified" xml:space="preserve">
+    <value>更新日時</value>
+  </data>
+  <data name="Search.Column.Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="Search.Column.Owner" xml:space="preserve">
+    <value>オーナー</value>
+  </data>
+  <data name="Search.Column.Size" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="Search.Columns.Menu" xml:space="preserve">
+    <value>表示する列</value>
+  </data>
+  <data name="Search.Comparison.Equal" xml:space="preserve">
+    <value>= 等しい</value>
+  </data>
+  <data name="Search.Comparison.GreaterOrEqual" xml:space="preserve">
+    <value>≥ 以上</value>
+  </data>
+  <data name="Search.Comparison.GreaterThan" xml:space="preserve">
+    <value>&gt; より大きい</value>
+  </data>
+  <data name="Search.Comparison.LessOrEqual" xml:space="preserve">
+    <value>≤ 以下</value>
+  </data>
+  <data name="Search.Comparison.LessThan" xml:space="preserve">
+    <value>&lt; より小さい</value>
+  </data>
+  <data name="Search.Comparison.NotEqual" xml:space="preserve">
+    <value>≠ 等しくない</value>
+  </data>
+  <data name="Search.Copy.Aria" xml:space="preserve">
+    <value>{0} のフルパスをコピー</value>
+  </data>
+  <data name="Search.Copy.Button" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="Search.Copy.Title" xml:space="preserve">
+    <value>フルパスをコピー</value>
+  </data>
+  <data name="Search.Describe.Folder" xml:space="preserve">
+    <value>フォルダ={0}</value>
+  </data>
+  <data name="Search.Describe.NoCondition" xml:space="preserve">
+    <value>(条件なし)</value>
+  </data>
+  <data name="Search.DetailToggle" xml:space="preserve">
+    <value>詳細条件</value>
+  </data>
+  <data name="Search.Dialog.AdminOnly" xml:space="preserve">
+    <value>公開にできるのは管理者のみです。</value>
+  </data>
+  <data name="Search.Dialog.Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Search.Dialog.Description" xml:space="preserve">
+    <value>メモ（任意）</value>
+  </data>
+  <data name="Search.Dialog.Intro" xml:space="preserve">
+    <value>現在表示している検索条件を保存します。結果は実行のたびに最新になります。</value>
+  </data>
+  <data name="Search.Dialog.Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="Search.Dialog.Pin" xml:space="preserve">
+    <value>一覧の先頭に固定する</value>
+  </data>
+  <data name="Search.Dialog.PrivateSelf" xml:space="preserve">
+    <value>非公開（自分だけ）</value>
+  </data>
+  <data name="Search.Dialog.PublicAll" xml:space="preserve">
+    <value>公開（全ユーザーが実行できます）</value>
+  </data>
+  <data name="Search.Dialog.Submit" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Search.Dialog.Title" xml:space="preserve">
+    <value>検索を保存</value>
+  </data>
+  <data name="Search.Dialog.Visibility" xml:space="preserve">
+    <value>公開範囲</value>
+  </data>
+  <data name="Search.Field.All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="Search.Field.CreatedDate" xml:space="preserve">
+    <value>作成日</value>
+  </data>
+  <data name="Search.Field.Extension" xml:space="preserve">
+    <value>拡張子</value>
+  </data>
+  <data name="Search.Field.FileName" xml:space="preserve">
+    <value>ファイル名</value>
+  </data>
+  <data name="Search.Field.FolderName" xml:space="preserve">
+    <value>フォルダ名</value>
+  </data>
+  <data name="Search.Field.ModifiedDate" xml:space="preserve">
+    <value>更新日</value>
+  </data>
+  <data name="Search.Field.Owner" xml:space="preserve">
+    <value>オーナー</value>
+  </data>
+  <data name="Search.Field.Size" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="Search.Folder.NarrowTitle" xml:space="preserve">
+    <value>このフォルダ配下に絞り込む</value>
+  </data>
+  <data name="Search.FolderUnavailable" xml:space="preserve">
+    <value>指定されたフォルダは存在しないか、アクセス権がありません。結果は表示されません。</value>
+  </data>
+  <data name="Search.Operator.And" xml:space="preserve">
+    <value>AND（すべて満たす）</value>
+  </data>
+  <data name="Search.Operator.Label" xml:space="preserve">
+    <value>条件の結合</value>
+  </data>
+  <data name="Search.Operator.Or" xml:space="preserve">
+    <value>OR（いずれかを満たす）</value>
+  </data>
+  <data name="Search.Private" xml:space="preserve">
+    <value>非公開</value>
+  </data>
+  <data name="Search.Public" xml:space="preserve">
+    <value>公開</value>
+  </data>
+  <data name="Search.Results.Count" xml:space="preserve">
+    <value>{0} 件</value>
+  </data>
+  <data name="Search.Results.Empty" xml:space="preserve">
+    <value>該当するファイルはありません。</value>
+  </data>
+  <data name="Search.Results.Label" xml:space="preserve">
+    <value>検索結果</value>
+  </data>
+  <data name="Search.Row.Comparison" xml:space="preserve">
+    <value>比較</value>
+  </data>
+  <data name="Search.Row.Clear" xml:space="preserve">
+    <value>キーワードをクリア</value>
+  </data>
+  <data name="Search.Row.Field" xml:space="preserve">
+    <value>検索対象</value>
+  </data>
+  <data name="Search.Row.From" xml:space="preserve">
+    <value>開始日</value>
+  </data>
+  <data name="Search.Row.Keyword" xml:space="preserve">
+    <value>キーワード</value>
+  </data>
+  <data name="Search.Row.Number" xml:space="preserve">
+    <value>数値</value>
+  </data>
+  <data name="Search.Row.Remove" xml:space="preserve">
+    <value>条件を削除</value>
+  </data>
+  <data name="Search.Row.SizeValue" xml:space="preserve">
+    <value>サイズの数値</value>
+  </data>
+  <data name="Search.Row.To" xml:space="preserve">
+    <value>終了日</value>
+  </data>
+  <data name="Search.Row.Unit" xml:space="preserve">
+    <value>単位</value>
+  </data>
+  <data name="Search.Save.Button" xml:space="preserve">
+    <value>★ 保存</value>
+  </data>
+  <data name="Search.Save.TitleDisabled" xml:space="preserve">
+    <value>検索してから保存できます</value>
+  </data>
+  <data name="Search.Save.TitleEnabled" xml:space="preserve">
+    <value>現在の検索条件をブックマークに保存します</value>
+  </data>
+  <data name="Search.Saved.Label" xml:space="preserve">
+    <value>保存した検索:</value>
+  </data>
+  <data name="Search.Saved.Manage" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="Search.Saved.ManageLink" xml:space="preserve">
+    <value>管理…</value>
+  </data>
+  <data name="Search.Saved.None" xml:space="preserve">
+    <value>保存した検索はありません。検索してから「★ 保存」を押してください。</value>
+  </data>
+  <data name="Search.Saved.Overwrite" xml:space="preserve">
+    <value>上書き保存</value>
+  </data>
+  <data name="Search.Saved.OverwriteTitle" xml:space="preserve">
+    <value>現在の検索条件でこのブックマークを置き換えます</value>
+  </data>
+  <data name="Search.Scope.Clear" xml:space="preserve">
+    <value>解除</value>
+  </data>
+  <data name="Search.Scope.Label" xml:space="preserve">
+    <value>絞り込み:</value>
+  </data>
+  <data name="Search.SidePanel" xml:space="preserve">
+    <value>サイドパネル</value>
+  </data>
+  <data name="Search.Submit" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Search.Tab.Folders" xml:space="preserve">
+    <value>フォルダ</value>
+  </data>
+  <data name="Search.Tab.Saved" xml:space="preserve">
+    <value>★ 保存</value>
+  </data>
+  <data name="Search.Title" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Search.Tree.All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="Search.Tree.Expand" xml:space="preserve">
+    <value>展開</value>
+  </data>
+  <data name="Search.Tree.Label" xml:space="preserve">
+    <value>検索対象フォルダ</value>
+  </data>
+  <data name="Search.Tree.NoFolders" xml:space="preserve">
+    <value>閲覧できるフォルダがありません。管理者にグループへの割り当てを依頼してください。</value>
+  </data>
+  <data name="Search.Warning.InvalidSize" xml:space="preserve">
+    <value>サイズは 0 以上の数値で指定してください。使えない値のサイズ条件は無視しました。</value>
+  </data>
+  <data name="Search.Results.RangeSummary" xml:space="preserve">
+    <value>{0} 件中 {1}～{2} 件</value>
+  </data>
+  <data name="Search.PageSize" xml:space="preserve">
+    <value>表示件数: {0} 件</value>
+  </data>
+  <data name="Search.PageSize.Title" xml:space="preserve">
+    <value>表示件数はユーザー設定で変更できます</value>
+  </data>
+  <data name="Search.Export.Button" xml:space="preserve">
+    <value>エクスポート</value>
+  </data>
+  <data name="Search.Export.Label" xml:space="preserve">
+    <value>検索結果のエクスポート</value>
+  </data>
+  <data name="Search.Export.Format" xml:space="preserve">
+    <value>ファイル形式</value>
+  </data>
+  <data name="Search.Export.Encoding" xml:space="preserve">
+    <value>文字コード</value>
+  </data>
+  <data name="Search.Export.Encoding.Utf8Bom" xml:space="preserve">
+    <value>UTF-8（BOM 付き）</value>
+  </data>
+  <data name="Search.Export.Encoding.ShiftJis" xml:space="preserve">
+    <value>Shift_JIS</value>
+  </data>
+  <data name="Search.Export.Column.FullPath" xml:space="preserve">
+    <value>フルパス</value>
+  </data>
+  <data name="Search.Export.Column.Type" xml:space="preserve">
+    <value>種別</value>
+  </data>
+  <data name="Search.Export.Type.File" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="Search.Export.Type.Folder" xml:space="preserve">
+    <value>フォルダ</value>
+  </data>
+  <data name="Search.Export.Busy" xml:space="preserve">
+    <value>ほかのエクスポートを実行中です。しばらくしてからもう一度お試しください。</value>
+  </data>
+</root>

@@ -1,0 +1,21 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model SearchViewModel
+@inject IStringLocalizer<SearchResource> L
+
+@if (Model.CurrentSaved is { } current)
+{
+    <div class="saved-banner" role="status" data-incremental-swap="banner">
+        <span>@L["Search.Saved.Label"] <strong>@current.Name</strong> <span class="chip">@(current.IsPublic ? L["Search.Public"] : L["Search.Private"])</span></span>
+        <span class="saved-banner-actions">
+            @if (current.CanEdit)
+            {
+                <form asp-controller="SavedSearches" asp-action="Overwrite" asp-route-id="@current.Id" method="post">
+                    <partial name="_QueryFields" model="Model" />
+                    <button type="submit" class="secondary icon" title="@L["Search.Saved.OverwriteTitle"]">@L["Search.Saved.Overwrite"]</button>
+                </form>
+            }
+            <a asp-controller="SavedSearches" asp-action="Index">@L["Search.Saved.Manage"]</a>
+        </span>
+    </div>
+}

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Information.ComputerName" xml:space="preserve">
+    <value>Computer name</value>
+  </data>
+  <data name="Information.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Information.Databases" xml:space="preserve">
+    <value>Databases</value>
+  </data>
+  <data name="Information.Db.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Information.Db.Path" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Information.Db.Provider" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Information.Db.Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Information.Db.files" xml:space="preserve">
+    <value>files.db (file index)</value>
+  </data>
+  <data name="Information.Db.main" xml:space="preserve">
+    <value>main.db (users and settings)</value>
+  </data>
+  <data name="Information.Db.ope" xml:space="preserve">
+    <value>ope.db (operation log)</value>
+  </data>
+  <data name="Information.Db.Counts" xml:space="preserve">
+    <value>Rows (COUNT(*))</value>
+  </data>
+  <data name="Information.Framework" xml:space="preserve">
+    <value>Running .NET</value>
+  </data>
+  <data name="Information.Host" xml:space="preserve">
+    <value>Host</value>
+  </data>
+  <data name="Information.LogicalProcessors" xml:space="preserve">
+    <value>{0} logical processors</value>
+  </data>
+  <data name="Information.Memory" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Information.MemoryValue" xml:space="preserve">
+    <value>Total (available): {0} / Used by this process: {1}</value>
+  </data>
+  <data name="Information.Os" xml:space="preserve">
+    <value>OS</value>
+  </data>
+  <data name="Information.Runtime" xml:space="preserve">
+    <value>.NET</value>
+  </data>
+  <data name="Information.RuntimeVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Information.Title" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Information.Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+</root>

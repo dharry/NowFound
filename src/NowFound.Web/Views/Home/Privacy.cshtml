@@ -1,0 +1,9 @@
+﻿@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<CommonResource> L
+@{
+    ViewData["Title"] = L["Privacy.Title"].Value;
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>@L["Privacy.Body"]</p>

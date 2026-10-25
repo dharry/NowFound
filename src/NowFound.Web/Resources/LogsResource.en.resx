@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Logs.Col.Detail" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Logs.Col.Ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="Logs.Col.Operation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="Logs.Col.Timestamp" xml:space="preserve">
+    <value>Date/time</value>
+  </data>
+  <data name="Logs.Col.User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Logs.Count" xml:space="preserve">
+    <value>{0} items</value>
+  </data>
+  <data name="Logs.Empty" xml:space="preserve">
+    <value>No matching log entries.</value>
+  </data>
+  <data name="Logs.Filter.All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Logs.Filter.Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Logs.Filter.Operation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="Logs.Filter.Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="Logs.Filter.Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Logs.Filter.User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Logs.Filter.UserPlaceholder" xml:space="preserve">
+    <value>Email address (partial match)</value>
+  </data>
+  <data name="Logs.FilterByOperation" xml:space="preserve">
+    <value>Filter by this operation</value>
+  </data>
+  <data name="Logs.FilterByUser" xml:space="preserve">
+    <value>Filter by this user</value>
+  </data>
+  <data name="Logs.Operation.AccessDenied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="Logs.Operation.AdminChange" xml:space="preserve">
+    <value>Admin action</value>
+  </data>
+  <data name="Logs.Operation.Login" xml:space="preserve">
+    <value>Sign-in</value>
+  </data>
+  <data name="Logs.Operation.LoginFailed" xml:space="preserve">
+    <value>Sign-in failed</value>
+  </data>
+  <data name="Logs.Operation.Logout" xml:space="preserve">
+    <value>Sign-out</value>
+  </data>
+  <data name="Logs.Operation.PasswordChange" xml:space="preserve">
+    <value>Password change</value>
+  </data>
+  <data name="Logs.Operation.Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Logs.Title" xml:space="preserve">
+    <value>Operation log</value>
+  </data>
+  <data name="Logs.RangeSummary" xml:space="preserve">
+    <value>{1}–{2} of {0} logs</value>
+  </data>
+  <data name="Logs.PageSize" xml:space="preserve">
+    <value>{0} per page</value>
+  </data>
+  <data name="Logs.PageSize.Title" xml:space="preserve">
+    <value>Change page size in System settings</value>
+  </data>
+  <data name="Logs.Operation.Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+</root>

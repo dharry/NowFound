@@ -1,0 +1,82 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<FoldersResource> L
+@inject IStringLocalizer<CommonResource> C
+@model ListPage<NowFound.Application.Settings.FolderSummary, ListQueryModel>
+@{
+    ViewData["Title"] = L["Folders.Title"].Value;
+    var pager = PagerModel.From(Model.Result, p => Url.Action("Index", Model.Query.ToRouteValues(p)));
+
+    // 表示/非表示を切り替えられる列（名前は常に表示する）。
+    IReadOnlyList<(string Key, string Label)> columns =
+    [
+        ("path", L["Folders.Col.Path"].Value),
+        ("share", L["Folders.Col.Share"].Value),
+        ("excludes", L["Folders.Col.ExcludeCount"].Value),
+        ("groups", L["Folders.Col.GroupCount"].Value),
+    ];
+}
+<h1>@L["Folders.Title"]</h1>
+<p><a class="button" asp-action="Create">@L["Folders.Add"]</a></p>
+<form method="get" asp-action="Index" class="card">
+    <div class="log-filter">
+        <label>@C["List.Keyword"]
+            <input type="text" name="Q" value="@Model.Query.Q" placeholder="@L["Folders.Filter.Placeholder"]" />
+        </label>
+        <partial name="_SortHidden" model="(ListQueryModel)Model.Query" />
+        <button type="submit">@C["List.Search"]</button>
+        <a class="button secondary" asp-action="Index" role="button">@C["List.Clear"]</a>
+    </div>
+</form>
+<div class="results-toolbar">
+    <span class="summary">
+        @if (Model.Result.TotalCount == 0)
+        {
+            <span>@C["List.Count", 0]</span>
+        }
+        else
+        {
+            <span>@C["List.RangeSummary", Model.Result.TotalCount.ToString("N0"), pager.StartItem.ToString("N0"), pager.EndItem.ToString("N0")]</span>
+            <span class="page-size-info">
+                (<a asp-controller="Settings" asp-action="Index" asp-fragment="AdminListPageSize" title="@C["List.AdminPageSize.Title"]">@C["List.PageSize", Model.Result.PageSize]</a>)
+            </span>
+        }
+    </span>
+    <partial name="_Pager" model="pager" />
+    <partial name="_ColumnMenu" model='new ColumnMenuModel("folder-table", columns)' />
+</div>
+<table id="folder-table">
+    <thead>
+        <tr>
+            @{ var h1 = Model.Query.SortLink(Url, L["Folders.Col.Name"].Value, FolderSortKeys.Name, FolderSortKeys.Name); }<th aria-sort="@h1.AriaSort"><partial name="_SortLink" model="h1" /></th>
+            @{ var h2 = Model.Query.SortLink(Url, L["Folders.Col.Path"].Value, FolderSortKeys.Path, FolderSortKeys.Name); }<th data-col="path" aria-sort="@h2.AriaSort"><partial name="_SortLink" model="h2" /></th>
+            @{ var h3 = Model.Query.SortLink(Url, L["Folders.Col.Share"].Value, FolderSortKeys.Share, FolderSortKeys.Name); }<th data-col="share" aria-sort="@h3.AriaSort"><partial name="_SortLink" model="h3" /></th>
+            @{ var h4 = Model.Query.SortLink(Url, L["Folders.Col.ExcludeCount"].Value, FolderSortKeys.Excludes, FolderSortKeys.Name); }<th data-col="excludes" aria-sort="@h4.AriaSort"><partial name="_SortLink" model="h4" /></th>
+            @{ var h5 = Model.Query.SortLink(Url, L["Folders.Col.GroupCount"].Value, FolderSortKeys.Groups, FolderSortKeys.Name); }<th data-col="groups" aria-sort="@h5.AriaSort"><partial name="_SortLink" model="h5" /></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var folder in Model.Result.Items)
+    {
+        <tr>
+            <td>@folder.Name</td>
+            <td data-col="path">@folder.Path</td>
+            <td data-col="share">@(folder.IsShared ? folder.ShareName : "-")</td>
+            <td data-col="excludes">@folder.ExcludeCount</td>
+            <td data-col="groups">@folder.GroupCount</td>
+            <td class="actions">
+                <a class="button" asp-action="Edit" asp-route-id="@folder.Id">@L["Folders.EditLink"]</a>
+                <form asp-action="Delete" asp-route-id="@folder.Id" method="post" data-confirm="@L["Folders.DeleteConfirm"]">
+                    <button type="submit" class="danger">@L["Folders.Delete"]</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+@if (Model.Result.Items.Count == 0)
+{
+    <p class="muted">@L["Folders.Empty"]</p>
+}
+<partial name="_Pager" model="pager" />

@@ -1,0 +1,594 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Error.ExcludePattern.ControlChar" xml:space="preserve">
+    <value>Exclude patterns cannot contain control characters: {0}</value>
+  </data>
+  <data name="Error.ExcludePattern.InvalidShape" xml:space="preserve">
+    <value>Specify only a name in an exclude pattern (add a trailing / to match folders only): {0}</value>
+  </data>
+  <data name="Error.ExcludePattern.TooLong" xml:space="preserve">
+    <value>Exclude patterns must be {0} characters or fewer: {1}</value>
+  </data>
+  <data name="Error.ExcludePattern.TooMany" xml:space="preserve">
+    <value>Up to {0} exclude patterns are allowed.</value>
+  </data>
+  <data name="Error.ExcludePattern.TotalTooLong" xml:space="preserve">
+    <value>The exclude patterns are too long (up to {0} characters in total).</value>
+  </data>
+  <data name="Error.FileKind.Extension.Dotted.Named" xml:space="preserve">
+    <value>The extension "{1}" in "{0}" cannot contain a dot. Specify only the last part, "{2}".</value>
+  </data>
+  <data name="Error.FileKind.Extension.Dotted.Row" xml:space="preserve">
+    <value>The extension "{1}" in row {0} cannot contain a dot. Specify only the last part, "{2}".</value>
+  </data>
+  <data name="Error.FileKind.Extension.Duplicate" xml:space="preserve">
+    <value>The extension "{0}" is specified for both "{1}" and "{2}". Each extension can belong to only one kind.</value>
+  </data>
+  <data name="Error.FileKind.Extension.InvalidChar.Named" xml:space="preserve">
+    <value>The extension "{1}" in "{0}" contains characters that cannot be used.</value>
+  </data>
+  <data name="Error.FileKind.Extension.InvalidChar.Row" xml:space="preserve">
+    <value>The extension "{1}" in row {0} contains characters that cannot be used.</value>
+  </data>
+  <data name="Error.FileKind.Extension.TooLong.Named" xml:space="preserve">
+    <value>The extension "{1}" in "{0}" is too long (up to {2} characters).</value>
+  </data>
+  <data name="Error.FileKind.Extension.TooLong.Row" xml:space="preserve">
+    <value>The extension "{1}" in row {0} is too long (up to {2} characters).</value>
+  </data>
+  <data name="Error.FileKind.Extension.TooMany.Named" xml:space="preserve">
+    <value>Up to {1} extensions are allowed in "{0}".</value>
+  </data>
+  <data name="Error.FileKind.Extension.TooMany.Row" xml:space="preserve">
+    <value>Up to {1} extensions are allowed in row {0}.</value>
+  </data>
+  <data name="Error.FileKind.Icon.InvalidChar" xml:space="preserve">
+    <value>Row {0}: The icon contains characters that cannot be used.</value>
+  </data>
+  <data name="Error.FileKind.Icon.Required" xml:space="preserve">
+    <value>Row {0}: The icon is required.</value>
+  </data>
+  <data name="Error.FileKind.Icon.TooLong" xml:space="preserve">
+    <value>Row {0}: The icon can be up to {1} characters.</value>
+  </data>
+  <data name="Error.FileKind.Key.Duplicate" xml:space="preserve">
+    <value>Row {0}: The identifier "{1}" is duplicated.</value>
+  </data>
+  <data name="Error.FileKind.Key.Invalid" xml:space="preserve">
+    <value>Row {0}: The identifier is invalid.</value>
+  </data>
+  <data name="Error.FileKind.Label.Duplicate" xml:space="preserve">
+    <value>The name "{0}" is duplicated.</value>
+  </data>
+  <data name="Error.FileKind.Label.Required" xml:space="preserve">
+    <value>Row {0}: The name is required.</value>
+  </data>
+  <data name="Error.FileKind.Label.TooLong" xml:space="preserve">
+    <value>Row {0}: The name can be up to {1} characters.</value>
+  </data>
+  <data name="Error.FileKind.Required.Folder" xml:space="preserve">
+    <value>The "Folder" row is required (it cannot be deleted or duplicated).</value>
+  </data>
+  <data name="Error.FileKind.Required.Generic" xml:space="preserve">
+    <value>The "File (generic)" row is required (it cannot be deleted or duplicated).</value>
+  </data>
+  <data name="Error.FileKind.TooMany" xml:space="preserve">
+    <value>Up to {0} kinds are allowed.</value>
+  </data>
+  <data name="Error.Folder.NameAndPathRequired" xml:space="preserve">
+    <value>The name and path are required.</value>
+  </data>
+  <data name="Error.Folder.NotFound" xml:space="preserve">
+    <value>The folder was not found.</value>
+  </data>
+  <data name="Error.Folder.PathDuplicate" xml:space="preserve">
+    <value>The same path is already registered.</value>
+  </data>
+  <data name="Error.Folder.PathNotAbsolute" xml:space="preserve">
+    <value>Specify an absolute path.</value>
+  </data>
+  <data name="Error.Folder.ShareNameInvalid" xml:space="preserve">
+    <value>The share name contains characters that cannot be used.</value>
+  </data>
+  <data name="Error.Group.DefaultNotDeletable" xml:space="preserve">
+    <value>The default group cannot be deleted.</value>
+  </data>
+  <data name="Error.Group.NameDuplicate" xml:space="preserve">
+    <value>A group with the same name already exists.</value>
+  </data>
+  <data name="Error.Group.NameRequired" xml:space="preserve">
+    <value>The group name is required.</value>
+  </data>
+  <data name="Error.Group.NotFound" xml:space="preserve">
+    <value>The group was not found.</value>
+  </data>
+  <data name="Error.LanguageNotSupported" xml:space="preserve">
+    <value>The selected language is not supported.</value>
+  </data>
+  <data name="Error.PageSize.Range" xml:space="preserve">
+    <value>Specify a page size between {0} and {1}.</value>
+  </data>
+  <data name="Error.SavedSearch.DescriptionTooLong" xml:space="preserve">
+    <value>The note can be up to {0} characters.</value>
+  </data>
+  <data name="Error.SavedSearch.Duplicate" xml:space="preserve">
+    <value>A bookmark with the same name already exists.</value>
+  </data>
+  <data name="Error.SavedSearch.DuplicatePublic" xml:space="preserve">
+    <value>A public bookmark with the same name already exists.</value>
+  </data>
+  <data name="Error.SavedSearch.FolderPathTooLong" xml:space="preserve">
+    <value>The folder path is too long.</value>
+  </data>
+  <data name="Error.SavedSearch.InvalidCondition" xml:space="preserve">
+    <value>The search conditions are invalid.</value>
+  </data>
+  <data name="Error.SavedSearch.KeywordTooLong" xml:space="preserve">
+    <value>Keywords can be up to {0} characters.</value>
+  </data>
+  <data name="Error.SavedSearch.NameRequired" xml:space="preserve">
+    <value>The name is required.</value>
+  </data>
+  <data name="Error.SavedSearch.NameTooLong" xml:space="preserve">
+    <value>The name can be up to {0} characters.</value>
+  </data>
+  <data name="Error.SavedSearch.NoConditions" xml:space="preserve">
+    <value>There are no search conditions to save. Run a search with a keyword or other conditions first.</value>
+  </data>
+  <data name="Error.SavedSearch.NoPermission" xml:space="preserve">
+    <value>You do not have permission to change this bookmark.</value>
+  </data>
+  <data name="Error.SavedSearch.NotFound" xml:space="preserve">
+    <value>The bookmark was not found.</value>
+  </data>
+  <data name="Error.SavedSearch.PrivateLimit" xml:space="preserve">
+    <value>Each user can have up to {0} bookmarks.</value>
+  </data>
+  <data name="Error.SavedSearch.PublicAdminOnly" xml:space="preserve">
+    <value>Only administrators can make a bookmark public.</value>
+  </data>
+  <data name="Error.SavedSearch.PublicCreateAdminOnly" xml:space="preserve">
+    <value>Only administrators can create public bookmarks.</value>
+  </data>
+  <data name="Error.SavedSearch.PublicLimit" xml:space="preserve">
+    <value>Up to {0} public bookmarks are allowed.</value>
+  </data>
+  <data name="Error.SavedSearch.TooManyConditions" xml:space="preserve">
+    <value>Up to {0} search conditions are allowed.</value>
+  </data>
+  <data name="Error.SavedSearch.UnpublishCreatorOnly" xml:space="preserve">
+    <value>Only the creator can make a public bookmark private again.</value>
+  </data>
+  <data name="Error.ThemeNotSupported" xml:space="preserve">
+    <value>That theme cannot be selected.</value>
+  </data>
+  <data name="Error.UserNotFound" xml:space="preserve">
+    <value>User not found.</value>
+  </data>
+  <data name="FileKind.archive" xml:space="preserve">
+    <value>Compressed archive</value>
+  </data>
+  <data name="FileKind.audio" xml:space="preserve">
+    <value>Audio</value>
+  </data>
+  <data name="FileKind.code" xml:space="preserve">
+    <value>Source code</value>
+  </data>
+  <data name="FileKind.database" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="FileKind.executable" xml:space="preserve">
+    <value>Executable</value>
+  </data>
+  <data name="FileKind.file" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="FileKind.folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="FileKind.image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="FileKind.installer" xml:space="preserve">
+    <value>Installer</value>
+  </data>
+  <data name="FileKind.iso" xml:space="preserve">
+    <value>ISO image</value>
+  </data>
+  <data name="FileKind.library" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="FileKind.markdown" xml:space="preserve">
+    <value>Markdown</value>
+  </data>
+  <data name="FileKind.office" xml:space="preserve">
+    <value>Office file</value>
+  </data>
+  <data name="FileKind.pdf" xml:space="preserve">
+    <value>PDF file</value>
+  </data>
+  <data name="FileKind.registry" xml:space="preserve">
+    <value>Registry</value>
+  </data>
+  <data name="FileKind.text" xml:space="preserve">
+    <value>Text file</value>
+  </data>
+  <data name="FileKind.video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="FileKind.visualstudio" xml:space="preserve">
+    <value>Visual Studio file</value>
+  </data>
+  <data name="FileKind.xml" xml:space="preserve">
+    <value>XML file</value>
+  </data>
+  <data name="Identity.ConcurrencyFailure" xml:space="preserve">
+    <value>Optimistic concurrency failure, object has been modified.</value>
+  </data>
+  <data name="Identity.DefaultError" xml:space="preserve">
+    <value>An unknown failure has occurred.</value>
+  </data>
+  <data name="Identity.DuplicateEmail" xml:space="preserve">
+    <value>Email '{0}' is already taken.</value>
+  </data>
+  <data name="Identity.DuplicateRoleName" xml:space="preserve">
+    <value>Role name '{0}' is already taken.</value>
+  </data>
+  <data name="Identity.DuplicateUserName" xml:space="preserve">
+    <value>Username '{0}' is already taken.</value>
+  </data>
+  <data name="Identity.InvalidEmail" xml:space="preserve">
+    <value>Email '{0}' is invalid.</value>
+  </data>
+  <data name="Identity.InvalidRoleName" xml:space="preserve">
+    <value>Role name '{0}' is invalid.</value>
+  </data>
+  <data name="Identity.InvalidToken" xml:space="preserve">
+    <value>Invalid token.</value>
+  </data>
+  <data name="Identity.InvalidUserName" xml:space="preserve">
+    <value>Username '{0}' is invalid, can only contain letters or digits.</value>
+  </data>
+  <data name="Identity.LoginAlreadyAssociated" xml:space="preserve">
+    <value>A user with this login already exists.</value>
+  </data>
+  <data name="Identity.PasswordMismatch" xml:space="preserve">
+    <value>Incorrect password.</value>
+  </data>
+  <data name="Identity.PasswordRequiresDigit" xml:space="preserve">
+    <value>Passwords must have at least one digit ('0'-'9').</value>
+  </data>
+  <data name="Identity.PasswordRequiresLower" xml:space="preserve">
+    <value>Passwords must have at least one lowercase ('a'-'z').</value>
+  </data>
+  <data name="Identity.PasswordRequiresNonAlphanumeric" xml:space="preserve">
+    <value>Passwords must have at least one non alphanumeric character.</value>
+  </data>
+  <data name="Identity.PasswordRequiresUniqueChars" xml:space="preserve">
+    <value>Passwords must use at least {0} different characters.</value>
+  </data>
+  <data name="Identity.PasswordRequiresUpper" xml:space="preserve">
+    <value>Passwords must have at least one uppercase ('A'-'Z').</value>
+  </data>
+  <data name="Identity.PasswordTooShort" xml:space="preserve">
+    <value>Passwords must be at least {0} characters.</value>
+  </data>
+  <data name="Identity.RecoveryCodeRedemptionFailed" xml:space="preserve">
+    <value>Recovery code redemption failed.</value>
+  </data>
+  <data name="Identity.UserAlreadyHasPassword" xml:space="preserve">
+    <value>User already has a password set.</value>
+  </data>
+  <data name="Identity.UserAlreadyInRole" xml:space="preserve">
+    <value>User already in role '{0}'.</value>
+  </data>
+  <data name="Identity.UserLockoutNotEnabled" xml:space="preserve">
+    <value>Lockout is not enabled for this user.</value>
+  </data>
+  <data name="Identity.UserNotInRole" xml:space="preserve">
+    <value>User is not in role '{0}'.</value>
+  </data>
+  <data name="Log.Account.AccessDenied" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="Log.Account.AuthFailed" xml:space="preserve">
+    <value>Authentication failed</value>
+  </data>
+  <data name="Log.Account.LockedOut" xml:space="preserve">
+    <value>Account locked out</value>
+  </data>
+  <data name="Log.Folders.Added" xml:space="preserve">
+    <value>Added search folder: {0} ({1})</value>
+  </data>
+  <data name="Log.Folders.Deleted" xml:space="preserve">
+    <value>Deleted search folder: {0} ({1})</value>
+  </data>
+  <data name="Log.Folders.Updated" xml:space="preserve">
+    <value>Updated search folder: {0} ({1})</value>
+  </data>
+  <data name="Log.Groups.Added" xml:space="preserve">
+    <value>Added group: {0} ({1} members / {2} folders)</value>
+  </data>
+  <data name="Log.Groups.Deleted" xml:space="preserve">
+    <value>Deleted group: {0}</value>
+  </data>
+  <data name="Log.Groups.Updated" xml:space="preserve">
+    <value>Updated group: {0} ({1} members / {2} folders)</value>
+  </data>
+  <data name="Log.Search.PublicAdded" xml:space="preserve">
+    <value>Public bookmark added: {0}</value>
+  </data>
+  <data name="Log.Search.PublicDeleted" xml:space="preserve">
+    <value>Public bookmark deleted: {0}</value>
+  </data>
+  <data name="Log.Search.PublicOverwritten" xml:space="preserve">
+    <value>Public bookmark conditions overwritten: {0}</value>
+  </data>
+  <data name="Log.Search.PublicUpdated" xml:space="preserve">
+    <value>Public bookmark updated: {0}</value>
+  </data>
+  <data name="Log.Search.Query" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="Log.Search.SavedQuery" xml:space="preserve">
+    <value>Saved search '{0}': {1}</value>
+  </data>
+  <data name="Log.Settings.ExcludeDefaultsReset" xml:space="preserve">
+    <value>Restored default exclude patterns to the built-in defaults</value>
+  </data>
+  <data name="Log.Settings.ExcludeDefaultsUpdated" xml:space="preserve">
+    <value>Updated default exclude patterns ({0} lines)</value>
+  </data>
+  <data name="Log.Settings.FileKindsReset" xml:space="preserve">
+    <value>Restored file type settings to the defaults</value>
+  </data>
+  <data name="Log.Settings.FileKindsUpdated" xml:space="preserve">
+    <value>Updated file type settings ({0} items)</value>
+  </data>
+  <data name="Log.Settings.PageSizeChanged" xml:space="preserve">
+    <value>Changed default page size: {0} (operation log: {1})</value>
+  </data>
+  <data name="Log.Settings.PageSizeChangedWithLists" xml:space="preserve">
+    <value>Changed default page size: {0} (operation log: {1}) (admin lists: {2})</value>
+  </data>
+  <data name="Log.Users.AddedAdmin" xml:space="preserve">
+    <value>Added user: {0} (Administrator)</value>
+  </data>
+  <data name="Log.Users.AddedUser" xml:space="preserve">
+    <value>Added user: {0} (User)</value>
+  </data>
+  <data name="Error.Policy.MinLengthRange" xml:space="preserve">
+    <value>The minimum password length must be between {0} and {1}.</value>
+  </data>
+  <data name="Error.Policy.MaxFailedRange" xml:space="preserve">
+    <value>The number of failed attempts before lockout must be between {0} and {1} (0 means no lockout).</value>
+  </data>
+  <data name="Error.User.CannotChangeSelf" xml:space="preserve">
+    <value>You cannot disable, expire or change the administrator role of your own account.</value>
+  </data>
+  <data name="Error.User.LastAdmin" xml:space="preserve">
+    <value>This change would leave no active administrator.</value>
+  </data>
+  <data name="Identity.PasswordComplexity" xml:space="preserve">
+    <value>Passwords must contain at least {0} of: uppercase, lowercase, digits and symbols.</value>
+  </data>
+  <data name="Log.Account.Disabled" xml:space="preserve">
+    <value>Login or access with a disabled account</value>
+  </data>
+  <data name="Log.Account.SessionRevoked" xml:space="preserve">
+    <value>Session revoked because the account's permissions changed</value>
+  </data>
+  <data name="Log.Account.Expired" xml:space="preserve">
+    <value>Login or access with an expired account</value>
+  </data>
+  <data name="Log.Users.Updated" xml:space="preserve">
+    <value>User updated: {0} (role: {1}, {2}, expires: {3})</value>
+  </data>
+  <data name="Log.Users.Unlocked" xml:space="preserve">
+    <value>Unlocked: {0}</value>
+  </data>
+  <data name="Log.Settings.AccountPolicyChanged" xml:space="preserve">
+    <value>Account policy changed: minimum length {0}, complexity {1}, failed attempts before lockout {2}, password lifetime {3} days, remembered passwords {4}</value>
+  </data>
+  <data name="Error.Policy.MaxAgeRange" xml:space="preserve">
+    <value>The password lifetime must be between {0} and {1} days (0 means no expiration).</value>
+  </data>
+  <data name="Error.Policy.HistoryRange" xml:space="preserve">
+    <value>The number of remembered passwords must be between {0} and {1} (0 disables the check).</value>
+  </data>
+  <data name="Error.User.CannotDeleteSelf" xml:space="preserve">
+    <value>You cannot delete your own account.</value>
+  </data>
+  <data name="Error.User.CannotDeleteLastAdmin" xml:space="preserve">
+    <value>This administrator cannot be deleted because there is no other active administrator.</value>
+  </data>
+  <data name="Identity.PasswordReused" xml:space="preserve">
+    <value>A recently used password cannot be reused. Choose one that differs from your last {0} passwords.</value>
+  </data>
+  <data name="Log.Users.Deleted" xml:space="preserve">
+    <value>User deleted: {0}</value>
+  </data>
+  <data name="Notice.UserDeleted" xml:space="preserve">
+    <value>User {0} was deleted.</value>
+  </data>
+  <data name="Error.IncrementalSearch.MinCharsRange" xml:space="preserve">
+    <value>Specify the incremental search minimum characters between {0} and {1}.</value>
+  </data>
+  <data name="Error.IncrementalSearch.DelayRange" xml:space="preserve">
+    <value>Specify the incremental search delay between {0} and {1} ms.</value>
+  </data>
+  <data name="Log.Settings.IncrementalSearchChanged" xml:space="preserve">
+    <value>Changed incremental search: {0} (min characters: {1}) (delay: {2} ms)</value>
+  </data>
+  <data name="Error.Ad.ServerInvalid" xml:space="preserve">
+    <value>Enter the server as a host name or an IP address.</value>
+  </data>
+  <data name="Error.Ad.DomainInvalid" xml:space="preserve">
+    <value>Enter the domain in the form corp.example.com.</value>
+  </data>
+  <data name="Error.Ad.PortRange" xml:space="preserve">
+    <value>The port must be between {0} and {1}.</value>
+  </data>
+  <data name="Error.Ad.SecurityInvalid" xml:space="preserve">
+    <value>The connection security is not valid.</value>
+  </data>
+  <data name="Error.Ad.Incomplete" xml:space="preserve">
+    <value>Enter the server and the domain to enable ActiveDirectory authentication.</value>
+  </data>
+  <data name="Error.User.AuthSourceInvalid" xml:space="preserve">
+    <value>The authentication method is not valid.</value>
+  </data>
+  <data name="Error.User.AdUserNameInvalid" xml:space="preserve">
+    <value>The ActiveDirectory username (sAMAccountName) is not valid. It must be 20 characters or fewer and cannot contain spaces or \ / @.</value>
+  </data>
+  <data name="Error.User.EmailInvalid" xml:space="preserve">
+    <value>The email address is not valid.</value>
+  </data>
+  <data name="Error.User.PasswordManagedByDirectory" xml:space="preserve">
+    <value>Change the password of an ActiveDirectory user in ActiveDirectory.</value>
+  </data>
+  <data name="Log.Account.DirectoryUnavailable" xml:space="preserve">
+    <value>Sign-in failed because ActiveDirectory could not be reached</value>
+  </data>
+  <data name="Log.Settings.ActiveDirectoryChanged" xml:space="preserve">
+    <value>ActiveDirectory authentication changed: {0}, server {1}:{2}, connection security {3}, domain {4}</value>
+  </data>
+  <data name="Ad.Test.Success" xml:space="preserve">
+    <value>Connected (including TLS). No lookup account is set, so the bind was not checked.</value>
+  </data>
+  <data name="Ad.Test.SuccessBind" xml:space="preserve">
+    <value>Connected, and the bind with the lookup account succeeded.</value>
+  </data>
+  <data name="Ad.Test.SuccessBindSkipped" xml:space="preserve">
+    <value>Connected. The lookup account password is empty, so the bind was not checked.</value>
+  </data>
+  <data name="Ad.Test.NoServer" xml:space="preserve">
+    <value>Enter the server.</value>
+  </data>
+  <data name="Ad.Test.BindRejected" xml:space="preserve">
+    <value>Connected, but the credentials of the lookup account were rejected. Details: {0}</value>
+  </data>
+  <data name="Ad.Test.ConnectFailed" xml:space="preserve">
+    <value>Could not connect. Details: {0}</value>
+  </data>
+  <data name="Users.Check.InvalidName" xml:space="preserve">
+    <value>The username (sAMAccountName) is not valid.</value>
+  </data>
+  <data name="Users.Check.Found" xml:space="preserve">
+    <value>Found in ActiveDirectory: {0} (display name: {1})</value>
+  </data>
+  <data name="Users.Check.FoundDisabled" xml:space="preserve">
+    <value>Found in ActiveDirectory, but the account is disabled there: {0} (display name: {1})</value>
+  </data>
+  <data name="Users.Check.NotFound" xml:space="preserve">
+    <value>"{0}" was not found in ActiveDirectory. It may be outside the search base (DN).</value>
+  </data>
+  <data name="Users.Check.NotConfigured" xml:space="preserve">
+    <value>The lookup needs the "Lookup account" and its password in the ActiveDirectory settings.</value>
+  </data>
+  <data name="Users.Check.BindRejected" xml:space="preserve">
+    <value>The credentials of the lookup account were rejected. Check the ActiveDirectory settings. Details: {0}</value>
+  </data>
+  <data name="Users.Check.SearchFailed" xml:space="preserve">
+    <value>The search failed. Check the search base (DN) and the permissions of the lookup account. Details: {0}</value>
+  </data>
+  <data name="Users.Check.ConnectFailed" xml:space="preserve">
+    <value>Could not connect to ActiveDirectory. Details: {0}</value>
+  </data>
+  <data name="Error.Ad.BindUserInvalid" xml:space="preserve">
+    <value>The lookup account is not valid.</value>
+  </data>
+  <data name="Error.Ad.SearchBaseInvalid" xml:space="preserve">
+    <value>Enter the search base as a DN (e.g. DC=corp,DC=example,DC=com).</value>
+  </data>
+  <data name="Error.Ad.BindPasswordRequired" xml:space="preserve">
+    <value>Enter the password as well when you specify a lookup account.</value>
+  </data>
+  <data name="Error.Transfer.NoFile" xml:space="preserve">
+    <value>Select a file.</value>
+  </data>
+  <data name="Error.Transfer.TooLarge" xml:space="preserve">
+    <value>The file is too large (limit {0} KB).</value>
+  </data>
+  <data name="Error.Transfer.InvalidJson" xml:space="preserve">
+    <value>The file cannot be read as JSON. Specify an exported file.</value>
+  </data>
+  <data name="Error.Transfer.WrongFormat" xml:space="preserve">
+    <value>This file is not in an importable format (check that you did not mix up the folders and the system settings files).</value>
+  </data>
+  <data name="Error.Transfer.UnsupportedVersion" xml:space="preserve">
+    <value>File version {0} is not supported (supported: {1}).</value>
+  </data>
+  <data name="Error.Transfer.FolderInvalid" xml:space="preserve">
+    <value>Cannot import the folder "{0}".</value>
+  </data>
+  <data name="Error.Transfer.FolderDuplicate" xml:space="preserve">
+    <value>The file has several folders with the same path: {0}</value>
+  </data>
+  <data name="Error.Transfer.ValueInvalid" xml:space="preserve">
+    <value>The value of "{0}" is out of range.</value>
+  </data>
+  <data name="Log.Transfer.FoldersExported" xml:space="preserve">
+    <value>Exported the search folders</value>
+  </data>
+  <data name="Log.Transfer.FoldersImported" xml:space="preserve">
+    <value>Imported the search folders ({0} added, {1} updated)</value>
+  </data>
+  <data name="Log.Transfer.SystemExported" xml:space="preserve">
+    <value>Exported the system settings</value>
+  </data>
+  <data name="Log.Transfer.SystemImported" xml:space="preserve">
+    <value>Imported the system settings</value>
+  </data>
+  <data name="Log.Transfer.FileKindsExported" xml:space="preserve">
+    <value>Exported the file kinds</value>
+  </data>
+  <data name="Log.Transfer.FileKindsImported" xml:space="preserve">
+    <value>Imported the file kinds</value>
+  </data>
+  <data name="Error.User.MailAddressInvalid" xml:space="preserve">
+    <value>The email address is not valid.</value>
+  </data>
+  <data name="Error.Folder.PathUnc" xml:space="preserve">
+    <value>UNC paths (\\server\share) are not allowed. Specify a path that starts with a drive letter.</value>
+  </data>
+  <data name="Error.User.DescriptionTooLong" xml:space="preserve">
+    <value>The description must be {0} characters or fewer.</value>
+  </data>
+  <data name="Error.Export.MaxRowsRange" xml:space="preserve">
+    <value>The maximum number of export rows must be between {0} and {1}.</value>
+  </data>
+  <data name="Log.Settings.ExportChanged" xml:space="preserve">
+    <value>Changed export settings: {0} (max rows: {1})</value>
+  </data>
+  <data name="Log.Export.Done" xml:space="preserve">
+    <value>Exported search results ({1}, {2} rows): {0}</value>
+  </data>
+  <data name="Log.Export.DoneTruncated" xml:space="preserve">
+    <value>Exported search results ({1}, {2} rows, stopped at the limit): {0}</value>
+  </data>
+  <data name="Log.Export.Aborted" xml:space="preserve">
+    <value>Export of search results was interrupted ({1}): {0}</value>
+  </data>
+  <data name="Error.User.CannotResetOwnPassword" xml:space="preserve">
+    <value>You cannot reset your own password here. Change it in User settings.</value>
+  </data>
+  <data name="Log.Users.PasswordReset" xml:space="preserve">
+    <value>Reset password: {0} ({1})</value>
+  </data>
+  <data name="Notice.UserPasswordReset" xml:space="preserve">
+    <value>The password of {0} was reset.</value>
+  </data>
+</root>

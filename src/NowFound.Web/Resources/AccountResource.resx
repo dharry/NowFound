@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied.Heading" xml:space="preserve">
+    <value>アクセスできません</value>
+  </data>
+  <data name="AccessDenied.Home" xml:space="preserve">
+    <value>ホームへ戻る</value>
+  </data>
+  <data name="AccessDenied.Message" xml:space="preserve">
+    <value>この操作を行う権限がありません。</value>
+  </data>
+  <data name="AccessDenied.Title" xml:space="preserve">
+    <value>アクセス拒否</value>
+  </data>
+  <data name="ChangePassword.Confirm" xml:space="preserve">
+    <value>新しいパスワード（確認）</value>
+  </data>
+  <data name="ChangePassword.Current" xml:space="preserve">
+    <value>現在のパスワード</value>
+  </data>
+  <data name="ChangePassword.Mismatch" xml:space="preserve">
+    <value>確認用パスワードが一致しません。</value>
+  </data>
+  <data name="ChangePassword.New" xml:space="preserve">
+    <value>新しいパスワード</value>
+  </data>
+  <data name="ChangePassword.Submit" xml:space="preserve">
+    <value>変更する</value>
+  </data>
+  <data name="ChangePassword.Title" xml:space="preserve">
+    <value>パスワード変更</value>
+  </data>
+  <data name="Login.Email" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="Login.Heading" xml:space="preserve">
+    <value>NowFound ログイン</value>
+  </data>
+  <data name="Login.Invalid" xml:space="preserve">
+    <value>メールアドレスまたはパスワードが正しくありません。</value>
+  </data>
+  <data name="Login.Locked" xml:space="preserve">
+    <value>アカウントがロックされています。しばらくしてからお試しください。</value>
+  </data>
+  <data name="Login.Password" xml:space="preserve">
+    <value>パスワード</value>
+  </data>
+  <data name="Login.RememberMe" xml:space="preserve">
+    <value>ログイン状態を保持する</value>
+  </data>
+  <data name="Login.Submit" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="Login.Title" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="Preferences.BookmarkPageSize" xml:space="preserve">
+    <value>ブックマークのページサイズ</value>
+  </data>
+  <data name="Preferences.BookmarkPageSizeHint" xml:space="preserve">
+    <value>保存した検索の一覧の 1 ページあたりの件数です。空欄の場合は {0} 件です。</value>
+  </data>
+  <data name="Preferences.LanguageHint" xml:space="preserve">
+    <value>画面の表示言語です。ログイン前の画面（ログイン画面など）には、ブラウザの言語または前回選んだ言語が使われます。</value>
+  </data>
+  <data name="Preferences.PageSize" xml:space="preserve">
+    <value>検索結果のページサイズ</value>
+  </data>
+  <data name="Preferences.PageSizeHint" xml:space="preserve">
+    <value>空欄の場合は管理者の既定値（{0} 件）を使います。</value>
+  </data>
+  <data name="Preferences.Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Preferences.Saved" xml:space="preserve">
+    <value>保存しました。</value>
+  </data>
+  <data name="Preferences.Theme" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="Preferences.ThemeHint" xml:space="preserve">
+    <value>選ぶとすぐに画面へ反映されます。「保存」で確定します。</value>
+  </data>
+  <data name="Preferences.Title" xml:space="preserve">
+    <value>ユーザー設定</value>
+  </data>
+  <data name="Theme.blue.Description" xml:space="preserve">
+    <value>Visual Studio の「青」風テーマ</value>
+  </data>
+  <data name="Theme.blue.Name" xml:space="preserve">
+    <value>青</value>
+  </data>
+  <data name="Theme.dark.Description" xml:space="preserve">
+    <value>Visual Studio の「濃色」風テーマ</value>
+  </data>
+  <data name="Theme.dark.Name" xml:space="preserve">
+    <value>濃色</value>
+  </data>
+  <data name="Theme.desert.Description" xml:space="preserve">
+    <value>Vim の Desert カラースキーム風テーマ</value>
+  </data>
+  <data name="Theme.desert.Name" xml:space="preserve">
+    <value>Desert</value>
+  </data>
+  <data name="Theme.hybrid.Description" xml:space="preserve">
+    <value>Vim の Hybrid カラースキーム風テーマ</value>
+  </data>
+  <data name="Theme.hybrid.Name" xml:space="preserve">
+    <value>Hybrid</value>
+  </data>
+  <data name="Theme.light.Description" xml:space="preserve">
+    <value>Visual Studio の「明るい」風テーマ</value>
+  </data>
+  <data name="Theme.light.Name" xml:space="preserve">
+    <value>明るい</value>
+  </data>
+  <data name="Theme.solarized.Description" xml:space="preserve">
+    <value>Vim の Solarized Dark カラースキーム風テーマ</value>
+  </data>
+  <data name="Theme.solarized.Name" xml:space="preserve">
+    <value>Solarized Dark</value>
+  </data>
+  <data name="Login.Disabled" xml:space="preserve">
+    <value>このアカウントは無効です。管理者に問い合わせてください。</value>
+  </data>
+  <data name="Login.Expired" xml:space="preserve">
+    <value>このアカウントは有効期限が切れています。管理者に問い合わせてください。</value>
+  </data>
+  <data name="Login.SessionBlocked" xml:space="preserve">
+    <value>アカウントが無効、または有効期限が切れたため、ログアウトしました。</value>
+  </data>
+  <data name="ChangePassword.Expired" xml:space="preserve">
+    <value>パスワードの有効期間が過ぎています。新しいパスワードに変更してください。</value>
+  </data>
+  <data name="Preferences.PasswordChanged" xml:space="preserve">
+    <value>パスワードを変更しました。</value>
+  </data>
+  <data name="Theme.slack.Name" xml:space="preserve">
+    <value>Slack</value>
+  </data>
+  <data name="Theme.slack.Description" xml:space="preserve">
+    <value>Slack風テーマ</value>
+  </data>
+  <data name="Theme.facebook.Name" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Theme.facebook.Description" xml:space="preserve">
+    <value>Facebook風テーマ</value>
+  </data>
+  <data name="Theme.teams.Name" xml:space="preserve">
+    <value>Teams</value>
+  </data>
+  <data name="Theme.teams.Description" xml:space="preserve">
+    <value>Teams風テーマ</value>
+  </data>
+  <data name="Theme.discord.Name" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="Theme.discord.Description" xml:space="preserve">
+    <value>Discord風テーマ</value>
+  </data>
+  <data name="Login.Tabs" xml:space="preserve">
+    <value>ログイン方法</value>
+  </data>
+  <data name="Login.Tab.Local" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="Login.Tab.ActiveDirectory" xml:space="preserve">
+    <value>ActiveDirectory</value>
+  </data>
+  <data name="Login.UserName" xml:space="preserve">
+    <value>ユーザー名</value>
+  </data>
+  <data name="Login.DirectoryUnavailable" xml:space="preserve">
+    <value>ActiveDirectory サーバーに接続できません。しばらくしてからもう一度お試しいただくか、管理者に連絡してください。</value>
+  </data>
+  <data name="ChangePassword.ManagedByDirectory" xml:space="preserve">
+    <value>ActiveDirectory のユーザーのパスワードは ActiveDirectory 側で管理されます。ここでは変更できません。</value>
+  </data>
+  <data name="Login.InvalidDirectory" xml:space="preserve">
+    <value>ユーザー名またはパスワードが正しくありません。</value>
+  </data>
+</root>

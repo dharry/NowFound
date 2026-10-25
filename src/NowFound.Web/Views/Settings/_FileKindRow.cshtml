@@ -1,0 +1,43 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<SettingsResource> L
+@model FileKindRowModel
+@{
+    var row = Model.Row;
+}
+<tr data-kind-row>
+    <td class="kind-icon">
+        <input type="hidden" name="Rows[@Model.Index].Key" value="@row.Key" />
+        <input type="text" class="icon-input" name="Rows[@Model.Index].Icon" value="@row.Icon" list="icon-suggestions"
+               maxlength="32" required aria-label="@L["Settings.Kinds.Row.Icon"]" autocomplete="off" />
+    </td>
+    <td class="kind-label">
+        <input type="text" name="Rows[@Model.Index].Label" value="@row.Label" maxlength="50" required aria-label="@L["Settings.Kinds.Row.Name"]" />
+        @if (row.IsSystem)
+        {
+            <span class="chip">@(row.Key == "folder" ? L["Settings.Kinds.Row.ChipFolder"].Value : L["Settings.Kinds.Row.ChipOther"].Value)</span>
+        }
+    </td>
+    <td class="kind-extensions">
+        @if (row.IsSystem)
+        {
+            <input type="hidden" name="Rows[@Model.Index].Extensions" value="" />
+            <span class="muted">@L["Settings.Kinds.Row.NoExtensions"]</span>
+        }
+        else
+        {
+            <textarea name="Rows[@Model.Index].Extensions" rows="3" aria-label="@L["Settings.Kinds.Row.Extensions"]"
+                      placeholder="@L["Settings.Kinds.Row.ExtensionsPlaceholder"]">@row.Extensions</textarea>
+        }
+    </td>
+    <td class="kind-actions">
+        @if (!row.IsSystem)
+        {
+            <button type="button" class="icon-button" data-remove-kind aria-label="@L["Settings.Kinds.Row.Remove"]" title="@L["Settings.Kinds.Row.Remove"]">
+                <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+                    <path fill="currentColor" d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                </svg>
+            </button>
+        }
+    </td>
+</tr>

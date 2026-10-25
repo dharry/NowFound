@@ -1,0 +1,83 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<GroupsResource> L
+@inject IStringLocalizer<CommonResource> C
+@model ListPage<NowFound.Application.Settings.GroupSummary, ListQueryModel>
+@{
+    ViewData["Title"] = L["Groups.Title"].Value;
+    var pager = PagerModel.From(Model.Result, p => Url.Action("Index", Model.Query.ToRouteValues(p)));
+
+    // 表示/非表示を切り替えられる列（名前は常に表示する）。
+    IReadOnlyList<(string Key, string Label)> columns =
+    [
+        ("description", L["Groups.Col.Description"].Value),
+        ("members", L["Groups.Col.Members"].Value),
+        ("folders", L["Groups.Col.Folders"].Value),
+    ];
+}
+<h1>@L["Groups.Title"]</h1>
+<partial name="_Flash" />
+<p><a class="button" asp-action="Create">@L["Groups.Add"]</a></p>
+<form method="get" asp-action="Index" class="card">
+    <div class="log-filter">
+        <label>@C["List.Keyword"]
+            <input type="text" name="Q" value="@Model.Query.Q" placeholder="@L["Groups.Filter.Placeholder"]" />
+        </label>
+        <partial name="_SortHidden" model="(ListQueryModel)Model.Query" />
+        <button type="submit">@C["List.Search"]</button>
+        <a class="button secondary" asp-action="Index" role="button">@C["List.Clear"]</a>
+    </div>
+</form>
+<div class="results-toolbar">
+    <span class="summary">
+        @if (Model.Result.TotalCount == 0)
+        {
+            <span>@C["List.Count", 0]</span>
+        }
+        else
+        {
+            <span>@C["List.RangeSummary", Model.Result.TotalCount.ToString("N0"), pager.StartItem.ToString("N0"), pager.EndItem.ToString("N0")]</span>
+            <span class="page-size-info">
+                (<a asp-controller="Settings" asp-action="Index" asp-fragment="AdminListPageSize" title="@C["List.AdminPageSize.Title"]">@C["List.PageSize", Model.Result.PageSize]</a>)
+            </span>
+        }
+    </span>
+    <partial name="_Pager" model="pager" />
+    <partial name="_ColumnMenu" model='new ColumnMenuModel("group-table", columns)' />
+</div>
+<table id="group-table">
+    <thead>
+        <tr>
+            @{ var h1 = Model.Query.SortLink(Url, L["Groups.Col.Name"].Value, GroupSortKeys.Name, GroupSortKeys.Name); }<th aria-sort="@h1.AriaSort"><partial name="_SortLink" model="h1" /></th>
+            @{ var h2 = Model.Query.SortLink(Url, L["Groups.Col.Description"].Value, GroupSortKeys.Description, GroupSortKeys.Name); }<th data-col="description" aria-sort="@h2.AriaSort"><partial name="_SortLink" model="h2" /></th>
+            @{ var h3 = Model.Query.SortLink(Url, L["Groups.Col.Members"].Value, GroupSortKeys.Members, GroupSortKeys.Name); }<th data-col="members" aria-sort="@h3.AriaSort"><partial name="_SortLink" model="h3" /></th>
+            @{ var h4 = Model.Query.SortLink(Url, L["Groups.Col.Folders"].Value, GroupSortKeys.Folders, GroupSortKeys.Name); }<th data-col="folders" aria-sort="@h4.AriaSort"><partial name="_SortLink" model="h4" /></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var group in Model.Result.Items)
+    {
+        <tr>
+            <td>@(group.IsDefault ? L["Groups.DefaultName"].Value : group.Name)@if (group.IsDefault) { <span class="muted"> @L["Groups.DefaultBadge"]</span> }</td>
+            <td data-col="description">@(group.IsDefault && (string.IsNullOrEmpty(group.Description) || group.Description == NowFound.Domain.Entities.Group.DefaultDescription) ? L["Groups.DefaultDescription"].Value : group.Description)</td>
+            <td data-col="members">@group.UserCount</td>
+            <td data-col="folders">@group.FolderCount</td>
+            <td class="actions">
+                <a class="button" asp-action="Edit" asp-route-id="@group.Id">@L["Groups.EditLink"]</a>
+                @if (!group.IsDefault)
+                {
+                    <form asp-action="Delete" asp-route-id="@group.Id" method="post" data-confirm="@L["Groups.DeleteConfirm"]">
+                        <button type="submit" class="danger">@L["Groups.Delete"]</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+@if (Model.Result.Items.Count == 0)
+{
+    <p class="muted">@L["Groups.Empty"]</p>
+}
+<partial name="_Pager" model="pager" />

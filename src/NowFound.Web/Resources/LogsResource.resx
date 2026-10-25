@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Logs.Col.Detail" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Logs.Col.Ip" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="Logs.Col.Operation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Logs.Col.Timestamp" xml:space="preserve">
+    <value>日時</value>
+  </data>
+  <data name="Logs.Col.User" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="Logs.Count" xml:space="preserve">
+    <value>{0} 件</value>
+  </data>
+  <data name="Logs.Empty" xml:space="preserve">
+    <value>該当するログはありません。</value>
+  </data>
+  <data name="Logs.Filter.All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="Logs.Filter.Clear" xml:space="preserve">
+    <value>クリア</value>
+  </data>
+  <data name="Logs.Filter.Operation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Logs.Filter.Period" xml:space="preserve">
+    <value>期間</value>
+  </data>
+  <data name="Logs.Filter.Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Logs.Filter.User" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="Logs.Filter.UserPlaceholder" xml:space="preserve">
+    <value>メールアドレス（部分一致）</value>
+  </data>
+  <data name="Logs.FilterByOperation" xml:space="preserve">
+    <value>この操作で絞り込む</value>
+  </data>
+  <data name="Logs.FilterByUser" xml:space="preserve">
+    <value>このユーザーで絞り込む</value>
+  </data>
+  <data name="Logs.Operation.AccessDenied" xml:space="preserve">
+    <value>アクセスエラー</value>
+  </data>
+  <data name="Logs.Operation.AdminChange" xml:space="preserve">
+    <value>管理操作</value>
+  </data>
+  <data name="Logs.Operation.Login" xml:space="preserve">
+    <value>ログイン</value>
+  </data>
+  <data name="Logs.Operation.LoginFailed" xml:space="preserve">
+    <value>ログイン失敗</value>
+  </data>
+  <data name="Logs.Operation.Logout" xml:space="preserve">
+    <value>ログアウト</value>
+  </data>
+  <data name="Logs.Operation.PasswordChange" xml:space="preserve">
+    <value>パスワード変更</value>
+  </data>
+  <data name="Logs.Operation.Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="Logs.Title" xml:space="preserve">
+    <value>操作ログ</value>
+  </data>
+  <data name="Logs.RangeSummary" xml:space="preserve">
+    <value>{0} 件中 {1}～{2} 件</value>
+  </data>
+  <data name="Logs.PageSize" xml:space="preserve">
+    <value>表示件数: {0} 件</value>
+  </data>
+  <data name="Logs.PageSize.Title" xml:space="preserve">
+    <value>表示件数はシステム設定で変更できます</value>
+  </data>
+  <data name="Logs.Operation.Export" xml:space="preserve">
+    <value>エクスポート</value>
+  </data>
+</root>

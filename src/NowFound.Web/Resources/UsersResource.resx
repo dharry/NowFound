@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Users.Add" xml:space="preserve">
+    <value>ユーザー追加</value>
+  </data>
+  <data name="Users.Col.Email" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="Users.Col.MustChange" xml:space="preserve">
+    <value>パスワード変更要求</value>
+  </data>
+  <data name="Users.Col.Role" xml:space="preserve">
+    <value>ロール</value>
+  </data>
+  <data name="Users.Create.Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Users.Create.Email" xml:space="preserve">
+    <value>アカウント</value>
+  </data>
+  <data name="Users.Create.IsAdmin" xml:space="preserve">
+    <value>管理者にする</value>
+  </data>
+  <data name="Users.Create.Password" xml:space="preserve">
+    <value>初期パスワード</value>
+  </data>
+  <data name="Users.Create.RequirePasswordChange" xml:space="preserve">
+    <value>初回ログイン時にパスワード変更を要求する</value>
+  </data>
+  <data name="Users.Create.Submit" xml:space="preserve">
+    <value>作成</value>
+  </data>
+  <data name="Users.Create.Title" xml:space="preserve">
+    <value>ユーザー追加</value>
+  </data>
+  <data name="Users.Filter.Placeholder" xml:space="preserve">
+    <value>アカウント・メールアドレス（部分一致）</value>
+  </data>
+  <data name="Users.Filter.Role" xml:space="preserve">
+    <value>ロール</value>
+  </data>
+  <data name="Users.MustChange.Yes" xml:space="preserve">
+    <value>要</value>
+  </data>
+  <data name="Users.Role.Admin" xml:space="preserve">
+    <value>管理者</value>
+  </data>
+  <data name="Users.Role.User" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="Users.Title" xml:space="preserve">
+    <value>ユーザー管理</value>
+  </data>
+  <data name="Users.Col.Status" xml:space="preserve">
+    <value>状態</value>
+  </data>
+  <data name="Users.Col.ExpiresOn" xml:space="preserve">
+    <value>有効期限</value>
+  </data>
+  <data name="Users.Status.Active" xml:space="preserve">
+    <value>有効</value>
+  </data>
+  <data name="Users.Status.Disabled" xml:space="preserve">
+    <value>無効</value>
+  </data>
+  <data name="Users.Status.Expired" xml:space="preserve">
+    <value>期限切れ</value>
+  </data>
+  <data name="Users.Status.Locked" xml:space="preserve">
+    <value>ロック中</value>
+  </data>
+  <data name="Users.Edit.Link" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Users.Edit.Title" xml:space="preserve">
+    <value>ユーザーの編集</value>
+  </data>
+  <data name="Users.Edit.Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Users.Edit.IsEnabled" xml:space="preserve">
+    <value>アカウントを有効にする</value>
+  </data>
+  <data name="Users.Edit.IsEnabledNote" xml:space="preserve">
+    <value>無効にすると、ログインできなくなります。ログイン中の場合は次の操作でログアウトされます。</value>
+  </data>
+  <data name="Users.Edit.ExpiresOn" xml:space="preserve">
+    <value>有効期限</value>
+  </data>
+  <data name="Users.Edit.ExpiresOnNote" xml:space="preserve">
+    <value>指定した日の終わりまで有効です。空欄は無期限です。</value>
+  </data>
+  <data name="Users.Edit.LockTitle" xml:space="preserve">
+    <value>ログイン失敗によるロック</value>
+  </data>
+  <data name="Users.Edit.Locked" xml:space="preserve">
+    <value>このアカウントはロックされています。</value>
+  </data>
+  <data name="Users.Edit.NotLocked" xml:space="preserve">
+    <value>ロックされていません。</value>
+  </data>
+  <data name="Users.Edit.Unlock" xml:space="preserve">
+    <value>ロックを解除</value>
+  </data>
+  <data name="Users.Delete.Title" xml:space="preserve">
+    <value>ユーザーの削除</value>
+  </data>
+  <data name="Users.Delete.Note" xml:space="preserve">
+    <value>ユーザーと、そのユーザーの所属グループ・ブックマークを削除します。操作ログは残ります。元に戻せません。</value>
+  </data>
+  <data name="Users.Delete.Self" xml:space="preserve">
+    <value>自分自身は削除できません。</value>
+  </data>
+  <data name="Users.Delete.Confirm" xml:space="preserve">
+    <value>{0} を削除します。元に戻せません。よろしいですか？</value>
+  </data>
+  <data name="Users.Delete.Button" xml:space="preserve">
+    <value>このユーザーを削除</value>
+  </data>
+  <data name="Users.Col.AuthSource" xml:space="preserve">
+    <value>認証方式</value>
+  </data>
+  <data name="Users.Auth.Local" xml:space="preserve">
+    <value>標準</value>
+  </data>
+  <data name="Users.Auth.ActiveDirectory" xml:space="preserve">
+    <value>ActiveDirectory</value>
+  </data>
+  <data name="Users.Create.AuthSource" xml:space="preserve">
+    <value>認証方式</value>
+  </data>
+  <data name="Users.Create.AdUserNameNote" xml:space="preserve">
+    <value>ActiveDirectory のユーザー名（sAMAccountName）を入力します。パスワードは ActiveDirectory で認証するため設定しません。</value>
+  </data>
+  <data name="Users.Edit.UserName" xml:space="preserve">
+    <value>ユーザー名</value>
+  </data>
+  <data name="Users.Check.Button" xml:space="preserve">
+    <value>ユーザーの存在確認</value>
+  </data>
+  <data name="Users.Check.Running" xml:space="preserve">
+    <value>確認しています…</value>
+  </data>
+  <data name="Users.Check.Error" xml:space="preserve">
+    <value>確認を実行できませんでした。もう一度お試しください。</value>
+  </data>
+  <data name="Users.Col.MailAddress" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="Users.Create.MailAddress" xml:space="preserve">
+    <value>メールアドレス</value>
+  </data>
+  <data name="Users.Create.MailAddressNote" xml:space="preserve">
+    <value>連絡先のメールアドレスです（任意）。</value>
+  </data>
+  <data name="Users.Create.LocalAccountNote" xml:space="preserve">
+    <value>メールアドレスを入力します。アカウントであり、メールアドレスとしても使われます。</value>
+  </data>
+  <data name="Users.Edit.MailAddressLocalNote" xml:space="preserve">
+    <value>標準ユーザーはアカウントがメールアドレスです。</value>
+  </data>
+  <data name="Users.Col.Description" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="Users.Create.Description" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="Users.Create.DescriptionNote" xml:space="preserve">
+    <value>ユーザーの補足説明です（任意、500 文字まで）。</value>
+  </data>
+  <data name="Users.Reset.Title" xml:space="preserve">
+    <value>パスワードの再設定</value>
+  </data>
+  <data name="Users.Reset.Note" xml:space="preserve">
+    <value>ユーザーがパスワードを忘れたときに、管理者が新しいパスワードを設定します。ロックも解除され、ログイン中のセッションは無効になります。新しいパスワードは本人へ安全な方法で伝えてください。</value>
+  </data>
+  <data name="Users.Reset.Self" xml:space="preserve">
+    <value>自分自身のパスワードは「ユーザー設定」で変更してください。</value>
+  </data>
+  <data name="Users.Reset.NewPassword" xml:space="preserve">
+    <value>新しいパスワード</value>
+  </data>
+  <data name="Users.Reset.RequireChange" xml:space="preserve">
+    <value>次回ログイン時にパスワードの変更を求める</value>
+  </data>
+  <data name="Users.Reset.Button" xml:space="preserve">
+    <value>パスワードを再設定</value>
+  </data>
+  <data name="Users.Reset.Confirm" xml:space="preserve">
+    <value>{0} のパスワードを再設定します。よろしいですか？</value>
+  </data>
+</root>

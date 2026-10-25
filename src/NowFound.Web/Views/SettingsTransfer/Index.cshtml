@@ -1,0 +1,59 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<SettingsResource> L
+@{
+    ViewData["Title"] = L["Transfer.Title"].Value;
+}
+<h1>@L["Transfer.Title"]</h1>
+<p class="muted">@L["Transfer.Note"]</p>
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+@if (TempData["Warning"] is string warning)
+{
+    <p class="validation-summary" role="status">@warning</p>
+}
+@if (TempData["Error"] is string error)
+{
+    <p class="validation-summary" role="alert">@error</p>
+}
+
+<div class="card section-gap">
+    <h2>@L["Transfer.Folders.Title"]</h2>
+    <p class="muted">@L["Transfer.Folders.Note"]</p>
+    <a class="button" asp-action="ExportFolders">@L["Transfer.Export"]</a>
+    <form asp-action="ImportFolders" method="post" enctype="multipart/form-data" class="section-gap">
+        <div class="field">
+            <label for="folders-file">@L["Transfer.File"]</label>
+            <input id="folders-file" name="file" type="file" accept=".json,application/json" required />
+        </div>
+        <button type="submit">@L["Transfer.Import"]</button>
+    </form>
+</div>
+
+<div class="card section-gap">
+    <h2>@L["Transfer.System.Title"]</h2>
+    <p class="muted">@L["Transfer.System.Note"]</p>
+    <a class="button" asp-action="ExportSystemSettings">@L["Transfer.Export"]</a>
+    <form asp-action="ImportSystemSettings" method="post" enctype="multipart/form-data" class="section-gap">
+        <div class="field">
+            <label for="system-file">@L["Transfer.File"]</label>
+            <input id="system-file" name="file" type="file" accept=".json,application/json" required />
+        </div>
+        <button type="submit">@L["Transfer.Import"]</button>
+    </form>
+</div>
+
+<div class="card section-gap">
+    <h2>@L["Transfer.FileKinds.Title"]</h2>
+    <p class="muted">@L["Transfer.FileKinds.Note"]</p>
+    <a class="button" asp-action="ExportFileKinds">@L["Transfer.Export"]</a>
+    <form asp-action="ImportFileKinds" method="post" enctype="multipart/form-data" class="section-gap">
+        <div class="field">
+            <label for="kinds-file">@L["Transfer.File"]</label>
+            <input id="kinds-file" name="file" type="file" accept=".json,application/json" required />
+        </div>
+        <button type="submit">@L["Transfer.Import"]</button>
+    </form>
+</div>

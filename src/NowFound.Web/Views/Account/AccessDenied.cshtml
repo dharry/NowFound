@@ -1,0 +1,11 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<AccountResource> L
+@{
+    ViewData["Title"] = L["AccessDenied.Title"].Value;
+}
+<div class="card">
+    <h1>@L["AccessDenied.Heading"]</h1>
+    <p>@L["AccessDenied.Message"]</p>
+    <a class="button" asp-controller="Home" asp-action="Index">@L["AccessDenied.Home"]</a>
+</div>

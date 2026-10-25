@@ -1,0 +1,8 @@
+@if (TempData["Flash"] is string flash)
+{
+    <p class="notice" role="status">@flash</p>
+}
+@if (TempData["FlashError"] is string flashError)
+{
+    <p class="validation-summary" role="alert">@flashError</p>
+}

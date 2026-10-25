@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SavedSearches.Column.Description" xml:space="preserve">
+    <value>メモ</value>
+  </data>
+  <data name="SavedSearches.Column.Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="SavedSearches.Column.Owner" xml:space="preserve">
+    <value>作成者</value>
+  </data>
+  <data name="SavedSearches.Column.Updated" xml:space="preserve">
+    <value>更新日時</value>
+  </data>
+  <data name="SavedSearches.Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="SavedSearches.Delete.Confirm" xml:space="preserve">
+    <value>「{0}」を削除しますか？</value>
+  </data>
+  <data name="SavedSearches.Delete.ConfirmPublic" xml:space="preserve">
+    <value>パブリックブックマーク「{0}」を削除しますか？ 全ユーザーから見えなくなります。</value>
+  </data>
+  <data name="SavedSearches.Edit" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="SavedSearches.Edit.AdminOnly" xml:space="preserve">
+    <value>公開にできるのは管理者のみです。</value>
+  </data>
+  <data name="SavedSearches.Edit.Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="SavedSearches.Edit.Description" xml:space="preserve">
+    <value>メモ（任意）</value>
+  </data>
+  <data name="SavedSearches.Edit.Hint" xml:space="preserve">
+    <value>検索条件を変えるには、検索画面で条件を直して「上書き保存」を押してください。</value>
+  </data>
+  <data name="SavedSearches.Edit.Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="SavedSearches.Edit.OnlyOwnerMakesPrivate" xml:space="preserve">
+    <value>公開のブックマークを非公開に戻せるのは、作成者（{0}）のみです。</value>
+  </data>
+  <data name="SavedSearches.Edit.Pin" xml:space="preserve">
+    <value>一覧の先頭に固定する</value>
+  </data>
+  <data name="SavedSearches.Edit.PrivateOwner" xml:space="preserve">
+    <value>非公開（作成者のみ）</value>
+  </data>
+  <data name="SavedSearches.Edit.PublicAll" xml:space="preserve">
+    <value>公開（全ユーザーが実行できます）</value>
+  </data>
+  <data name="SavedSearches.Edit.Submit" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SavedSearches.Edit.Title" xml:space="preserve">
+    <value>ブックマークの編集</value>
+  </data>
+  <data name="SavedSearches.Edit.Visibility" xml:space="preserve">
+    <value>公開範囲</value>
+  </data>
+  <data name="SavedSearches.Filter.Placeholder" xml:space="preserve">
+    <value>名前・説明・作成者（部分一致）</value>
+  </data>
+  <data name="SavedSearches.Filter.Visibility" xml:space="preserve">
+    <value>公開範囲</value>
+  </data>
+  <data name="SavedSearches.Flash.Created" xml:space="preserve">
+    <value>「{0}」を保存しました。</value>
+  </data>
+  <data name="SavedSearches.Flash.Deleted" xml:space="preserve">
+    <value>「{0}」を削除しました。</value>
+  </data>
+  <data name="SavedSearches.Flash.LoadFailed" xml:space="preserve">
+    <value>「{0}」の保存内容を読み込めませんでした。作り直してください。</value>
+  </data>
+  <data name="SavedSearches.Flash.NoPermission" xml:space="preserve">
+    <value>このブックマークを変更する権限がありません。</value>
+  </data>
+  <data name="SavedSearches.Flash.NotFound" xml:space="preserve">
+    <value>ブックマークが見つかりません。削除されたか、閲覧できない可能性があります。</value>
+  </data>
+  <data name="SavedSearches.Flash.Overwritten" xml:space="preserve">
+    <value>「{0}」の検索条件を上書き保存しました。</value>
+  </data>
+  <data name="SavedSearches.Flash.Updated" xml:space="preserve">
+    <value>保存しました。</value>
+  </data>
+  <data name="SavedSearches.Intro" xml:space="preserve">
+    <value>検索画面で条件を指定して「★ 保存」を押すと、ここに追加されます。結果は実行のたびに最新になり、あなた自身のアクセス権で絞り込まれます。</value>
+  </data>
+  <data name="SavedSearches.Mine.Empty" xml:space="preserve">
+    <value>非公開のブックマークはありません。</value>
+  </data>
+  <data name="SavedSearches.Mine.Heading" xml:space="preserve">
+    <value>自分のブックマーク（非公開）</value>
+  </data>
+  <data name="SavedSearches.Public.AdminOnly" xml:space="preserve">
+    <value>パブリックブックマークの作成・変更・削除は管理者のみ可能です。</value>
+  </data>
+  <data name="SavedSearches.Public.Empty" xml:space="preserve">
+    <value>パブリックブックマークはありません。</value>
+  </data>
+  <data name="SavedSearches.Public.Heading" xml:space="preserve">
+    <value>パブリックブックマーク（全ユーザーが実行できます）</value>
+  </data>
+  <data name="SavedSearches.Run" xml:space="preserve">
+    <value>実行</value>
+  </data>
+  <data name="SavedSearches.Title" xml:space="preserve">
+    <value>保存した検索</value>
+  </data>
+  <data name="SavedSearches.Visibility.Private" xml:space="preserve">
+    <value>非公開</value>
+  </data>
+  <data name="SavedSearches.Visibility.Public" xml:space="preserve">
+    <value>公開</value>
+  </data>
+</root>

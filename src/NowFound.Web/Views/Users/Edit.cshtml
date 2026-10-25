@@ -1,0 +1,120 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<UsersResource> L
+@model UserEditViewModel
+@{
+    ViewData["Title"] = L["Users.Edit.Title"].Value;
+}
+<h1>@L["Users.Edit.Title"]</h1>
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+@if (TempData["Error"] is string error)
+{
+    <p class="validation-summary" role="alert">@error</p>
+}
+<div class="card">
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="field">
+            <label>@L["Users.Create.Email"]</label>
+            <p><strong>@Model.Email</strong></p>
+        </div>
+        <div class="field">
+            @if (Model.AuthSource == NowFound.Domain.AuthSources.ActiveDirectory)
+            {
+                <label asp-for="MailAddress">@L["Users.Create.MailAddress"]</label>
+                <input asp-for="MailAddress" type="email" autocomplete="off" maxlength="256" />
+                <p class="muted">@L["Users.Create.MailAddressNote"]</p>
+            }
+            else
+            {
+                <label>@L["Users.Create.MailAddress"]</label>
+                <p>@Model.MailAddress</p>
+                <p class="muted">@L["Users.Edit.MailAddressLocalNote"]</p>
+            }
+        </div>
+        <div class="field">
+            <label asp-for="Description">@L["Users.Create.Description"]</label>
+            <textarea asp-for="Description" rows="2" maxlength="500"></textarea>
+            <p class="muted">@L["Users.Create.DescriptionNote"]</p>
+        </div>
+        <div class="field">
+            <label>@L["Users.Create.AuthSource"]</label>
+            <p>@L[Model.AuthSource == NowFound.Domain.AuthSources.ActiveDirectory ? "Users.Auth.ActiveDirectory" : "Users.Auth.Local"]</p>
+        </div>
+        <div class="field">
+            <label><input asp-for="IsAdmin" /> @L["Users.Create.IsAdmin"]</label>
+        </div>
+        <div class="field">
+            <label><input asp-for="IsEnabled" /> @L["Users.Edit.IsEnabled"]</label>
+            <p class="muted">@L["Users.Edit.IsEnabledNote"]</p>
+        </div>
+        <div class="field">
+            <label asp-for="ExpiresOn">@L["Users.Edit.ExpiresOn"]</label>
+            <input asp-for="ExpiresOn" type="date" />
+            <p class="muted">@L["Users.Edit.ExpiresOnNote"]</p>
+        </div>
+        <button type="submit">@L["Users.Edit.Save"]</button>
+        <a asp-action="Index">@L["Users.Create.Cancel"]</a>
+    </form>
+</div>
+<div class="card section-gap">
+    <h2>@L["Users.Edit.LockTitle"]</h2>
+    @if (Model.IsLockedOut)
+    {
+        <p>@L["Users.Edit.Locked"]</p>
+        <form asp-action="Unlock" method="post">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <input type="hidden" name="email" value="@Model.Email" />
+            <button type="submit">@L["Users.Edit.Unlock"]</button>
+        </form>
+    }
+    else
+    {
+        <p class="muted">@L["Users.Edit.NotLocked"]</p>
+    }
+</div>
+@if (Model.AuthSource != NowFound.Domain.AuthSources.ActiveDirectory)
+{
+    <div class="card section-gap">
+        <h2>@L["Users.Reset.Title"]</h2>
+        <p class="muted">@L["Users.Reset.Note"]</p>
+        @if (Model.IsSelf)
+        {
+            <p class="muted">@L["Users.Reset.Self"]</p>
+        }
+        else
+        {
+            <form asp-action="ResetPassword" method="post" data-confirm="@L["Users.Reset.Confirm", Model.Email]">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="field">
+                    <label for="reset-new-password">@L["Users.Reset.NewPassword"]</label>
+                    <input id="reset-new-password" name="newPassword" type="password" autocomplete="new-password" required />
+                    <partial name="_PasswordHint" />
+                </div>
+                <div class="field">
+                    <label class="check"><input type="checkbox" name="requireChange" value="true" checked /> @L["Users.Reset.RequireChange"]</label>
+                </div>
+                <button type="submit">@L["Users.Reset.Button"]</button>
+            </form>
+        }
+    </div>
+}
+<div class="card section-gap">
+    <h2>@L["Users.Delete.Title"]</h2>
+    <p class="muted">@L["Users.Delete.Note"]</p>
+    @if (Model.IsSelf)
+    {
+        <p class="muted">@L["Users.Delete.Self"]</p>
+    }
+    else
+    {
+        <form asp-action="Delete" method="post" data-confirm="@L["Users.Delete.Confirm", Model.Email]">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button type="submit" class="secondary">@L["Users.Delete.Button"]</button>
+        </form>
+    }
+</div>

@@ -1,0 +1,114 @@
+@using NowFound.Domain
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<AccountResource> L
+@inject IStringLocalizer<CommonResource> C
+@using NowFound.Web.Security
+@model PreferencesViewModel
+@{
+    ViewData["Title"] = L["Preferences.Title"].Value;
+}
+<h1>@L["Preferences.Title"]</h1>
+<div class="card">
+    @if (TempData["Message"] is string message)
+    {
+        <p class="notice" role="status">@message</p>
+    }
+    <form asp-action="Preferences" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+
+        <fieldset class="field">
+            <legend>@L["Preferences.Theme"]</legend>
+            <div class="theme-grid" id="theme-grid">
+                @foreach (var theme in AppThemes.All)
+                {
+                    <label class="theme-card" data-theme="@theme.Id">
+                        <input type="radio" name="Theme" value="@theme.Id" checked="@(Model.Theme == theme.Id)" />
+                        <span class="theme-preview" aria-hidden="true">
+                            <span class="p-nav"></span>
+                            <span class="p-main"><span class="p-bar"></span><span class="p-line"></span><span class="p-line short"></span></span>
+                        </span>
+                        <span class="name">@L[$"Theme.{theme.Id}.Name"]</span>
+                        <span class="desc">@L[$"Theme.{theme.Id}.Description"]</span>
+                    </label>
+                }
+            </div>
+            <p class="muted">@L["Preferences.ThemeHint"]</p>
+        </fieldset>
+
+        <div class="field">
+            <label for="Language">@C["Language.Label"]</label>
+            <select id="Language" name="Language">
+                @foreach (var language in AppLanguages.All)
+                {
+                    <option value="@language.Id" selected="@(Model.Language == language.Id)">@language.NativeName</option>
+                }
+            </select>
+            <p class="muted">@L["Preferences.LanguageHint"]</p>
+        </div>
+
+        <div class="field">
+            <label asp-for="PageSize">@L["Preferences.PageSize"]</label>
+            <input asp-for="PageSize" type="number" min="1" max="10000" placeholder="@Model.DefaultPageSize" />
+            <p class="muted">@L["Preferences.PageSizeHint", Model.DefaultPageSize]</p>
+        </div>
+        <div class="field">
+            <label asp-for="BookmarkPageSize">@L["Preferences.BookmarkPageSize"]</label>
+            <input asp-for="BookmarkPageSize" type="number" min="1" max="10000" placeholder="@NowFound.Domain.Entities.SystemSetting.DefaultListPageSize" />
+            <p class="muted">@L["Preferences.BookmarkPageSizeHint", NowFound.Domain.Entities.SystemSetting.DefaultListPageSize]</p>
+        </div>
+        <button type="submit">@L["Preferences.Save"]</button>
+    </form>
+</div>
+
+@if (User.HasClaim(AppUserClaimsPrincipalFactory.AuthSourceClaim, NowFound.Domain.AuthSources.ActiveDirectory))
+{
+    <div class="card section-gap" id="password">
+        <h2>@L["ChangePassword.Title"]</h2>
+        @if (ViewData["PasswordErrors"] is IEnumerable<string> directoryErrors && directoryErrors.Any())
+        {
+            <div class="validation-summary" role="alert">
+                <ul>
+                    @foreach (var error in directoryErrors)
+                    {
+                        <li>@error</li>
+                    }
+                </ul>
+            </div>
+        }
+        <p class="muted">@L["ChangePassword.ManagedByDirectory"]</p>
+    </div>
+}
+else
+{
+<div class="card section-gap" id="password">
+    <h2>@L["ChangePassword.Title"]</h2>
+    @if (ViewData["PasswordErrors"] is IEnumerable<string> passwordErrors && passwordErrors.Any())
+    {
+        <div class="validation-summary" role="alert">
+            <ul>
+                @foreach (var error in passwordErrors)
+                {
+                    <li>@error</li>
+                }
+            </ul>
+        </div>
+    }
+    <form asp-action="ChangePassword" method="post">
+        <div class="field">
+            <label for="CurrentPassword">@L["ChangePassword.Current"]</label>
+            <input id="CurrentPassword" name="CurrentPassword" type="password" autocomplete="current-password" required />
+        </div>
+        <div class="field">
+            <label for="NewPassword">@L["ChangePassword.New"]</label>
+            <input id="NewPassword" name="NewPassword" type="password" autocomplete="new-password" required />
+            <partial name="_PasswordHint" />
+        </div>
+        <div class="field">
+            <label for="ConfirmPassword">@L["ChangePassword.Confirm"]</label>
+            <input id="ConfirmPassword" name="ConfirmPassword" type="password" autocomplete="new-password" required />
+        </div>
+        <button type="submit">@L["ChangePassword.Submit"]</button>
+    </form>
+</div>
+}

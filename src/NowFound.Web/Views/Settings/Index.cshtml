@@ -1,0 +1,90 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Application.Settings
+@using NowFound.Web.Resources
+@inject IStringLocalizer<SettingsResource> L
+@model PageSizeViewModel
+@{
+    ViewData["Title"] = L["Settings.Title"].Value;
+}
+<h1>@L["Settings.Title"]</h1>
+<div class="card">
+    @if (TempData["Message"] is string message)
+    {
+        <p class="notice" role="status">@message</p>
+    }
+    <form asp-action="Index" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <div class="field">
+            <label asp-for="PageSize">@L["Settings.PageSize"]</label>
+            <input asp-for="PageSize" type="number" min="1" max="10000" required />
+            <p class="muted">@L["Settings.PageSizeNote"]</p>
+        </div>
+        <div class="field">
+            <label asp-for="LogPageSize">@L["Settings.LogPageSize"]</label>
+            <input asp-for="LogPageSize" type="number" min="1" max="10000" required />
+            <p class="muted">@L["Settings.LogPageSizeNote"]</p>
+        </div>
+        <div class="field">
+            <label asp-for="AdminListPageSize">@L["Settings.AdminListPageSize"]</label>
+            <input asp-for="AdminListPageSize" type="number" min="1" max="10000" required />
+            <p class="muted">@L["Settings.AdminListPageSizeNote"]</p>
+        </div>
+        <h2>@L["Settings.Incremental.Title"]</h2>
+        <p class="muted">@L["Settings.Incremental.Note"]</p>
+        <div class="field">
+            <label class="check"><input asp-for="IncrementalEnabled" type="checkbox" /> @L["Settings.Incremental.Enabled"]</label>
+        </div>
+        <div class="field">
+            <label asp-for="IncrementalMinChars">@L["Settings.Incremental.MinChars"]</label>
+            <input asp-for="IncrementalMinChars" type="number" min="@IncrementalSearchSettings.MinCharsMin" max="@IncrementalSearchSettings.MinCharsMax" required />
+            <p class="muted">@L["Settings.Incremental.MinCharsNote", IncrementalSearchSettings.MinCharsMin, IncrementalSearchSettings.MinCharsMax]</p>
+        </div>
+        <div class="field">
+            <label asp-for="IncrementalDelayMs">@L["Settings.Incremental.DelayMs"]</label>
+            <input asp-for="IncrementalDelayMs" type="number" min="@IncrementalSearchSettings.DelayMsMin" max="@IncrementalSearchSettings.DelayMsMax" step="50" required />
+            <p class="muted">@L["Settings.Incremental.DelayMsNote", IncrementalSearchSettings.DelayMsMin, IncrementalSearchSettings.DelayMsMax]</p>
+        </div>
+        <h2>@L["Settings.Export.Title"]</h2>
+        <p class="muted">@L["Settings.Export.Note"]</p>
+        <div class="field">
+            <label class="check"><input asp-for="ExportAllowAllUsers" type="checkbox" /> @L["Settings.Export.AllowAllUsers"]</label>
+            <p class="muted">@L["Settings.Export.AllowAllUsersNote"]</p>
+        </div>
+        <div class="field">
+            <label asp-for="ExportMaxRows">@L["Settings.Export.MaxRows"]</label>
+            <input asp-for="ExportMaxRows" type="number" min="@ExportSettings.MaxRowsMin" max="@ExportSettings.MaxRowsMax" required />
+            <p class="muted">@L["Settings.Export.MaxRowsNote", ExportSettings.MaxRowsMin.ToString("N0"), ExportSettings.MaxRowsMax.ToString("N0")]</p>
+        </div>
+        <button type="submit">@L["Settings.Save"]</button>
+    </form>
+</div>
+
+<div class="card section-gap">
+    <h2>@L["Settings.PolicyCard.Title"]</h2>
+    <p class="muted">@L["Settings.PolicyCard.Note"]</p>
+    <a class="button" asp-action="AccountPolicy">@L["Settings.Configure"]</a>
+</div>
+
+<div class="card section-gap">
+    <h2>@L["Settings.AdCard.Title"]</h2>
+    <p class="muted">@L["Settings.AdCard.Note"]</p>
+    <a class="button" asp-action="ActiveDirectory">@L["Settings.Configure"]</a>
+</div>
+
+<div class="card section-gap">
+    <h2>@L["Settings.ExcludeCard.Title"]</h2>
+    <p class="muted">@L["Settings.ExcludeCard.Note"]</p>
+    <a class="button" asp-action="ExcludeDefaults">@L["Settings.Configure"]</a>
+</div>
+
+<div class="card section-gap">
+    <h2>@L["Settings.KindsCard.Title"]</h2>
+    <p class="muted">@L["Settings.KindsCard.Note"]</p>
+    <a class="button" asp-action="FileKinds">@L["Settings.Configure"]</a>
+</div>
+
+<div class="card section-gap">
+    <h2>@L["Settings.TransferCard.Title"]</h2>
+    <p class="muted">@L["Settings.TransferCard.Note"]</p>
+    <a class="button" asp-controller="SettingsTransfer" asp-action="Index">@L["Settings.Configure"]</a>
+</div>

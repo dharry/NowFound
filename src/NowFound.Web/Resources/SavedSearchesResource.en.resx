@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="SavedSearches.Column.Description" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="SavedSearches.Column.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="SavedSearches.Column.Owner" xml:space="preserve">
+    <value>Created by</value>
+  </data>
+  <data name="SavedSearches.Column.Updated" xml:space="preserve">
+    <value>Updated</value>
+  </data>
+  <data name="SavedSearches.Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="SavedSearches.Delete.Confirm" xml:space="preserve">
+    <value>Delete "{0}"?</value>
+  </data>
+  <data name="SavedSearches.Delete.ConfirmPublic" xml:space="preserve">
+    <value>Delete the public bookmark "{0}"? It will no longer be visible to any user.</value>
+  </data>
+  <data name="SavedSearches.Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="SavedSearches.Edit.AdminOnly" xml:space="preserve">
+    <value>Only administrators can make a bookmark public.</value>
+  </data>
+  <data name="SavedSearches.Edit.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SavedSearches.Edit.Description" xml:space="preserve">
+    <value>Note (optional)</value>
+  </data>
+  <data name="SavedSearches.Edit.Hint" xml:space="preserve">
+    <value>To change the search conditions, edit them on the search screen and click "Overwrite".</value>
+  </data>
+  <data name="SavedSearches.Edit.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="SavedSearches.Edit.OnlyOwnerMakesPrivate" xml:space="preserve">
+    <value>Only the creator ({0}) can make a public bookmark private again.</value>
+  </data>
+  <data name="SavedSearches.Edit.Pin" xml:space="preserve">
+    <value>Pin to the top of the list</value>
+  </data>
+  <data name="SavedSearches.Edit.PrivateOwner" xml:space="preserve">
+    <value>Private (creator only)</value>
+  </data>
+  <data name="SavedSearches.Edit.PublicAll" xml:space="preserve">
+    <value>Public (all users can run it)</value>
+  </data>
+  <data name="SavedSearches.Edit.Submit" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SavedSearches.Edit.Title" xml:space="preserve">
+    <value>Edit bookmark</value>
+  </data>
+  <data name="SavedSearches.Edit.Visibility" xml:space="preserve">
+    <value>Visibility</value>
+  </data>
+  <data name="SavedSearches.Filter.Placeholder" xml:space="preserve">
+    <value>Name, description or owner (partial match)</value>
+  </data>
+  <data name="SavedSearches.Filter.Visibility" xml:space="preserve">
+    <value>Visibility</value>
+  </data>
+  <data name="SavedSearches.Flash.Created" xml:space="preserve">
+    <value>Saved "{0}".</value>
+  </data>
+  <data name="SavedSearches.Flash.Deleted" xml:space="preserve">
+    <value>Deleted "{0}".</value>
+  </data>
+  <data name="SavedSearches.Flash.LoadFailed" xml:space="preserve">
+    <value>Could not load the saved content of "{0}". Please recreate it.</value>
+  </data>
+  <data name="SavedSearches.Flash.NoPermission" xml:space="preserve">
+    <value>You do not have permission to change this bookmark.</value>
+  </data>
+  <data name="SavedSearches.Flash.NotFound" xml:space="preserve">
+    <value>The bookmark was not found. It may have been deleted or you may not have access to it.</value>
+  </data>
+  <data name="SavedSearches.Flash.Overwritten" xml:space="preserve">
+    <value>Overwrote the search conditions of "{0}".</value>
+  </data>
+  <data name="SavedSearches.Flash.Updated" xml:space="preserve">
+    <value>Saved.</value>
+  </data>
+  <data name="SavedSearches.Intro" xml:space="preserve">
+    <value>Set conditions on the search screen and click "★ Save" to add a bookmark here. Results are refreshed every time it runs and are limited to what you have access to.</value>
+  </data>
+  <data name="SavedSearches.Mine.Empty" xml:space="preserve">
+    <value>You have no private bookmarks.</value>
+  </data>
+  <data name="SavedSearches.Mine.Heading" xml:space="preserve">
+    <value>My bookmarks (private)</value>
+  </data>
+  <data name="SavedSearches.Public.AdminOnly" xml:space="preserve">
+    <value>Only administrators can create, change, or delete public bookmarks.</value>
+  </data>
+  <data name="SavedSearches.Public.Empty" xml:space="preserve">
+    <value>There are no public bookmarks.</value>
+  </data>
+  <data name="SavedSearches.Public.Heading" xml:space="preserve">
+    <value>Public bookmarks (all users can run them)</value>
+  </data>
+  <data name="SavedSearches.Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="SavedSearches.Title" xml:space="preserve">
+    <value>Saved searches</value>
+  </data>
+  <data name="SavedSearches.Visibility.Private" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="SavedSearches.Visibility.Public" xml:space="preserve">
+    <value>Public</value>
+  </data>
+</root>

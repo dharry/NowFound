@@ -1,0 +1,45 @@
+@using NowFound.Application.Search
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model ConditionRowModel
+@inject IStringLocalizer<SearchResource> L
+@{
+    var c = Model.Condition;
+}
+<div class="condition" data-condition>
+    <select name="Conditions[@Model.Index].Field" data-field aria-label="@L["Search.Row.Field"]">
+        @foreach (var (field, labelKey) in SearchLabels.FieldKeys)
+        {
+            <option value="@field" selected="@(c.Field == field)">@L[labelKey]</option>
+        }
+    </select>
+    <span class="text-wrap" data-text-wrap>
+        <input type="text" name="Conditions[@Model.Index].Text" value="@c.Text" data-text placeholder="@L["Search.Row.Keyword"]" aria-label="@L["Search.Row.Keyword"]" />
+        <button type="button" class="clear-input" data-clear-text aria-label="@L["Search.Row.Clear"]" title="@L["Search.Row.Clear"]" tabindex="-1" hidden="@(string.IsNullOrEmpty(c.Text))">×</button>
+    </span>
+    <span class="size" data-size>
+        <select name="Conditions[@Model.Index].SizeComparison" aria-label="@L["Search.Row.Comparison"]">
+            @foreach (var (comparison, labelKey) in SearchLabels.SizeComparisonKeys)
+            {
+                <option value="@comparison" selected="@(c.SizeComparison == comparison)">@L[labelKey]</option>
+            }
+        </select>
+        <input type="number" name="Conditions[@Model.Index].SizeValue" value="@c.SizeValue?.ToString(System.Globalization.CultureInfo.InvariantCulture)" min="0" step="any" inputmode="decimal"
+               placeholder="@L["Search.Row.Number"]" aria-label="@L["Search.Row.SizeValue"]" />
+        <select name="Conditions[@Model.Index].SizeUnit" aria-label="@L["Search.Row.Unit"]">
+            @foreach (var unit in Enum.GetValues<SizeUnit>())
+            {
+                <option value="@unit" selected="@(c.SizeUnit == unit)">@unit</option>
+            }
+        </select>
+    </span>
+    <span class="dates" data-dates>
+        <input type="date" name="Conditions[@Model.Index].From" value="@c.From?.ToString("yyyy-MM-dd")" aria-label="@L["Search.Row.From"]" />
+        <span>～</span>
+        <input type="date" name="Conditions[@Model.Index].To" value="@c.To?.ToString("yyyy-MM-dd")" aria-label="@L["Search.Row.To"]" />
+    </span>
+    @if (Model.Removable)
+    {
+        <button type="button" class="secondary icon" data-remove aria-label="@L["Search.Row.Remove"]">×</button>
+    }
+</div>

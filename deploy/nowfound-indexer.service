@@ -1,0 +1,11 @@
+[Unit]
+Description=NowFound Indexer
+After=network.target
+
+[Service]
+Type=oneshot
+User=nowfound
+Group=nowfound
+WorkingDirectory=/opt/nowfound
+ExecStart=/usr/bin/dotnet /opt/nowfound/indexer/NowFound.Indexer.dll --main-db /opt/nowfound/data/main.db --files-db /opt/nowfound/data/files.db
+SyslogIdentifier=nowfound-indexer

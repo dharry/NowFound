@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Groups.Add" xml:space="preserve">
+    <value>グループ追加</value>
+  </data>
+  <data name="Groups.Col.Description" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="Groups.Col.Folders" xml:space="preserve">
+    <value>フォルダ数</value>
+  </data>
+  <data name="Groups.Col.Members" xml:space="preserve">
+    <value>メンバー数</value>
+  </data>
+  <data name="Groups.Col.Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="Groups.DefaultBadge" xml:space="preserve">
+    <value>（既定）</value>
+  </data>
+  <data name="Groups.DefaultDescription" xml:space="preserve">
+    <value>新規ユーザーが自動で所属するグループ</value>
+  </data>
+  <data name="Groups.DefaultName" xml:space="preserve">
+    <value>デフォルトグループ</value>
+  </data>
+  <data name="Groups.Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Groups.DeleteConfirm" xml:space="preserve">
+    <value>このグループを削除しますか？</value>
+  </data>
+  <data name="Groups.Edit.Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Groups.Edit.DefaultNote" xml:space="preserve">
+    <value>既定のグループです。名前の変更と削除はできません。新規ユーザーは自動でこのグループに所属します。</value>
+  </data>
+  <data name="Groups.Edit.Description" xml:space="preserve">
+    <value>説明</value>
+  </data>
+  <data name="Groups.Edit.Folders" xml:space="preserve">
+    <value>閲覧できる検索対象フォルダ</value>
+  </data>
+  <data name="Groups.Edit.Members" xml:space="preserve">
+    <value>メンバー</value>
+  </data>
+  <data name="Groups.Edit.Name" xml:space="preserve">
+    <value>グループ名</value>
+  </data>
+  <data name="Groups.Edit.NoFolders" xml:space="preserve">
+    <value>先に検索対象フォルダを登録してください。</value>
+  </data>
+  <data name="Groups.Edit.Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Groups.Edit.TitleAdd" xml:space="preserve">
+    <value>グループ追加</value>
+  </data>
+  <data name="Groups.Edit.TitleEdit" xml:space="preserve">
+    <value>グループ編集</value>
+  </data>
+  <data name="Groups.EditLink" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Groups.Empty" xml:space="preserve">
+    <value>グループがありません。</value>
+  </data>
+  <data name="Groups.Filter.Placeholder" xml:space="preserve">
+    <value>名前・説明（部分一致）</value>
+  </data>
+  <data name="Groups.Title" xml:space="preserve">
+    <value>グループ管理</value>
+  </data>
+  <data name="Groups.Edit.FilterPlaceholder" xml:space="preserve">
+    <value>絞り込み（部分一致）</value>
+  </data>
+  <data name="Groups.Edit.FilterMembers" xml:space="preserve">
+    <value>メンバーを絞り込む</value>
+  </data>
+  <data name="Groups.Edit.FilterFolders" xml:space="preserve">
+    <value>検索対象フォルダを絞り込む</value>
+  </data>
+</root>

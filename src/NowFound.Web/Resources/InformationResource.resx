@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Information.ComputerName" xml:space="preserve">
+    <value>コンピュータ名</value>
+  </data>
+  <data name="Information.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Information.Databases" xml:space="preserve">
+    <value>データベース</value>
+  </data>
+  <data name="Information.Db.Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="Information.Db.Path" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="Information.Db.Provider" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="Information.Db.Size" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="Information.Db.files" xml:space="preserve">
+    <value>files.db（ファイル情報）</value>
+  </data>
+  <data name="Information.Db.main" xml:space="preserve">
+    <value>main.db（ユーザー・設定）</value>
+  </data>
+  <data name="Information.Db.ope" xml:space="preserve">
+    <value>ope.db（操作ログ）</value>
+  </data>
+  <data name="Information.Db.Counts" xml:space="preserve">
+    <value>件数（COUNT(*)）</value>
+  </data>
+  <data name="Information.Framework" xml:space="preserve">
+    <value>稼働している .NET</value>
+  </data>
+  <data name="Information.Host" xml:space="preserve">
+    <value>ホスト</value>
+  </data>
+  <data name="Information.LogicalProcessors" xml:space="preserve">
+    <value>論理プロセッサ {0}</value>
+  </data>
+  <data name="Information.Memory" xml:space="preserve">
+    <value>メモリ</value>
+  </data>
+  <data name="Information.MemoryValue" xml:space="preserve">
+    <value>搭載（利用可能）: {0} / このプロセスの使用量: {1}</value>
+  </data>
+  <data name="Information.Os" xml:space="preserve">
+    <value>OS</value>
+  </data>
+  <data name="Information.Runtime" xml:space="preserve">
+    <value>.NET</value>
+  </data>
+  <data name="Information.RuntimeVersion" xml:space="preserve">
+    <value>バージョン</value>
+  </data>
+  <data name="Information.Title" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="Information.Unknown" xml:space="preserve">
+    <value>不明</value>
+  </data>
+</root>

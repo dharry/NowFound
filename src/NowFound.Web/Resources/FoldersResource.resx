@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Folders.Add" xml:space="preserve">
+    <value>フォルダ追加</value>
+  </data>
+  <data name="Folders.Col.ExcludeCount" xml:space="preserve">
+    <value>除外パターン数</value>
+  </data>
+  <data name="Folders.Col.GroupCount" xml:space="preserve">
+    <value>割り当てグループ数</value>
+  </data>
+  <data name="Folders.Col.Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="Folders.Col.Path" xml:space="preserve">
+    <value>パス</value>
+  </data>
+  <data name="Folders.Col.Share" xml:space="preserve">
+    <value>共有フォルダ</value>
+  </data>
+  <data name="Folders.Delete" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="Folders.DeleteConfirm" xml:space="preserve">
+    <value>このフォルダを削除しますか？（収集済みの情報は次回の収集で削除されます）</value>
+  </data>
+  <data name="Folders.Edit.Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Folders.Edit.ExcludeDefaultsLink" xml:space="preserve">
+    <value>システム設定の既定値</value>
+  </data>
+  <data name="Folders.Edit.ExcludeHidden" xml:space="preserve">
+    <value>隠しファイル・隠しフォルダを除外する</value>
+  </data>
+  <data name="Folders.Edit.ExcludeHint1" xml:space="preserve">
+    <value>末尾に {0} を付けるとフォルダだけが対象になります（例: {1}）。</value>
+  </data>
+  <data name="Folders.Edit.ExcludeHint2" xml:space="preserve">
+    <value>新しく追加するときは、{0}が入力されます。</value>
+  </data>
+  <data name="Folders.Edit.ExcludePatterns" xml:space="preserve">
+    <value>除外パターン（1 行に 1 つ。* と ? が使えます）</value>
+  </data>
+  <data name="Folders.Edit.IsShared" xml:space="preserve">
+    <value>共有フォルダ</value>
+  </data>
+  <data name="Folders.Edit.Name" xml:space="preserve">
+    <value>表示名</value>
+  </data>
+  <data name="Folders.Edit.Path" xml:space="preserve">
+    <value>フォルダパス（絶対パス）</value>
+  </data>
+  <data name="Folders.Edit.Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Folders.Edit.ShareFormat" xml:space="preserve">
+    <value>\\コンピューター名\共有名</value>
+  </data>
+  <data name="Folders.Edit.ShareHint" xml:space="preserve">
+    <value>表示・コピー時のパスを {0} 形式に差し替えます。</value>
+  </data>
+  <data name="Folders.Edit.ShareNameLabel" xml:space="preserve">
+    <value>共有名</value>
+  </data>
+  <data name="Folders.Edit.ShareNamePlaceholder" xml:space="preserve">
+    <value>共有名（未設定時はフォルダ名）</value>
+  </data>
+  <data name="Folders.Edit.TitleAdd" xml:space="preserve">
+    <value>フォルダ追加</value>
+  </data>
+  <data name="Folders.Edit.TitleEdit" xml:space="preserve">
+    <value>フォルダ編集</value>
+  </data>
+  <data name="Folders.EditLink" xml:space="preserve">
+    <value>編集</value>
+  </data>
+  <data name="Folders.Empty" xml:space="preserve">
+    <value>検索対象フォルダが登録されていません。</value>
+  </data>
+  <data name="Folders.Filter.Placeholder" xml:space="preserve">
+    <value>名前・パス（部分一致）</value>
+  </data>
+  <data name="Folders.Title" xml:space="preserve">
+    <value>検索対象フォルダ</value>
+  </data>
+  <data name="Folders.Edit.PathNote" xml:space="preserve">
+    <value>絶対パスで指定します（UNC パスは指定できません）。</value>
+  </data>
+  <data name="Folders.Edit.NameNote" xml:space="preserve">
+    <value>パスを入力すると、フォルダ名が自動で入ります。変更もできます。</value>
+  </data>
+</root>

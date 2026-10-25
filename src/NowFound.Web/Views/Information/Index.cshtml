@@ -1,0 +1,73 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Application.Information
+@using NowFound.Web.Resources
+@model InformationViewModel
+@inject IStringLocalizer<InformationResource> L
+@{
+    ViewData["Title"] = L["Information.Title"].Value;
+    var unknown = L["Information.Unknown"].Value;
+}
+<h1>@L["Information.Title"]</h1>
+
+<div class="card">
+    <h2>@L["Information.Host"]</h2>
+    <table>
+        <tbody>
+            <tr><th scope="row">@L["Information.ComputerName"]</th><td>@Model.MachineName</td></tr>
+            @if (Model.Details is { } details)
+            {
+                var host = details.Host;
+                <tr><th scope="row">@L["Information.Os"]</th><td>@host.OsDescription (@host.OsArchitecture)</td></tr>
+                <tr><th scope="row">@L["Information.Memory"]</th><td>@L["Information.MemoryValue", ByteSizeFormatter.Format(host.TotalMemoryBytes), ByteSizeFormatter.Format(host.ProcessMemoryBytes)]</td></tr>
+                <tr><th scope="row">@L["Information.Cpu"]</th><td>@(host.CpuName ?? unknown) (@L["Information.LogicalProcessors", host.LogicalProcessors])</td></tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="card section-gap">
+    <h2>@L["Information.Runtime"]</h2>
+    <table>
+        <tbody>
+            <tr><th scope="row">@L["Information.Framework"]</th><td>@Model.Runtime.FrameworkDescription</td></tr>
+            <tr><th scope="row">@L["Information.RuntimeVersion"]</th><td>@Model.Runtime.Version@(Model.Details is null ? "" : $" ({Model.Runtime.ProcessArchitecture})")</td></tr>
+        </tbody>
+    </table>
+</div>
+
+@if (Model.Details is { } adminInfo)
+{
+    <div class="card section-gap">
+        <h2>@L["Information.Databases"]</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>@L["Information.Db.Name"]</th>
+                    <th>@L["Information.Db.Provider"]</th>
+                    <th>@L["Information.Db.Path"]</th>
+                    <th>@L["Information.Db.Size"]</th>
+                    <th>@L["Information.Db.Counts"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var db in adminInfo.Databases)
+                {
+                    <tr>
+                        <td>@L[$"Information.Db.{db.Name}"]</td>
+                        <td>@db.Provider @db.EngineVersion</td>
+                        <td>@(db.Path ?? unknown)</td>
+                        <td>@(db.SizeBytes is { } size ? ByteSizeFormatter.Format(size) : unknown)</td>
+                        <td>
+                            <ul class="table-counts">
+                                @foreach (var table in db.Tables)
+                                {
+                                    <li>@table.Table: @table.Rows.ToString("N0")</li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

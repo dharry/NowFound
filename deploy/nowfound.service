@@ -1,0 +1,18 @@
+[Unit]
+Description=NowFound Web
+After=network.target
+
+[Service]
+Type=notify
+User=nowfound
+Group=nowfound
+WorkingDirectory=/opt/nowfound/web
+ExecStart=/usr/bin/dotnet /opt/nowfound/web/NowFound.Web.dll
+Environment=ASPNETCORE_ENVIRONMENT=Production
+# First start only (creates the initial admin): add Environment=Database__SeedData=true
+Restart=always
+RestartSec=5
+SyslogIdentifier=nowfound
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,66 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<UsersResource> L
+@model CreateUserViewModel
+@{
+    ViewData["Title"] = L["Users.Create.Title"].Value;
+    var directory = Model.AuthSource == NowFound.Domain.AuthSources.ActiveDirectory;
+}
+<h1>@L["Users.Create.Title"]</h1>
+<div class="card">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <div class="field">
+            <label for="AuthSource">@L["Users.Create.AuthSource"]</label>
+            <select asp-for="AuthSource" data-auth-select data-auth-restore="@(Context.Request.Method == "GET" ? "true" : "false")">
+                <option value="@NowFound.Domain.AuthSources.Local" selected="@(!directory)">@L["Users.Auth.Local"]</option>
+                <option value="@NowFound.Domain.AuthSources.ActiveDirectory" selected="@directory">@L["Users.Auth.ActiveDirectory"]</option>
+            </select>
+        </div>
+        <div class="field">
+            <label asp-for="Email" data-auth-label="local">@L["Users.Create.Email"]</label>
+            <input asp-for="Email" type="@(directory ? "text" : "email")" autocomplete="off" required data-auth-input />
+            <p class="muted" data-auth-note="local" hidden="@directory">@L["Users.Create.LocalAccountNote"]</p>
+            <p class="muted" data-auth-note="directory" hidden="@(!directory)">@L["Users.Create.AdUserNameNote"]</p>
+        </div>
+        <div class="field" data-auth-only="directory" hidden="@(!directory)">
+            <label asp-for="MailAddress">@L["Users.Create.MailAddress"]</label>
+            <input asp-for="MailAddress" type="email" autocomplete="off" maxlength="256" disabled="@(!directory)" />
+            <p class="muted">@L["Users.Create.MailAddressNote"]</p>
+        </div>
+        <div class="field" data-auth-only="directory" hidden="@(!directory)">
+            <button type="button" class="secondary" data-check-url="@Url.Action("CheckDirectoryUser")"
+                    data-check-fields="Email" data-check-result="#user-check-result"
+                    data-check-running="@L["Users.Check.Running"]" data-check-error="@L["Users.Check.Error"]">@L["Users.Check.Button"]</button>
+            <p id="user-check-result" class="notice" role="status" aria-live="polite" hidden></p>
+        </div>
+        <div data-auth-only="local" hidden="@directory">
+            <div class="field">
+                <label asp-for="Password">@L["Users.Create.Password"]</label>
+                <input asp-for="Password" type="password" autocomplete="new-password" required disabled="@directory" />
+                <partial name="_PasswordHint" />
+            </div>
+            <div class="field">
+                <label><input asp-for="RequirePasswordChange" disabled="@directory" /> @L["Users.Create.RequirePasswordChange"]</label>
+            </div>
+        </div>
+        <div class="field">
+            <label asp-for="Description">@L["Users.Create.Description"]</label>
+            <textarea asp-for="Description" rows="2" maxlength="500"></textarea>
+            <p class="muted">@L["Users.Create.DescriptionNote"]</p>
+        </div>
+        <div class="field">
+            <label><input asp-for="IsAdmin" /> @L["Users.Create.IsAdmin"]</label>
+        </div>
+        <div class="field">
+            <label><input asp-for="IsEnabled" /> @L["Users.Edit.IsEnabled"]</label>
+        </div>
+        <div class="field">
+            <label asp-for="ExpiresOn">@L["Users.Edit.ExpiresOn"]</label>
+            <input asp-for="ExpiresOn" type="date" />
+            <p class="muted">@L["Users.Edit.ExpiresOnNote"]</p>
+        </div>
+        <button type="submit">@L["Users.Create.Submit"]</button>
+        <a asp-action="Index">@L["Users.Create.Cancel"]</a>
+    </form>
+</div>

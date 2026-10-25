@@ -1,0 +1,125 @@
+@using NowFound.Application.Search
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model SearchViewModel
+@inject IStringLocalizer<SearchResource> L
+@inject NowFound.Web.Services.IMessageTranslator Translator
+@{
+    var result = Model.Result!;
+    var pager = PagerModel.From(result, p => Url.Action("Index", "Home", Model.ToRouteValues(p)));
+
+    // 列定義（キー, 見出し, 並べ替えキー, 既定で非表示）
+    var columns = new (string Key, string Label, SearchSortKey? Sort, bool HiddenByDefault)[]
+    {
+        ("name", L["Search.Column.Name"].Value, SearchSortKey.Name, false),
+        ("folder", L["Search.Column.Folder"].Value, SearchSortKey.Folder, false),
+        ("size", L["Search.Column.Size"].Value, SearchSortKey.Size, false),
+        ("ext", L["Search.Column.Extension"].Value, SearchSortKey.Extension, false),
+        ("owner", L["Search.Column.Owner"].Value, SearchSortKey.Owner, true),
+        ("modified", L["Search.Column.Modified"].Value, SearchSortKey.Modified, false),
+        ("created", L["Search.Column.Created"].Value, SearchSortKey.Created, true),
+    };
+}
+<section class="results" id="search-results" aria-label="@L["Search.Results.Label"]">
+    @foreach (var warning in Model.Warnings)
+    {
+        <p class="validation-summary" role="alert">@warning</p>
+    }
+
+    <div class="results-toolbar">
+        <span class="summary" aria-live="polite">
+            @if (result.TotalCount == 0)
+            {
+                <span>@L["Search.Results.Count", "0"]</span>
+            }
+            else
+            {
+                <span>@L["Search.Results.RangeSummary", result.TotalCount.ToString("N0"), pager.StartItem.ToString("N0"), pager.EndItem.ToString("N0")]</span>
+                <span class="page-size-info">
+                    (<a asp-controller="Account" asp-action="Preferences" asp-fragment="PageSize" title="@L["Search.PageSize.Title"]">@L["Search.PageSize", result.PageSize]</a>)
+                </span>
+            }
+        </span>
+        <partial name="_Pager" model="pager" />
+        @if (Model.CanExport)
+        {
+            <form method="get" asp-controller="Home" asp-action="Export" class="export-form" aria-label="@L["Search.Export.Label"]">
+                @foreach (var pair in Model.ToRouteValues(1).Where(p => !string.IsNullOrEmpty(p.Value)))
+                {
+                    <input type="hidden" name="@pair.Key" value="@pair.Value" />
+                }
+                <select name="format" aria-label="@L["Search.Export.Format"]">
+                    <option value="@NowFound.Web.Services.ExportFormat.Csv">CSV</option>
+                    <option value="@NowFound.Web.Services.ExportFormat.Tsv">TSV</option>
+                </select>
+                <select name="encoding" aria-label="@L["Search.Export.Encoding"]">
+                    <option value="@NowFound.Web.Services.ExportEncoding.Utf8Bom">@L["Search.Export.Encoding.Utf8Bom"]</option>
+                    <option value="@NowFound.Web.Services.ExportEncoding.ShiftJis">@L["Search.Export.Encoding.ShiftJis"]</option>
+                </select>
+                <button type="submit" class="secondary" disabled="@(result.TotalCount == 0)">@L["Search.Export.Button"]</button>
+            </form>
+        }
+        <details class="col-menu">
+            <summary>@L["Search.Columns.Menu"]</summary>
+            <div class="col-menu-body">
+                @foreach (var column in columns)
+                {
+                    <label class="check">
+                        <input type="checkbox" data-col-table="result-table" data-col-toggle="@column.Key" data-default-hidden="@column.HiddenByDefault.ToString().ToLowerInvariant()" />
+                        @column.Label
+                    </label>
+                }
+            </div>
+        </details>
+    </div>
+
+    <div class="table-wrap">
+        <table class="result-table" id="result-table">
+            <thead>
+                <tr>
+                    @foreach (var column in columns)
+                    {
+                        var active = Model.Sort == column.Sort;
+                        var nextDesc = active && !Model.Desc;
+                        <th data-col="@column.Key" aria-sort="@(active ? (Model.Desc ? "descending" : "ascending") : "none")">
+                            <a href="@Url.Action("Index", "Home", Model.ToRouteValues(1, column.Sort, nextDesc))">@column.Label@(active ? (Model.Desc ? " ▼" : " ▲") : "")</a>
+                        </th>
+                    }
+                    <th class="copy-col"><span class="sr-only">@L["Search.Column.Actions"]</span></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in result.Items)
+            {
+                var kind = Model.FileKinds.For(item.Extension, item.IsDirectory);
+                var kindLabel = Translator.FileKindLabel(kind);
+                <tr>
+                    <td data-col="name" class="name">
+                        <span class="file-icon" data-kind="@kind.Id" title="@kindLabel" aria-hidden="true">@kind.Icon</span><span class="sr-only">@kindLabel: </span>
+                        @item.Name
+                    </td>
+                    <td data-col="folder" class="path">
+                        <a href="@Url.Action("Index", "Home", Model.ToRouteValues(1, folderId: item.SearchFolderId, folderPath: item.FolderPath))"
+                           data-folder-id="@item.SearchFolderId" data-folder-path="@item.FolderPath"
+                           title="@L["Search.Folder.NarrowTitle"]">@item.ShownFolderPath</a>
+                    </td>
+                    <td data-col="size" class="num">@(item.Size is { } size ? size.ToString("N0") : "")</td>
+                    <td data-col="ext">@item.Extension</td>
+                    <td data-col="owner">@item.Owner</td>
+                    <td data-col="modified">@item.ModifiedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                    <td data-col="created">@item.CreatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                    <td class="copy-col">
+                        <button type="button" class="secondary icon" data-copy="@item.CopyPath" title="@L["Search.Copy.Title"]" aria-label="@L["Search.Copy.Aria", item.Name]">@L["Search.Copy.Button"]</button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    @if (result.Items.Count == 0)
+    {
+        <p class="muted">@L["Search.Results.Empty"]</p>
+    }
+    <partial name="_Pager" model="pager" />
+    <p class="sr-only" id="copy-status" role="status" aria-live="polite"></p>
+</section>

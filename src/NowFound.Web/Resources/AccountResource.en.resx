@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessDenied.Heading" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="AccessDenied.Home" xml:space="preserve">
+    <value>Back to home</value>
+  </data>
+  <data name="AccessDenied.Message" xml:space="preserve">
+    <value>You do not have permission to perform this action.</value>
+  </data>
+  <data name="AccessDenied.Title" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="ChangePassword.Confirm" xml:space="preserve">
+    <value>New password (confirm)</value>
+  </data>
+  <data name="ChangePassword.Current" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="ChangePassword.Mismatch" xml:space="preserve">
+    <value>The confirmation password does not match.</value>
+  </data>
+  <data name="ChangePassword.New" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="ChangePassword.Submit" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="ChangePassword.Title" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Login.Email" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Login.Heading" xml:space="preserve">
+    <value>NowFound sign in</value>
+  </data>
+  <data name="Login.Invalid" xml:space="preserve">
+    <value>The email address or password is incorrect.</value>
+  </data>
+  <data name="Login.Locked" xml:space="preserve">
+    <value>The account is locked. Please try again later.</value>
+  </data>
+  <data name="Login.Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Login.RememberMe" xml:space="preserve">
+    <value>Keep me signed in</value>
+  </data>
+  <data name="Login.Submit" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Login.Title" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="Preferences.BookmarkPageSize" xml:space="preserve">
+    <value>Bookmarks page size</value>
+  </data>
+  <data name="Preferences.BookmarkPageSizeHint" xml:space="preserve">
+    <value>Number of bookmarks per page. If left blank, {0} is used.</value>
+  </data>
+  <data name="Preferences.LanguageHint" xml:space="preserve">
+    <value>The display language. Before you log in (for example on the login page), the browser language or your last choice is used.</value>
+  </data>
+  <data name="Preferences.PageSize" xml:space="preserve">
+    <value>Search results page size</value>
+  </data>
+  <data name="Preferences.PageSizeHint" xml:space="preserve">
+    <value>If left blank, the administrator's default ({0} items) is used.</value>
+  </data>
+  <data name="Preferences.Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Preferences.Saved" xml:space="preserve">
+    <value>Saved.</value>
+  </data>
+  <data name="Preferences.Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Preferences.ThemeHint" xml:space="preserve">
+    <value>The theme is applied immediately when selected. Click "Save" to confirm.</value>
+  </data>
+  <data name="Preferences.Title" xml:space="preserve">
+    <value>User settings</value>
+  </data>
+  <data name="Theme.blue.Description" xml:space="preserve">
+    <value>Visual Studio "Blue"-style theme</value>
+  </data>
+  <data name="Theme.blue.Name" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="Theme.dark.Description" xml:space="preserve">
+    <value>Visual Studio "Dark"-style theme</value>
+  </data>
+  <data name="Theme.dark.Name" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Theme.desert.Description" xml:space="preserve">
+    <value>Vim Desert color scheme-style theme</value>
+  </data>
+  <data name="Theme.desert.Name" xml:space="preserve">
+    <value>Desert</value>
+  </data>
+  <data name="Theme.hybrid.Description" xml:space="preserve">
+    <value>Vim Hybrid color scheme-style theme</value>
+  </data>
+  <data name="Theme.hybrid.Name" xml:space="preserve">
+    <value>Hybrid</value>
+  </data>
+  <data name="Theme.light.Description" xml:space="preserve">
+    <value>Visual Studio "Light"-style theme</value>
+  </data>
+  <data name="Theme.light.Name" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Theme.solarized.Description" xml:space="preserve">
+    <value>Vim Solarized Dark color scheme-style theme</value>
+  </data>
+  <data name="Theme.solarized.Name" xml:space="preserve">
+    <value>Solarized Dark</value>
+  </data>
+  <data name="Login.Disabled" xml:space="preserve">
+    <value>This account is disabled. Please contact an administrator.</value>
+  </data>
+  <data name="Login.Expired" xml:space="preserve">
+    <value>This account has expired. Please contact an administrator.</value>
+  </data>
+  <data name="Login.SessionBlocked" xml:space="preserve">
+    <value>You have been signed out because your account was disabled or has expired.</value>
+  </data>
+  <data name="ChangePassword.Expired" xml:space="preserve">
+    <value>Your password has expired. Please change it to continue.</value>
+  </data>
+  <data name="Preferences.PasswordChanged" xml:space="preserve">
+    <value>Your password was changed.</value>
+  </data>
+  <data name="Theme.slack.Name" xml:space="preserve">
+    <value>Slack</value>
+  </data>
+  <data name="Theme.slack.Description" xml:space="preserve">
+    <value>Slack-style theme</value>
+  </data>
+  <data name="Theme.facebook.Name" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="Theme.facebook.Description" xml:space="preserve">
+    <value>Facebook-style theme</value>
+  </data>
+  <data name="Theme.teams.Name" xml:space="preserve">
+    <value>Teams</value>
+  </data>
+  <data name="Theme.teams.Description" xml:space="preserve">
+    <value>Microsoft Teams-style theme</value>
+  </data>
+  <data name="Theme.discord.Name" xml:space="preserve">
+    <value>Discord</value>
+  </data>
+  <data name="Theme.discord.Description" xml:space="preserve">
+    <value>Discord-style theme</value>
+  </data>
+  <data name="Login.Tabs" xml:space="preserve">
+    <value>Sign-in method</value>
+  </data>
+  <data name="Login.Tab.Local" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Login.Tab.ActiveDirectory" xml:space="preserve">
+    <value>ActiveDirectory</value>
+  </data>
+  <data name="Login.UserName" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Login.DirectoryUnavailable" xml:space="preserve">
+    <value>Cannot reach the ActiveDirectory server. Try again later or contact your administrator.</value>
+  </data>
+  <data name="ChangePassword.ManagedByDirectory" xml:space="preserve">
+    <value>The password of an ActiveDirectory user is managed in ActiveDirectory and cannot be changed here.</value>
+  </data>
+  <data name="Login.InvalidDirectory" xml:space="preserve">
+    <value>The username or password is incorrect.</value>
+  </data>
+</root>

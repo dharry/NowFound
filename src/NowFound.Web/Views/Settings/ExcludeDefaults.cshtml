@@ -1,0 +1,41 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Application.Settings
+@using NowFound.Web.Resources
+@inject IStringLocalizer<SettingsResource> L
+@model ExcludeDefaultsViewModel
+@{
+    ViewData["Title"] = L["Settings.Exclude.Title"].Value;
+    // 差し込むのは固定のタグだけなので Html.Raw で良い。
+    string[] code = ["<code>*</code>", "<code>?</code>", "<code>/</code>", "<code>__MACOSX/</code>", "<code>#</code>", "<code>#*#</code>"];
+}
+<h1>@L["Settings.Exclude.Title"]</h1>
+<partial name="_Flash" />
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+<p class="muted">
+    @L["Settings.Exclude.Intro"]
+    @(Model.IsCustomized ? L["Settings.Exclude.Customized"].Value : L["Settings.Exclude.BuiltIn"].Value)
+    @L["Settings.Exclude.Existing"]
+</p>
+
+<form asp-action="ExcludeDefaults" method="post" class="card">
+    <div asp-validation-summary="All" class="validation-summary"></div>
+    <div class="field">
+        <label asp-for="Patterns">@L["Settings.Exclude.Patterns"]</label>
+        <textarea asp-for="Patterns" rows="18" spellcheck="false"></textarea>
+        <small>
+            @Html.Raw(L["Settings.Exclude.Help1", code[0], code[1]].Value)
+            @Html.Raw(L["Settings.Exclude.Help2", code[2], code[3]].Value)
+            @Html.Raw(L["Settings.Exclude.Help3", code[4], code[5]].Value)
+            @L["Settings.Exclude.Help4", ExcludePatternRules.MaxPatterns, ExcludePatternRules.MaxTotalLength]
+        </small>
+    </div>
+    <button type="submit">@L["Settings.Save"]</button>
+    <a asp-action="Index">@L["Settings.Back"]</a>
+</form>
+
+<form asp-action="ResetExcludeDefaults" method="post" class="section-gap" data-confirm="@L["Settings.Exclude.ResetConfirm"]">
+    <button type="submit" class="secondary" disabled="@(!Model.IsCustomized)">@L["Settings.Exclude.Reset"]</button>
+</form>

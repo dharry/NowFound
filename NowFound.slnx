@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/NowFound.Application/NowFound.Application.csproj" />
+    <Project Path="src/NowFound.Domain/NowFound.Domain.csproj" />
+    <Project Path="src/NowFound.Indexer/NowFound.Indexer.csproj" />
+    <Project Path="src/NowFound.Infrastructure/NowFound.Infrastructure.csproj" />
+    <Project Path="src/NowFound.Web/NowFound.Web.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/NowFound.IntegrationTests/NowFound.IntegrationTests.csproj" />
+    <Project Path="tests/NowFound.UnitTests/NowFound.UnitTests.csproj" />
+  </Folder>
+</Solution>

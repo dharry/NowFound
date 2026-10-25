@@ -1,0 +1,46 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Domain
+@using NowFound.Web.Resources
+@inject IStringLocalizer<AccountResource> L
+@model LoginViewModel
+@{
+    ViewData["Title"] = L["Login.Title"].Value;
+    var directoryTab = Model.DirectoryEnabled && Model.AuthSource == AuthSources.ActiveDirectory;
+}
+<div class="card">
+    <h1>@L["Login.Heading"]</h1>
+    <form asp-action="Login" method="post" data-login-form>
+        @if (Model.DirectoryEnabled)
+        {
+            @* GitLab のように、標準 / ActiveDirectory をタブで切り替える（AD 認証が使えるときだけ表示）。 *@
+            <div class="login-tabs" role="tablist" aria-label="@L["Login.Tabs"]">
+                <button type="button" role="tab" id="tab-local" class="login-tab" data-auth-tab="@AuthSources.Local"
+                        aria-controls="panel-local" aria-selected="@((!directoryTab).ToString().ToLowerInvariant())">@L["Login.Tab.Local"]</button>
+                <button type="button" role="tab" id="tab-directory" class="login-tab" data-auth-tab="@AuthSources.ActiveDirectory"
+                        aria-controls="panel-directory" aria-selected="@directoryTab.ToString().ToLowerInvariant()">@L["Login.Tab.ActiveDirectory"]</button>
+            </div>
+        }
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <input type="hidden" asp-for="ReturnUrl" />
+        <input type="hidden" asp-for="AuthSource" data-auth-source />
+        <div class="field" id="panel-local" role="tabpanel" aria-labelledby="tab-local" data-auth-panel="@AuthSources.Local" hidden="@directoryTab">
+            <label asp-for="Email">@L["Login.Email"]</label>
+            <input asp-for="Email" type="email" autocomplete="username" required disabled="@directoryTab" />
+        </div>
+        @if (Model.DirectoryEnabled)
+        {
+            <div class="field" id="panel-directory" role="tabpanel" aria-labelledby="tab-directory" data-auth-panel="@AuthSources.ActiveDirectory" hidden="@(!directoryTab)">
+                <label asp-for="UserName">@L["Login.UserName"]</label>
+                <input asp-for="UserName" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required disabled="@(!directoryTab)" />
+            </div>
+        }
+        <div class="field">
+            <label asp-for="Password">@L["Login.Password"]</label>
+            <input asp-for="Password" type="password" autocomplete="current-password" required />
+        </div>
+        <div class="field">
+            <label><input asp-for="RememberMe" /> @L["Login.RememberMe"]</label>
+        </div>
+        <button type="submit">@L["Login.Submit"]</button>
+    </form>
+</div>

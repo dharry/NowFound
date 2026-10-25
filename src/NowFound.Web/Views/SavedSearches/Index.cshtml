@@ -1,0 +1,140 @@
+@using NowFound.Application.Search
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@model ListPage<SavedSearchSummary, BookmarksQueryModel>
+@inject IStringLocalizer<SavedSearchesResource> L
+@inject IStringLocalizer<CommonResource> C
+@{
+    ViewData["Title"] = L["SavedSearches.Title"].Value;
+    var isAdmin = User.IsInRole("Admin");
+    var mine = Model.Result.Items.Where(s => !s.IsPublic).ToList();
+    var shared = Model.Result.Items.Where(s => s.IsPublic).ToList();
+    var nameLink = Model.Query.SortLink(Url, L["SavedSearches.Column.Name"].Value, BookmarkSortKeys.Name, BookmarkSortKeys.Name);
+    var descriptionLink = Model.Query.SortLink(Url, L["SavedSearches.Column.Description"].Value, BookmarkSortKeys.Description, BookmarkSortKeys.Name);
+    var ownerLink = Model.Query.SortLink(Url, L["SavedSearches.Column.Owner"].Value, BookmarkSortKeys.Owner, BookmarkSortKeys.Name);
+    var updatedLink = Model.Query.SortLink(Url, L["SavedSearches.Column.Updated"].Value, BookmarkSortKeys.Updated, BookmarkSortKeys.Name);
+    var pager = PagerModel.From(Model.Result, p => Url.Action("Index", Model.Query.ToRouteValues(p)));
+}
+<h1>@L["SavedSearches.Title"]</h1>
+<partial name="_Flash" />
+<p class="muted">@L["SavedSearches.Intro"]</p>
+<form method="get" asp-action="Index" class="card">
+    <div class="log-filter">
+        <label>@C["List.Keyword"]
+            <input type="text" name="Q" value="@Model.Query.Q" placeholder="@L["SavedSearches.Filter.Placeholder"]" />
+        </label>
+        <label>@L["SavedSearches.Filter.Visibility"]
+            <select name="Visibility">
+                <option value="">@C["List.All"]</option>
+                <option value="mine" selected="@(Model.Query.Visibility == "mine")">@L["SavedSearches.Visibility.Private"]</option>
+                <option value="public" selected="@(Model.Query.Visibility == "public")">@L["SavedSearches.Visibility.Public"]</option>
+            </select>
+        </label>
+        <partial name="_SortHidden" model="(ListQueryModel)Model.Query" />
+        <button type="submit">@C["List.Search"]</button>
+        <a class="button secondary" asp-action="Index" role="button">@C["List.Clear"]</a>
+    </div>
+</form>
+<div class="results-toolbar">
+    <span class="summary">
+        @if (Model.Result.TotalCount == 0)
+        {
+            <span>@C["List.Count", 0]</span>
+        }
+        else
+        {
+            <span>@C["List.RangeSummary", Model.Result.TotalCount.ToString("N0"), pager.StartItem.ToString("N0"), pager.EndItem.ToString("N0")]</span>
+            <span class="page-size-info">
+                (<a asp-controller="Account" asp-action="Preferences" asp-fragment="BookmarkPageSize" title="@C["List.PageSize.Title"]">@C["List.PageSize", Model.Result.PageSize]</a>)
+            </span>
+        }
+    </span>
+    <partial name="_Pager" model="pager" />
+</div>
+
+@functions {
+    private string Visibility(SavedSearchSummary s) => s.IsPublic ? L["SavedSearches.Visibility.Public"].Value : L["SavedSearches.Visibility.Private"].Value;
+}
+
+<h2>@L["SavedSearches.Mine.Heading"]</h2>
+@if (mine.Count == 0)
+{
+    <p class="muted">@L["SavedSearches.Mine.Empty"]</p>
+}
+else
+{
+    <table>
+        <thead><tr>
+            <th aria-sort="@nameLink.AriaSort"><partial name="_SortLink" model="nameLink" /></th>
+            <th aria-sort="@descriptionLink.AriaSort"><partial name="_SortLink" model="descriptionLink" /></th>
+            <th aria-sort="@updatedLink.AriaSort"><partial name="_SortLink" model="updatedLink" /></th>
+            <th></th>
+        </tr></thead>
+        <tbody>
+        @foreach (var item in mine)
+        {
+            <tr>
+                <td>@(item.IsPinned ? "📌 " : "")<a asp-action="Run" asp-route-id="@item.Id">@item.Name</a></td>
+                <td>@item.Description</td>
+                <td>@item.UpdatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                <td class="actions">
+                    <a class="button icon" asp-action="Run" asp-route-id="@item.Id">@L["SavedSearches.Run"]</a>
+                    <a class="button icon" asp-action="Edit" asp-route-id="@item.Id">@L["SavedSearches.Edit"]</a>
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" data-confirm="@L["SavedSearches.Delete.Confirm", item.Name]">
+                        <button type="submit" class="danger icon">@L["SavedSearches.Delete"]</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+<h2 class="section-gap">@L["SavedSearches.Public.Heading"]</h2>
+@if (!isAdmin)
+{
+    <p class="muted">@L["SavedSearches.Public.AdminOnly"]</p>
+}
+@if (shared.Count == 0)
+{
+    <p class="muted">@L["SavedSearches.Public.Empty"]</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th aria-sort="@nameLink.AriaSort"><partial name="_SortLink" model="nameLink" /></th>
+                <th aria-sort="@descriptionLink.AriaSort"><partial name="_SortLink" model="descriptionLink" /></th>
+                @if (isAdmin) { <th aria-sort="@ownerLink.AriaSort"><partial name="_SortLink" model="ownerLink" /></th> }
+                <th aria-sort="@updatedLink.AriaSort"><partial name="_SortLink" model="updatedLink" /></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in shared)
+        {
+            <tr>
+                <td>@(item.IsPinned ? "📌 " : "")<a asp-action="Run" asp-route-id="@item.Id">@item.Name</a> <span class="chip">@Visibility(item)</span></td>
+                <td>@item.Description</td>
+                @if (isAdmin)
+                {
+                    <td>@item.OwnerEmail</td>
+                }
+                <td>@item.UpdatedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                <td class="actions">
+                    <a class="button icon" asp-action="Run" asp-route-id="@item.Id">@L["SavedSearches.Run"]</a>
+                    @if (item.CanEdit)
+                    {
+                        <a class="button icon" asp-action="Edit" asp-route-id="@item.Id">@L["SavedSearches.Edit"]</a>
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" data-confirm="@L["SavedSearches.Delete.ConfirmPublic", item.Name]">
+                            <button type="submit" class="danger icon">@L["SavedSearches.Delete"]</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+<partial name="_Pager" model="pager" />

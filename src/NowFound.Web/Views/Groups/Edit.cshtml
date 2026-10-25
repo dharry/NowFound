@@ -1,0 +1,63 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<GroupsResource> L
+@model GroupEditViewModel
+@{
+    ViewData["Title"] = (Model.Id == 0 ? L["Groups.Edit.TitleAdd"] : L["Groups.Edit.TitleEdit"]).Value;
+    // 既定グループの名前は DB に日本語で保存されているため、表示だけ現在の言語にする（保存時は無視される）。
+    var nameValue = Model.IsDefault ? L["Groups.DefaultName"].Value : Model.Name;
+    var descriptionValue = Model.IsDefault && (string.IsNullOrEmpty(Model.Description) || Model.Description == NowFound.Domain.Entities.Group.DefaultDescription)
+        ? L["Groups.DefaultDescription"].Value
+        : Model.Description;
+}
+<h1>@ViewData["Title"]</h1>
+<div class="card">
+    <form asp-action="Save" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="field">
+            <label asp-for="Name">@L["Groups.Edit.Name"]</label>
+            <input asp-for="Name" type="text" value="@nameValue" required readonly="@Model.IsDefault" />
+            @if (Model.IsDefault)
+            {
+                <small>@L["Groups.Edit.DefaultNote"]</small>
+            }
+        </div>
+        <div class="field">
+            <label asp-for="Description">@L["Groups.Edit.Description"]</label>
+            <input asp-for="Description" type="text" value="@descriptionValue" />
+        </div>
+        <fieldset class="field">
+            <legend>@L["Groups.Edit.Members"]</legend>
+            <input type="search" class="check-filter" data-check-filter="members" placeholder="@L["Groups.Edit.FilterPlaceholder"]" aria-label="@L["Groups.Edit.FilterMembers"]" autocomplete="off" />
+            <div class="check-grid" data-check-list="members">
+                @foreach (var user in Model.AllUsers)
+                {
+                    <label class="check">
+                        <input type="checkbox" name="UserIds" value="@user.Id" checked="@Model.UserIds.Contains(user.Id)" />
+                        @user.Email
+                    </label>
+                }
+            </div>
+        </fieldset>
+        <fieldset class="field">
+            <legend>@L["Groups.Edit.Folders"]</legend>
+            <input type="search" class="check-filter" data-check-filter="folders" placeholder="@L["Groups.Edit.FilterPlaceholder"]" aria-label="@L["Groups.Edit.FilterFolders"]" autocomplete="off" />
+            <div class="check-grid" data-check-list="folders">
+                @foreach (var folder in Model.AllFolders)
+                {
+                    <label class="check">
+                        <input type="checkbox" name="FolderIds" value="@folder.Id" checked="@Model.FolderIds.Contains(folder.Id)" />
+                        @folder.Name <span class="muted">(@folder.Path)</span>
+                    </label>
+                }
+            </div>
+            @if (Model.AllFolders.Count == 0)
+            {
+                <span class="muted">@L["Groups.Edit.NoFolders"]</span>
+            }
+        </fieldset>
+        <button type="submit">@L["Groups.Edit.Save"]</button>
+        <a asp-action="Index">@L["Groups.Edit.Cancel"]</a>
+    </form>
+</div>

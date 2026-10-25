@@ -1,0 +1,10 @@
+@model ListQueryModel
+@* 検索フォームから送っても、並べ替えを保つ。ページは 1 に戻す。 *@
+@if (!string.IsNullOrEmpty(Model.Sort))
+{
+    <input type="hidden" name="Sort" value="@Model.Sort" />
+    @if (Model.Desc)
+    {
+        <input type="hidden" name="Desc" value="true" />
+    }
+}

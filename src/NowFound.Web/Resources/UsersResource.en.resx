@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Users.Add" xml:space="preserve">
+    <value>Add user</value>
+  </data>
+  <data name="Users.Col.Email" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Users.Col.MustChange" xml:space="preserve">
+    <value>Password change required</value>
+  </data>
+  <data name="Users.Col.Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Users.Create.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Users.Create.Email" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Users.Create.IsAdmin" xml:space="preserve">
+    <value>Make this user an administrator</value>
+  </data>
+  <data name="Users.Create.Password" xml:space="preserve">
+    <value>Initial password</value>
+  </data>
+  <data name="Users.Create.RequirePasswordChange" xml:space="preserve">
+    <value>Require a password change at first sign-in</value>
+  </data>
+  <data name="Users.Create.Submit" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Users.Create.Title" xml:space="preserve">
+    <value>Add user</value>
+  </data>
+  <data name="Users.Filter.Placeholder" xml:space="preserve">
+    <value>Account / email address (partial match)</value>
+  </data>
+  <data name="Users.Filter.Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Users.MustChange.Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Users.Role.Admin" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Users.Role.User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Users.Title" xml:space="preserve">
+    <value>User management</value>
+  </data>
+  <data name="Users.Col.Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Users.Col.ExpiresOn" xml:space="preserve">
+    <value>Expires</value>
+  </data>
+  <data name="Users.Status.Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Users.Status.Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="Users.Status.Expired" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="Users.Status.Locked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="Users.Edit.Link" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Users.Edit.Title" xml:space="preserve">
+    <value>Edit user</value>
+  </data>
+  <data name="Users.Edit.Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Users.Edit.IsEnabled" xml:space="preserve">
+    <value>Account is enabled</value>
+  </data>
+  <data name="Users.Edit.IsEnabledNote" xml:space="preserve">
+    <value>A disabled account cannot sign in. A signed-in user is signed out on the next action.</value>
+  </data>
+  <data name="Users.Edit.ExpiresOn" xml:space="preserve">
+    <value>Expiration date</value>
+  </data>
+  <data name="Users.Edit.ExpiresOnNote" xml:space="preserve">
+    <value>The account is valid until the end of this day. Leave empty for no expiration.</value>
+  </data>
+  <data name="Users.Edit.LockTitle" xml:space="preserve">
+    <value>Lockout (failed sign-ins)</value>
+  </data>
+  <data name="Users.Edit.Locked" xml:space="preserve">
+    <value>This account is locked.</value>
+  </data>
+  <data name="Users.Edit.NotLocked" xml:space="preserve">
+    <value>Not locked.</value>
+  </data>
+  <data name="Users.Edit.Unlock" xml:space="preserve">
+    <value>Unlock</value>
+  </data>
+  <data name="Users.Delete.Title" xml:space="preserve">
+    <value>Delete user</value>
+  </data>
+  <data name="Users.Delete.Note" xml:space="preserve">
+    <value>Deletes the user together with their group memberships and bookmarks. Operation logs are kept. This cannot be undone.</value>
+  </data>
+  <data name="Users.Delete.Self" xml:space="preserve">
+    <value>You cannot delete your own account.</value>
+  </data>
+  <data name="Users.Delete.Confirm" xml:space="preserve">
+    <value>Delete {0}? This cannot be undone.</value>
+  </data>
+  <data name="Users.Delete.Button" xml:space="preserve">
+    <value>Delete this user</value>
+  </data>
+  <data name="Users.Col.AuthSource" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="Users.Auth.Local" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Users.Auth.ActiveDirectory" xml:space="preserve">
+    <value>ActiveDirectory</value>
+  </data>
+  <data name="Users.Create.AuthSource" xml:space="preserve">
+    <value>Authentication</value>
+  </data>
+  <data name="Users.Create.AdUserNameNote" xml:space="preserve">
+    <value>Enter the ActiveDirectory username (sAMAccountName). No password is set because ActiveDirectory authenticates the user.</value>
+  </data>
+  <data name="Users.Edit.UserName" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Users.Check.Button" xml:space="preserve">
+    <value>Check that the user exists</value>
+  </data>
+  <data name="Users.Check.Running" xml:space="preserve">
+    <value>Checking…</value>
+  </data>
+  <data name="Users.Check.Error" xml:space="preserve">
+    <value>The check could not be run. Try again.</value>
+  </data>
+  <data name="Users.Col.MailAddress" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Users.Create.MailAddress" xml:space="preserve">
+    <value>Email address</value>
+  </data>
+  <data name="Users.Create.MailAddressNote" xml:space="preserve">
+    <value>Contact email address (optional).</value>
+  </data>
+  <data name="Users.Create.LocalAccountNote" xml:space="preserve">
+    <value>Enter an email address. It is the account and is also used as the email address.</value>
+  </data>
+  <data name="Users.Edit.MailAddressLocalNote" xml:space="preserve">
+    <value>For a standard user, the account is the email address.</value>
+  </data>
+  <data name="Users.Col.Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Users.Create.Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Users.Create.DescriptionNote" xml:space="preserve">
+    <value>A note about the user (optional, up to 500 characters).</value>
+  </data>
+  <data name="Users.Reset.Title" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Users.Reset.Note" xml:space="preserve">
+    <value>Set a new password when the user has forgotten theirs. The lockout is also cleared and signed-in sessions are invalidated. Give the new password to the user through a secure channel.</value>
+  </data>
+  <data name="Users.Reset.Self" xml:space="preserve">
+    <value>Change your own password in User settings.</value>
+  </data>
+  <data name="Users.Reset.NewPassword" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="Users.Reset.RequireChange" xml:space="preserve">
+    <value>Require a password change at next sign-in</value>
+  </data>
+  <data name="Users.Reset.Button" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Users.Reset.Confirm" xml:space="preserve">
+    <value>Reset the password of {0}. Continue?</value>
+  </data>
+</root>

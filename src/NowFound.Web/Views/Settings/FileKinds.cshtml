@@ -1,0 +1,67 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<SettingsResource> L
+@model FileKindsEditViewModel
+@{
+    ViewData["Title"] = L["Settings.Kinds.Title"].Value;
+    var rows = Model.Rows ?? [];
+    var templateRow = new FileKindRowModel("__INDEX__", new FileKindRowViewModel());
+    string[] suggestions =
+    [
+        "📁", "📃", "📄", "📝", "📑", "📕", "📗", "📘", "📙", "📚", "📊", "📈", "📉", "📋", "📎", "📌",
+        "💿", "💾", "📀", "⚙️", "🧩", "📦", "💻", "🖥️", "🎬", "🎞️", "🖼️", "🎨", "🎵", "🎧", "🎙️",
+        "🗄️", "🗃️", "🛠️", "🔧", "🔑", "🔒", "🏷️", "🔖", "📥", "📤", "🌐", "✉️", "📅", "🧾", "🧪", "⭐", "❓",
+    ];
+}
+<h1>@L["Settings.Kinds.Title"]</h1>
+<partial name="_Flash" />
+@if (TempData["Message"] is string message)
+{
+    <p class="notice" role="status">@message</p>
+}
+<p class="muted">
+    @L["Settings.Kinds.Intro"]
+    @(Model.IsCustomized ? L["Settings.Kinds.Customized"].Value : L["Settings.Kinds.Standard"].Value)
+    @L["Settings.Kinds.Scope"]
+</p>
+
+<form asp-action="FileKinds" method="post" class="card" id="kind-form">
+    <div asp-validation-summary="All" class="validation-summary"></div>
+    <div class="table-wrap">
+        <table class="kind-table">
+            <thead>
+                <tr><th>@L["Settings.Kinds.Col.Icon"]</th><th>@L["Settings.Kinds.Col.Name"]</th><th>@L["Settings.Kinds.Col.Extensions"]</th><th></th></tr>
+            </thead>
+            <tbody id="kind-rows">
+                @for (var i = 0; i < rows.Count; i++)
+                {
+                    <partial name="_FileKindRow" model="new FileKindRowModel(i.ToString(), rows[i])" />
+                }
+            </tbody>
+        </table>
+    </div>
+    <p class="muted">
+        @L["Settings.Kinds.Note1"]
+        @L["Settings.Kinds.Note2"]
+        @L["Settings.Kinds.Note3"]
+    </p>
+    <div class="dialog-actions kind-buttons">
+        <button type="button" class="secondary" id="add-kind">@L["Settings.Kinds.Add"]</button>
+        <button type="submit">@L["Settings.Save"]</button>
+    </div>
+</form>
+
+<form asp-action="ResetFileKinds" method="post" class="section-gap" data-confirm="@L["Settings.Kinds.ResetConfirm"]">
+    <button type="submit" class="secondary" disabled="@(!Model.IsCustomized)">@L["Settings.Kinds.Reset"]</button>
+</form>
+
+<datalist id="icon-suggestions">
+    @foreach (var icon in suggestions)
+    {
+        <option value="@icon"></option>
+    }
+</datalist>
+
+<template id="kind-row-template">
+    <partial name="_FileKindRow" model="templateRow" />
+</template>

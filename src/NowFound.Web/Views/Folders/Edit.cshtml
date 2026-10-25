@@ -1,0 +1,43 @@
+@using Microsoft.Extensions.Localization
+@using NowFound.Web.Resources
+@inject IStringLocalizer<FoldersResource> L
+@model FolderEditViewModel
+@{
+    ViewData["Title"] = (Model.Id == 0 ? L["Folders.Edit.TitleAdd"] : L["Folders.Edit.TitleEdit"]).Value;
+    var defaultsLink = $"<a href=\"{Url.Action("ExcludeDefaults", "Settings")}\">{L["Folders.Edit.ExcludeDefaultsLink"].Value}</a>";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="card">
+    <form asp-action="Save" method="post">
+        <div asp-validation-summary="All" class="validation-summary"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="field">
+            <label asp-for="Path">@L["Folders.Edit.Path"]</label>
+            <input asp-for="Path" type="text" required data-folder-path />
+            <small>@L["Folders.Edit.PathNote"]</small>
+        </div>
+        <div class="field">
+            <label asp-for="Name">@L["Folders.Edit.Name"]</label>
+            <input asp-for="Name" type="text" required data-folder-name />
+            <small>@L["Folders.Edit.NameNote"]</small>
+        </div>
+        <div class="field">
+            <label><input asp-for="ExcludeHidden" /> @L["Folders.Edit.ExcludeHidden"]</label>
+        </div>
+        <div class="field">
+            <label><input asp-for="IsShared" /> @L["Folders.Edit.IsShared"]</label>
+            <input asp-for="ShareName" type="text" maxlength="200" aria-label="@L["Folders.Edit.ShareNameLabel"]"
+                   placeholder="@L["Folders.Edit.ShareNamePlaceholder"]" />
+            @* 差し込む引数は固定のタグとリソースの文言だけ（利用者の入力は含めない）ので Html.Raw で良い。 *@
+            <small>@Html.Raw(L["Folders.Edit.ShareHint", $"<code>{L["Folders.Edit.ShareFormat"].Value}</code>"].Value)</small>
+        </div>
+        <div class="field">
+            <label asp-for="ExcludePatterns">@L["Folders.Edit.ExcludePatterns"]</label>
+            <textarea asp-for="ExcludePatterns" rows="12" placeholder="*.tmp&#10;node_modules"></textarea>
+            <small>@Html.Raw(L["Folders.Edit.ExcludeHint1", "<code>/</code>", "<code>__MACOSX/</code>"].Value)
+                @Html.Raw(L["Folders.Edit.ExcludeHint2", defaultsLink].Value)</small>
+        </div>
+        <button type="submit">@L["Folders.Edit.Save"]</button>
+        <a asp-action="Index">@L["Folders.Edit.Cancel"]</a>
+    </form>
+</div>
