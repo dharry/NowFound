@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using NowFound.Application.Users;
 using NowFound.Domain;
@@ -31,7 +31,7 @@ public class UserPasswordResetTests
         using var __ = scope;
         var id = await AddUserAsync(service);
 
-        var result = await service.ResetPasswordAsync(id, "NewPassw0rd!", true, adminId);
+        var result = await service.ResetPasswordAsync(id, "NewPassw0rd!", true, adminId, TestContext.Current.CancellationToken);
 
         Assert.True(result.Succeeded);
         var user = (await manager.FindByIdAsync(id))!;
@@ -49,7 +49,7 @@ public class UserPasswordResetTests
         using var __ = scope;
         var id = await AddUserAsync(service);
 
-        await service.ResetPasswordAsync(id, "NewPassw0rd!", requireChange, adminId);
+        await service.ResetPasswordAsync(id, "NewPassw0rd!", requireChange, adminId, TestContext.Current.CancellationToken);
 
         Assert.Equal(requireChange, (await manager.FindByIdAsync(id))!.MustChangePassword);
     }
@@ -66,7 +66,7 @@ public class UserPasswordResetTests
         await manager.AccessFailedAsync(user);
         var stampBefore = await manager.GetSecurityStampAsync(user);
 
-        var result = await service.ResetPasswordAsync(id, "NewPassw0rd!", false, adminId);
+        var result = await service.ResetPasswordAsync(id, "NewPassw0rd!", false, adminId, TestContext.Current.CancellationToken);
 
         Assert.True(result.Succeeded);
         var after = (await manager.FindByIdAsync(id))!;
@@ -84,7 +84,7 @@ public class UserPasswordResetTests
         using var __ = scope;
         var id = await AddUserAsync(service);
 
-        var result = await service.ResetPasswordAsync(id, "short", true, adminId);
+        var result = await service.ResetPasswordAsync(id, "short", true, adminId, TestContext.Current.CancellationToken);
 
         Assert.False(result.Succeeded);
         Assert.NotEmpty(result.Errors);
@@ -101,7 +101,7 @@ public class UserPasswordResetTests
         var before = (await manager.FindByIdAsync(id))!.PasswordChangedAt;
         await Task.Delay(20, TestContext.Current.CancellationToken);
 
-        await service.ResetPasswordAsync(id, "NewPassw0rd!", false, adminId);
+        await service.ResetPasswordAsync(id, "NewPassw0rd!", false, adminId, TestContext.Current.CancellationToken);
 
         Assert.True((await manager.FindByIdAsync(id))!.PasswordChangedAt > before);
     }
@@ -113,9 +113,9 @@ public class UserPasswordResetTests
         await using var _ = host;
         using var __ = scope;
         await service.CreateAsync(new CreateUserRequest("taro", string.Empty, false, false, AuthSource: AuthSources.ActiveDirectory));
-        var id = (await service.ListAsync()).Single(u => u.Email == "taro").Id;
+        var id = (await service.ListAsync(TestContext.Current.CancellationToken)).Single(u => u.Email == "taro").Id;
 
-        var result = await service.ResetPasswordAsync(id, "NewPassw0rd!", false, adminId);
+        var result = await service.ResetPasswordAsync(id, "NewPassw0rd!", false, adminId, TestContext.Current.CancellationToken);
 
         Assert.False(result.Succeeded);
         Assert.Equal("Error.User.PasswordManagedByDirectory", result.Errors.Single().Key);
@@ -128,8 +128,8 @@ public class UserPasswordResetTests
         await using var _ = host;
         using var __ = scope;
 
-        var self = await service.ResetPasswordAsync(adminId, "NewPassw0rd!", false, adminId);
-        var unknown = await service.ResetPasswordAsync("no-such-user", "NewPassw0rd!", false, adminId);
+        var self = await service.ResetPasswordAsync(adminId, "NewPassw0rd!", false, adminId, TestContext.Current.CancellationToken);
+        var unknown = await service.ResetPasswordAsync("no-such-user", "NewPassw0rd!", false, adminId, TestContext.Current.CancellationToken);
 
         Assert.Equal("Error.User.CannotResetOwnPassword", self.Errors.Single().Key);
         Assert.Equal("Error.UserNotFound", unknown.Errors.Single().Key);
@@ -142,9 +142,9 @@ public class UserPasswordResetTests
         await using var _ = host;
         using var __ = scope;
         await service.CreateAsync(new CreateUserRequest("admin2@example.com", "OldPassw0rd!", true, false));
-        var id = (await service.ListAsync()).Single(u => u.Email == "admin2@example.com").Id;
+        var id = (await service.ListAsync(TestContext.Current.CancellationToken)).Single(u => u.Email == "admin2@example.com").Id;
 
-        Assert.True((await service.ResetPasswordAsync(id, "NewPassw0rd!", false, adminId)).Succeeded);
+        Assert.True((await service.ResetPasswordAsync(id, "NewPassw0rd!", false, adminId, TestContext.Current.CancellationToken)).Succeeded);
         Assert.True(await manager.CheckPasswordAsync((await manager.FindByIdAsync(id))!, "NewPassw0rd!"));
     }
 }
