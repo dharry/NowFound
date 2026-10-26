@@ -1,13 +1,15 @@
 @using Microsoft.Extensions.Localization
+@using NowFound.Application.Search
 @using NowFound.Web.Resources
 @model SavedSearchEditViewModel
 @inject IStringLocalizer<SavedSearchesResource> L
+@inject IStringLocalizer<SearchResource> SL
 @{
     ViewData["Title"] = L["SavedSearches.Edit.Title"].Value;
 }
 <h1>@L["SavedSearches.Edit.Title"]</h1>
 <div class="card">
-    <form asp-action="Save" method="post">
+    <form asp-action="Save" method="post" id="saved-edit-form">
         <div asp-validation-summary="All" class="validation-summary"></div>
         <input type="hidden" asp-for="Id" />
         <div class="field">
@@ -43,8 +45,49 @@
                 @L["SavedSearches.Edit.Pin"]
             </label>
         </div>
-        <p class="muted">@L["SavedSearches.Edit.Hint"]</p>
+        <fieldset class="field">
+            <legend>@L["SavedSearches.Edit.Query"]</legend>
+            <div class="field inline">
+                <label for="FolderId">@L["SavedSearches.Edit.Folder"]</label>
+                <select id="FolderId" name="FolderId">
+                    <option value="" selected="@(Model.FolderId is null)">@L["SavedSearches.Edit.FolderAll"]</option>
+                    @foreach (var folder in Model.Folders)
+                    {
+                        <option value="@folder.Id" selected="@(Model.FolderId == folder.Id)">@folder.Name (@folder.Path)</option>
+                    }
+                    @if (Model.FolderId is { } currentId && Model.Folders.All(f => f.Id != currentId))
+                    {
+                        <option value="@currentId" selected>@L["SavedSearches.Edit.FolderUnavailable", currentId]</option>
+                    }
+                </select>
+            </div>
+            <div class="field inline">
+                <label for="FolderPath">@L["SavedSearches.Edit.FolderPath"]</label>
+                <input id="FolderPath" name="FolderPath" type="text" maxlength="1000" value="@Model.FolderPath" />
+            </div>
+            <p class="muted">@L["SavedSearches.Edit.FolderPathHint"]</p>
+            <div class="field inline">
+                <label for="Operator">@SL["Search.Operator.Label"]</label>
+                <select id="Operator" name="Operator">
+                    <option value="And" selected="@(Model.Operator == SearchOperator.And)">@SL["Search.Operator.And"]</option>
+                    <option value="Or" selected="@(Model.Operator == SearchOperator.Or)">@SL["Search.Operator.Or"]</option>
+                </select>
+            </div>
+            <input type="hidden" name="Sort" value="@Model.Sort" />
+            <input type="hidden" name="Desc" value="@Model.Desc.ToString().ToLowerInvariant()" />
+            <div id="extra-conditions">
+                @for (var i = 0; i < Model.Conditions.Count; i++)
+                {
+                    var row = new ConditionRowModel(i.ToString(), Model.Conditions[i], true);
+                    <partial name="_ConditionRow" model="row" />
+                }
+            </div>
+            <button type="button" class="secondary" id="add-condition">@SL["Search.AddCondition"]</button>
+        </fieldset>
         <button type="submit">@L["SavedSearches.Edit.Submit"]</button>
         <a asp-action="Index">@L["SavedSearches.Edit.Cancel"]</a>
     </form>
 </div>
+<template id="condition-template">
+    <partial name="_ConditionRow" model="@(new ConditionRowModel("__INDEX__", new SearchCondition(), true))" />
+</template>

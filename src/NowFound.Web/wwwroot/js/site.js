@@ -83,7 +83,8 @@
   });
 
   // ---- 検索条件行 ----
-  const form = document.getElementById('search-form');
+  // 保存した検索の編集画面（saved-edit-form）でも同じ条件行の操作を使う。
+  const form = document.getElementById('search-form') || document.getElementById('saved-edit-form');
   const extraConditions = document.getElementById('extra-conditions');
   const template = document.getElementById('condition-template');
   const addButton = document.getElementById('add-condition');
@@ -152,7 +153,9 @@
 
   if (form && extraConditions && template && addButton) {
     form.querySelectorAll('[data-condition]').forEach(bindRow);
-    detailToggle.addEventListener('click', () => setDetailOpen(detailPanel.hidden));
+    if (detailToggle && detailPanel) {
+      detailToggle.addEventListener('click', () => setDetailOpen(detailPanel.hidden));
+    }
     addButton.addEventListener('click', () => {
       const index = form.querySelectorAll('[data-condition]').length;
       const holder = document.createElement('div');

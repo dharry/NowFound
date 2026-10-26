@@ -20,6 +20,7 @@ namespace NowFound.Web.Controllers;
 [Authorize]
 public class SavedSearchesController(
     ISavedSearchService service,
+    ISearchService searchService,
     IUserAdminService userAdminService,
     RequestLogger requestLogger,
     IStringLocalizer<SavedSearchesResource> localizer) : Controller
@@ -128,15 +129,28 @@ public class SavedSearchesController(
             return RedirectToAction(nameof(Index));
         }
 
-        return View(ToEditModel(detail.Summary));
+        var model = ToEditModel(detail.Summary);
+        if (detail.Query is { } query)
+        {
+            model.Conditions = [.. query.Conditions];
+            model.Operator = query.Operator;
+            model.FolderId = query.FolderId;
+            model.FolderPath = query.FolderPath;
+            model.Sort = query.Sort;
+            model.Desc = query.Descending;
+        }
+
+        await PrepareQueryEditorAsync(model, ct);
+        return View(model);
     }
 
     [HttpPost]
     public async Task<IActionResult> Save(SavedSearchEditViewModel model, CancellationToken ct)
     {
         var before = await service.GetAsync(model.Id, UserId, IsAdmin, ct);
+        model.FolderPath = model.FolderId is null ? null : model.FolderPath;
         var result = await service.UpdateAsync(
-            model.Id, UserId, IsAdmin, new SavedSearchMeta(model.Name, model.Description, model.IsPublic, model.IsPinned), null, ct);
+            model.Id, UserId, IsAdmin, new SavedSearchMeta(model.Name, model.Description, model.IsPublic, model.IsPinned), model.ToSavedQuery(), ct);
 
         if (result.Succeeded)
         {
@@ -162,7 +176,18 @@ public class SavedSearchesController(
             model.OwnerEmail = current.OwnerEmail;
         }
 
+        await PrepareQueryEditorAsync(model, ct);
         return View("Edit", model);
+    }
+
+    /// <summary>編集画面の選択肢を用意し、条件行が 1 つもなければ空の行を 1 つ出す。</summary>
+    private async Task PrepareQueryEditorAsync(SavedSearchEditViewModel model, CancellationToken ct)
+    {
+        model.Folders = await searchService.GetAccessibleFoldersAsync(UserId, IsAdmin, ct);
+        if (model.Conditions.Count == 0)
+        {
+            model.Conditions = [new SearchCondition()];
+        }
     }
 
     [HttpPost]

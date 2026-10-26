@@ -45,8 +45,23 @@
   <data name="SavedSearches.Edit.Description" xml:space="preserve">
     <value>Note (optional)</value>
   </data>
-  <data name="SavedSearches.Edit.Hint" xml:space="preserve">
-    <value>To change the search conditions, edit them on the search screen and click "Overwrite".</value>
+  <data name="SavedSearches.Edit.Query" xml:space="preserve">
+    <value>Search conditions</value>
+  </data>
+  <data name="SavedSearches.Edit.Folder" xml:space="preserve">
+    <value>Target folder</value>
+  </data>
+  <data name="SavedSearches.Edit.FolderAll" xml:space="preserve">
+    <value>Not specified (all)</value>
+  </data>
+  <data name="SavedSearches.Edit.FolderUnavailable" xml:space="preserve">
+    <value>(Unavailable folder: {0})</value>
+  </data>
+  <data name="SavedSearches.Edit.FolderPath" xml:space="preserve">
+    <value>Path inside the folder (optional)</value>
+  </data>
+  <data name="SavedSearches.Edit.FolderPathHint" xml:space="preserve">
+    <value>Enter the absolute path of a subfolder under the target folder to search only inside it.</value>
   </data>
   <data name="SavedSearches.Edit.Name" xml:space="preserve">
     <value>Name</value>

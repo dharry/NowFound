@@ -141,9 +141,14 @@ public class SaveSearchForm : SearchQueryInput
     public bool IsPinned { get; set; }
 }
 
-public class SavedSearchEditViewModel
+/// <summary>保存した検索の編集フォーム。メモ類に加えて、検索条件（対象フォルダ・条件）も編集する。</summary>
+public class SavedSearchEditViewModel : SearchQueryInput
 {
     public int Id { get; set; }
+
+    /// <summary>対象フォルダの選択肢。入力としては受け取らない。</summary>
+    [Microsoft.AspNetCore.Mvc.ModelBinding.BindNever]
+    public IReadOnlyList<AccessibleFolder> Folders { get; set; } = [];
 
     public string Name { get; set; } = string.Empty;
 

@@ -214,7 +214,7 @@ public sealed partial class SavedSearchFlowTests : IDisposable
         Assert.Contains("公開にできるのは管理者のみです", editPage);
 
         var saved = await user.PostFormAsync("/SavedSearches/Save", $"/SavedSearches/Edit/{userId}",
-            [new("Id", userId.ToString()!), new("Name", "新しい名前"), new("IsPublic", "false"), new("IsPinned", "true")]);
+            [new("Id", userId.ToString()!), new("Name", "新しい名前"), new("IsPublic", "false"), new("IsPinned", "true"), .. KeywordFields("report")]);
         Assert.Equal(HttpStatusCode.Redirect, saved.StatusCode);
         var list = await user.GetStringAsync("/SavedSearches", TestContext.Current.CancellationToken);
         Assert.Contains("新しい名前", list);
@@ -223,10 +223,50 @@ public sealed partial class SavedSearchFlowTests : IDisposable
 
         // 一般ユーザーが公開にしようとしても失敗する（画面を迂回して直接送った場合）。
         var hack = await user.PostFormAsync("/SavedSearches/Save", $"/SavedSearches/Edit/{userId}",
-            [new("Id", userId.ToString()!), new("Name", "新しい名前"), new("IsPublic", "true")]);
+            [new("Id", userId.ToString()!), new("Name", "新しい名前"), new("IsPublic", "true"), .. KeywordFields("report")]);
         Assert.Equal(HttpStatusCode.OK, hack.StatusCode);
         Assert.Contains("管理者のみ", await hack.Content.ReadAsStringAsync(TestContext.Current.CancellationToken));
         Assert.DoesNotContain("新しい名前", await admin.GetStringAsync("/SavedSearches", TestContext.Current.CancellationToken));
+    }
+
+    private static KeyValuePair<string, string>[] KeywordFields(string keyword) =>
+    [
+        new("Operator", "And"),
+        new("Sort", "Path"),
+        new("Desc", "false"),
+        new("Conditions[0].Field", "FileName"),
+        new("Conditions[0].Text", keyword),
+    ];
+
+    [Fact]
+    public async Task Edit_ChangesFolderAndConditions_AndRejectsEmptyQuery()
+    {
+        var admin = await AdminAsync();
+        var (_, id) = await SaveAsync(admin, "条件編集", keyword: "before");
+
+        var editPage = await admin.GetStringAsync($"/SavedSearches/Edit/{id}", TestContext.Current.CancellationToken);
+        Assert.Contains("value=\"before\"", editPage);
+        Assert.Contains("対象フォルダ", editPage);
+        Assert.DoesNotContain("SavedSearches.Edit.", editPage);
+
+        var saved = await admin.PostFormAsync("/SavedSearches/Save", $"/SavedSearches/Edit/{id}",
+        [
+            new("Id", id.ToString()!), new("Name", "条件編集"), new("IsPublic", "false"),
+            new("Operator", "Or"), new("Sort", "Name"), new("Desc", "true"),
+            new("Conditions[0].Field", "Extension"), new("Conditions[0].Text", "pdf"),
+            new("Conditions[1].Field", "FileName"), new("Conditions[1].Text", "memo"),
+        ]);
+        Assert.Equal(HttpStatusCode.Redirect, saved.StatusCode);
+
+        var run = await admin.GetAsync($"/SavedSearches/Run?id={id}", TestContext.Current.CancellationToken);
+        var location = Uri.UnescapeDataString(run.Headers.Location!.ToString());
+        Assert.Contains("Conditions[0].Text=pdf", location);
+        Assert.Contains("Conditions[1].Text=memo", location);
+        Assert.Contains("Operator=Or", location);
+
+        var empty = await admin.PostFormAsync("/SavedSearches/Save", $"/SavedSearches/Edit/{id}",
+            [new("Id", id.ToString()!), new("Name", "条件編集"), new("IsPublic", "false")]);
+        Assert.Equal(HttpStatusCode.OK, empty.StatusCode);
     }
 
     [Fact]
@@ -237,7 +277,7 @@ public sealed partial class SavedSearchFlowTests : IDisposable
         var (_, secondId) = await SaveAsync(admin, "B");
 
         var response = await admin.PostFormAsync("/SavedSearches/Save", $"/SavedSearches/Edit/{secondId}",
-            [new("Id", secondId.ToString()!), new("Name", "A"), new("IsPublic", "false")]);
+            [new("Id", secondId.ToString()!), new("Name", "A"), new("IsPublic", "false"), .. KeywordFields("report")]);
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Contains("同じ名前", await response.Content.ReadAsStringAsync(TestContext.Current.CancellationToken));

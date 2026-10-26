@@ -45,8 +45,23 @@
   <data name="SavedSearches.Edit.Description" xml:space="preserve">
     <value>メモ（任意）</value>
   </data>
-  <data name="SavedSearches.Edit.Hint" xml:space="preserve">
-    <value>検索条件を変えるには、検索画面で条件を直して「上書き保存」を押してください。</value>
+  <data name="SavedSearches.Edit.Query" xml:space="preserve">
+    <value>検索条件</value>
+  </data>
+  <data name="SavedSearches.Edit.Folder" xml:space="preserve">
+    <value>対象フォルダ</value>
+  </data>
+  <data name="SavedSearches.Edit.FolderAll" xml:space="preserve">
+    <value>指定しない（すべて）</value>
+  </data>
+  <data name="SavedSearches.Edit.FolderUnavailable" xml:space="preserve">
+    <value>（利用できないフォルダ: {0}）</value>
+  </data>
+  <data name="SavedSearches.Edit.FolderPath" xml:space="preserve">
+    <value>フォルダ内のパス（任意）</value>
+  </data>
+  <data name="SavedSearches.Edit.FolderPathHint" xml:space="preserve">
+    <value>対象フォルダ配下のサブフォルダを絶対パスで指定すると、その中だけを検索します。</value>
   </data>
   <data name="SavedSearches.Edit.Name" xml:space="preserve">
     <value>名前</value>
