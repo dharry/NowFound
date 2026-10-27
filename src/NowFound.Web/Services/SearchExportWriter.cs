@@ -126,7 +126,7 @@ public static class SearchExportWriter
         return count;
     }
 
-    private static async Task DrainAsync(StreamWriter writer, MemoryStream buffer, Stream output, bool force, CancellationToken ct)
+    internal static async Task DrainAsync(StreamWriter writer, MemoryStream buffer, Stream output, bool force, CancellationToken ct)
     {
         writer.Flush(); // メモリ上のバッファへ移すだけなので同期でよい。
         if (buffer.Length == 0 || (!force && buffer.Length < DrainThreshold))

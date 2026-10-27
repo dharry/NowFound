@@ -33,6 +33,9 @@ public interface IOperationLogService
 
     Task<OperationLogPage> SearchAsync(OperationLogQuery query, CancellationToken ct = default);
 
+    /// <summary>検索条件に合うログを、ページングせず並べ替え順に最大 <paramref name="maxRows"/> 件まで 1 件ずつ返す（エクスポート用）。</summary>
+    IAsyncEnumerable<OperationLogItem> ExportAsync(OperationLogQuery query, int maxRows, CancellationToken ct = default);
+
     /// <summary>現在キューに滞留しているログをすべてDBにフラッシュする。</summary>
     Task FlushAsync(CancellationToken ct = default);
 }

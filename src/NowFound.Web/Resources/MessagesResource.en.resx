@@ -573,6 +573,15 @@
   <data name="Log.Settings.ExportChanged" xml:space="preserve">
     <value>Changed export settings: {0} (max rows: {1})</value>
   </data>
+  <data name="Log.LogExport.Done" xml:space="preserve">
+    <value>Exported operation logs ({0}, {1} rows)</value>
+  </data>
+  <data name="Log.LogExport.DoneTruncated" xml:space="preserve">
+    <value>Exported operation logs ({0}, {1} rows, stopped at the limit)</value>
+  </data>
+  <data name="Log.LogExport.Aborted" xml:space="preserve">
+    <value>Export of operation logs was interrupted ({0})</value>
+  </data>
   <data name="Log.Export.Done" xml:space="preserve">
     <value>Exported search results ({1}, {2} rows): {0}</value>
   </data>

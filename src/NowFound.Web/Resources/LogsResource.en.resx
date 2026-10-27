@@ -36,6 +36,27 @@
   <data name="Logs.Filter.All" xml:space="preserve">
     <value>All</value>
   </data>
+  <data name="Logs.Export.Label" xml:space="preserve">
+    <value>Export operation logs</value>
+  </data>
+  <data name="Logs.Export.Format" xml:space="preserve">
+    <value>File format</value>
+  </data>
+  <data name="Logs.Export.Encoding" xml:space="preserve">
+    <value>Character encoding</value>
+  </data>
+  <data name="Logs.Export.Encoding.Utf8Bom" xml:space="preserve">
+    <value>UTF-8 (with BOM)</value>
+  </data>
+  <data name="Logs.Export.Encoding.ShiftJis" xml:space="preserve">
+    <value>Shift_JIS</value>
+  </data>
+  <data name="Logs.Export.Button" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Logs.Export.Busy" xml:space="preserve">
+    <value>Another export is running. Please try again in a moment.</value>
+  </data>
   <data name="Logs.Filter.Clear" xml:space="preserve">
     <value>Clear</value>
   </data>

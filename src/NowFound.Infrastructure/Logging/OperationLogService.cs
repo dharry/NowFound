@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -92,10 +93,8 @@ public class OperationLogService(OperationLogDbContext db, IOperationLogQueue qu
         }
     }
 
-    public async Task<OperationLogPage> SearchAsync(OperationLogQuery query, CancellationToken ct = default)
+    private IQueryable<OperationLog> Filter(OperationLogQuery query)
     {
-        await queue.FlushAsync(ct);
-        var page = Math.Max(1, query.Page);
         var logs = db.OperationLogs.AsNoTracking().AsQueryable();
 
         var (fromUtc, toUtc) = DateTimeRange.ToUtc(query.From, query.To, query.TimeZone);
@@ -120,9 +119,12 @@ public class OperationLogService(OperationLogDbContext db, IOperationLogQueue qu
             logs = logs.Where(l => EF.Functions.Like(l.UserEmail, pattern, SqlLike.Escape));
         }
 
-        var total = await logs.CountAsync(ct);
-        // 並べ替えの指定がなければ日時の新しい順。同じ値のものは新しい順にそろえる。
-        var ordered = (query.Sort, query.Descending) switch
+        return logs;
+    }
+
+    /// <summary>並べ替えの指定がなければ日時の新しい順。同じ値のものは新しい順にそろえる。</summary>
+    private static IOrderedQueryable<OperationLog> Order(IQueryable<OperationLog> logs, OperationLogQuery query) =>
+        ((query.Sort, query.Descending) switch
         {
             (LogSortKeys.Time, false) => logs.OrderBy(l => l.Timestamp),
             (LogSortKeys.Operation, false) => logs.OrderBy(l => l.Operation),
@@ -132,17 +134,39 @@ public class OperationLogService(OperationLogDbContext db, IOperationLogQueue qu
             (LogSortKeys.Ip, false) => logs.OrderBy(l => l.IpAddress),
             (LogSortKeys.Ip, true) => logs.OrderByDescending(l => l.IpAddress),
             _ => logs.OrderByDescending(l => l.Timestamp),
-        };
-        var items = await ordered.ThenByDescending(l => l.Timestamp).ThenByDescending(l => l.Id)
+        }).ThenByDescending(l => l.Timestamp).ThenByDescending(l => l.Id);
+
+    private static OperationLogItem ToItem(OperationLog l) =>
+        new(l.Id, l.Timestamp, l.Operation, l.UserEmail, l.Detail, l.IpAddress, l.DetailKey, ParseArgs(l.DetailArgs));
+
+    public async Task<OperationLogPage> SearchAsync(OperationLogQuery query, CancellationToken ct = default)
+    {
+        await queue.FlushAsync(ct);
+        var page = Math.Max(1, query.Page);
+        var logs = Filter(query);
+        var total = await logs.CountAsync(ct);
+        var items = await Order(logs, query)
             .Skip((page - 1) * query.PageSize)
             .Take(query.PageSize)
             .ToListAsync(ct);
 
-        return new OperationLogPage(
-            [.. items.Select(l => new OperationLogItem(
-                l.Id, l.Timestamp, l.Operation, l.UserEmail, l.Detail, l.IpAddress, l.DetailKey, ParseArgs(l.DetailArgs)))],
-            page,
-            query.PageSize,
-            total);
+        return new OperationLogPage([.. items.Select(ToItem)], page, query.PageSize, total);
+    }
+
+    public async IAsyncEnumerable<OperationLogItem> ExportAsync(
+        OperationLogQuery query, int maxRows, [EnumeratorCancellation] CancellationToken ct = default)
+    {
+        if (maxRows <= 0)
+        {
+            yield break;
+        }
+
+        await queue.FlushAsync(ct);
+
+        // 件数集計も全件ロードもせず、リーダーから 1 行ずつ流す。
+        await foreach (var log in Order(Filter(query), query).Take(maxRows).AsAsyncEnumerable().WithCancellation(ct))
+        {
+            yield return ToItem(log);
+        }
     }
 }
